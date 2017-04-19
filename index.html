@@ -260,7 +260,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.aidansu.com/2017/use-ubuntu-development/">
+    <link itemprop="mainEntityOfPage" href="http://www.aidansu.com/2017/idea-create-maven-web-project/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="aidan">
@@ -282,8 +282,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/use-ubuntu-development/" itemprop="url">
-                  使用 ubuntu 16.04 做开发
+                <a class="post-title-link" href="/2017/idea-create-maven-web-project/" itemprop="url">
+                  Intellij IDEA 创建 Maven Web 项目
                 </a>
               
             
@@ -299,7 +299,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-17T09:56:07+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-17T19:35:03+08:00">
                 2017-04-17
               </time>
             
@@ -317,7 +317,7 @@
 
           
           
-             <span id="/2017/use-ubuntu-development/" class="leancloud_visitors" data-flag-title="使用 ubuntu 16.04 做开发">
+             <span id="/2017/idea-create-maven-web-project/" class="leancloud_visitors" data-flag-title="Intellij IDEA 创建 Maven Web 项目">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -347,36 +347,24 @@
 
       
         
-          <p>本周，Ubuntu 17.04 发布了，但我并没有打算更新系统，因为我不想再当白老鼠了，之前已经吃过亏，更新了 Ubuntu 16.10 后发现很多 BUG，各种大大小小的问题，总之搞到你很烦，所以我还是坚持使用 Ubuntu 16.0４，估计18.04稳定版出来后我会用，因为Ubuntu将在明年的Ubuntu 18.04 LTS上切换到GNOME。<br>为什么不用 Windows ? ，因为我们是做程序开发的，Ubuntu更方便，日常的办公软件也有，比如 Office，QQ，搜狗输入法。下面教大家怎么愉快地使用 Ubuntu 吧。</p>
-<h3 id="系统分区"><a href="#系统分区" class="headerlink" title="系统分区"></a>系统分区</h3><table>
-<thead>
-<tr>
-<th>分区</th>
-<th style="text-align:right">大小</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>swap</td>
-<td style="text-align:right">1/2 内存 </td>
-</tr>
-<tr>
-<td>/boot</td>
-<td style="text-align:right">300MB   </td>
-</tr>
-<tr>
-<td>/</td>
-<td style="text-align:right">102400MB</td>
-</tr>
-<tr>
-<td>/home</td>
-<td style="text-align:right">剩余   </td>
-</tr>
-</tbody>
-</table>
+          <p>Intellij IDEA 应该是最好用的 Java IDE，建议使用最新版本。而 Eclipse 几年前已经被我抛弃了，如果你对它有情怀，那就继续使用吧，反正只是一个工具。</p>
+<h3 id="下载安装-Intellij-IDEA"><a href="#下载安装-Intellij-IDEA" class="headerlink" title="下载安装 Intellij IDEA"></a>下载安装 Intellij IDEA</h3><p>官方下载地址： <a href="http://www.jetbrains.com/idea/">http://www.jetbrains.com/idea/</a> </p>
+<h3 id="解决-Maven-加载慢的问题"><a href="#解决-Maven-加载慢的问题" class="headerlink" title="解决 Maven 加载慢的问题"></a>解决 Maven 加载慢的问题</h3><p>如果不解决这个问题，每次创建项目的时候都要等上几分钟或者更长的时间，所以创建项目前最好把这个问题解决，如果你有的是时间可以忽略。</p>
+<ol>
+<li><p>为了防止每次访问 maven 主站下载 catalog，这里预下载，并拷贝到 .m2 目录下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ curl http://repo1.maven.org/maven2/archetype-catalog.xml &gt;&gt; archetype-catalog.xml</div><div class="line">$ mv archetype-catalog.xml .m2/</div></pre></td></tr></table></figure>
+</li>
+<li><p>更改 maven 的仓库，在IDEA的安装目录下找到 plugins/maven/lib/maven3/conf 目录，修改该目录下的 setting.xml 文件，在<mirrors>标签下添加仓库地址：</p>
+<pre><code class="xml"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span>
+ <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span>
+ <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>
+ <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+ <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/repositories/central/<span class="tag">&lt;/<span class="name">url</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">mirror</span>&gt;</span>
+</code></pre>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/use-ubuntu-development/#more" rel="contents">
+            <a class="btn" href="/2017/idea-create-maven-web-project/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -422,7 +410,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.aidansu.com/2017/gitHub-pages-build-blog/">
+    <link itemprop="mainEntityOfPage" href="http://www.aidansu.com/2017/ubuntu-config-jdk/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="aidan">
@@ -444,7 +432,306 @@
             
               
                 
-                <a class="post-title-link" href="/2017/gitHub-pages-build-blog/" itemprop="url">
+                <a class="post-title-link" href="/2017/ubuntu-config-jdk/" itemprop="url">
+                  Ubuntu 安装配置 JDK
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-16T15:55:57+08:00">
+                2017-04-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/ubuntu-config-jdk/" class="leancloud_visitors" data-flag-title="Ubuntu 安装配置 JDK">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="下载-JDK"><a href="#下载-JDK" class="headerlink" title="下载 JDK"></a>下载 JDK</h3><p>在 Oracle 官网地址下载：　<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p>
+<p><img src="/images/2017/jdk1.8.jpg" style="margin:0" /><br>先勾选 Accept License Agreement，然后点击第二个红色框的连接下载<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/ubuntu-config-jdk/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.aidansu.com/2017/use-ubuntu-to-development/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="aidan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AidanSu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/use-ubuntu-to-development/" itemprop="url">
+                  使用 ubuntu 16.04 做开发
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-15T20:50:59+08:00">
+                2017-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/use-ubuntu-to-development/" class="leancloud_visitors" data-flag-title="使用 ubuntu 16.04 做开发">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>本周，Ubuntu 17.04 发布了，但我并没有打算更新系统，因为我不想再当白老鼠了，之前已经吃过亏，更新了 Ubuntu 16.10 后发现很多 BUG，各种大大小小的问题，总之搞到你很烦，所以我还是坚持使用 Ubuntu 16.0４，估计18.04稳定版出来后我会用，因为Ubuntu将在明年的Ubuntu 18.04 LTS上切换到GNOME。<br>为什么不用 Windows ? 因为我们是做程序开发的，Ubuntu更方便，日常的办公软件也有，比如 Office，QQ，搜狗输入法。下面教大家怎么愉快地使用 Ubuntu 吧。</p>
+<h3 id="系统分区"><a href="#系统分区" class="headerlink" title="系统分区"></a>系统分区</h3><table>
+<thead>
+<tr>
+<th>分区</th>
+<th style="text-align:right">大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>swap</td>
+<td style="text-align:right">1/2 内存 </td>
+</tr>
+<tr>
+<td>/boot</td>
+<td style="text-align:right">300MB   </td>
+</tr>
+<tr>
+<td>/</td>
+<td style="text-align:right">102400MB</td>
+</tr>
+<tr>
+<td>/home</td>
+<td style="text-align:right">剩余   </td>
+</tr>
+</tbody>
+</table>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/use-ubuntu-to-development/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.aidansu.com/2017/github-pages-build-blog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="aidan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AidanSu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/github-pages-build-blog/" itemprop="url">
                   使用GitHub Pages搭建Blog
                 </a>
               
@@ -479,7 +766,7 @@
 
           
           
-             <span id="/2017/gitHub-pages-build-blog/" class="leancloud_visitors" data-flag-title="使用GitHub Pages搭建Blog">
+             <span id="/2017/github-pages-build-blog/" class="leancloud_visitors" data-flag-title="使用GitHub Pages搭建Blog">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -517,7 +804,7 @@
 <h3 id="GitHub-Pages"><a href="#GitHub-Pages" class="headerlink" title="GitHub Pages"></a>GitHub Pages</h3><p>准备工作：在GitHub上创建一个名为username.github.io的项目，其中username是您在GitHub上的用户名（或组织名称），如果用户名不匹配是无法正常使用的。这样就有了一个免费的域名和空间。<br>选择博客框架：GitHub Pages上只能放静态页面，所以只能选择静态博客框架，其中比较流行的有Jekyll，Hexo，Simple，Octopress，Pelican以及Lo·gecho等等，这些框架我都不太熟悉，但最后我选择了Hexo，选择的原因是：<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/gitHub-pages-build-blog/#more" rel="contents">
+            <a class="btn" href="/2017/github-pages-build-blog/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -602,7 +889,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-13T14:42:42+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-13T11:43:43+08:00">
                 2017-04-13
               </time>
             
@@ -739,7 +1026,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -752,7 +1039,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -843,6 +1130,26 @@
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
 
         
       </div>
