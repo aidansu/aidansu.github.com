@@ -95,10 +95,10 @@
 <meta property="og:site_name" content="AidanSu">
 <meta property="og:description" content="Intellij IDEA 应该是最好用的 Java IDE，建议使用最新版本。而 Eclipse 几年前已经被我抛弃了，如果你对它有情怀，那就继续使用吧，反正只是一个工具。 下载安装 Intellij IDEA官方下载地址： http://www.jetbrains.com/idea/  解决 Maven 加载慢的问题如果不解决这个问题，每次创建项目的时候都要等上几分钟或者更长的时间，所以创建项">
 <meta property="og:image" content="http://www.aidansu.com/images/2017/idea-new-project-webapp.jpg">
-<meta property="og:image" content="http://www.aidansu.com/images/2017/idea-new-project-next.jpg">
-<meta property="og:image" content="http://www.aidansu.com/images/2017/idea-new-project-maven.jpg">
+<meta property="og:image" content="http://www.aidansu.com/images/2017/idea-new-project-next.png">
+<meta property="og:image" content="http://www.aidansu.com/images/2017/idea-new-project-maven.png">
 <meta property="og:image" content="http://www.aidansu.com/images/2017/idea-project-list.jpg">
-<meta property="og:updated_time" content="2017-04-20T05:54:09.124Z">
+<meta property="og:updated_time" content="2017-04-24T11:40:33.082Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Intellij IDEA 创建 Maven Web 项目">
 <meta name="twitter:description" content="Intellij IDEA 应该是最好用的 Java IDE，建议使用最新版本。而 Eclipse 几年前已经被我抛弃了，如果你对它有情怀，那就继续使用吧，反正只是一个工具。 下载安装 Intellij IDEA官方下载地址： http://www.jetbrains.com/idea/  解决 Maven 加载慢的问题如果不解决这个问题，每次创建项目的时候都要等上几分钟或者更长的时间，所以创建项">
@@ -301,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-17T19:35:03+08:00">
-                2017-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-19T19:35:03+08:00">
+                2017-04-19
               </time>
             
 
@@ -394,7 +394,7 @@
 </li>
 </ol>
 <h3 id="创建-Maven-项目"><a href="#创建-Maven-项目" class="headerlink" title="创建 Maven 项目"></a>创建 Maven 项目</h3><p>Create New Project -&gt; maven -&gt; 勾选 create from archetype -&gt; 选中 maven-archetype-webapp</p>
-<p><img src="/images/2017/idea-new-project-webapp.jpg" style="margin:0"></p>
+<p><img src="/images/2017/idea-new-project-webapp.jpg" style="margin:0;border:0"></p>
 <p>maven-archetype-webapp 是最简单的 Maven war 项目模板，可以快速创建 Web 应用，生成的项目内容包括：</p>
 <ul>
 <li>一个 packaging 为 war 且带有 junit 依赖声明的 pom.xml</li>
@@ -409,11 +409,11 @@
 <li>src/test/java 测试代码目录及一个名为 AppTest 的测试用例</li>
 </ul>
 <p>点击 Next 进入下一步，填写项目的 GroupId ArtifactId Version</p>
-<p><img src="/images/2017/idea-new-project-next.jpg" style="margin:0"></p>
+<p><img src="/images/2017/idea-new-project-next.png" style="margin:0;border:0"></p>
 <p>点击 Next 进入下一步，填写 Maven 信息，使用默认值就可以了</p>
-<p><img src="/images/2017/idea-new-project-maven.jpg" style="margin:0"></p>
+<p><img src="/images/2017/idea-new-project-maven.png" style="margin:0;border:0"></p>
 <p>点击 Next 进入下一步，填写项目名称和路径，然后点击 Finish 完成 (这里就不展示图片了)</p>
-<h3 id="Maven-WEB-模板项目结构"><a href="#Maven-WEB-模板项目结构" class="headerlink" title="Maven WEB 模板项目结构"></a>Maven WEB 模板项目结构</h3><p>还缺少的文件夹需要手动创建<br><img src="/images/2017/idea-project-list.jpg" style="margin:0"><br>文件夹的类型和颜色可以选择文件夹右击 -&gt; Mark Directory as</p>
+<h3 id="Maven-WEB-模板项目结构"><a href="#Maven-WEB-模板项目结构" class="headerlink" title="Maven WEB 模板项目结构"></a>Maven WEB 模板项目结构</h3><p>还缺少的文件夹需要手动创建<br><img src="/images/2017/idea-project-list.jpg" style="margin:0;border:0"><br>文件夹的类型和颜色可以选择文件夹右击 -&gt; Mark Directory as</p>
 <h3 id="配置依赖-jar-包"><a href="#配置依赖-jar-包" class="headerlink" title="配置依赖 jar 包"></a>配置依赖 jar 包</h3><pre><code class="xml"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span> 的范围内是所需jar包的配置，可以到官网搜索所需的jar包
 <span class="tag">&lt;<span class="name">build</span>&gt;</span><span class="tag">&lt;/<span class="name">build</span>&gt;</span> 范围内是插件配置
 </code></pre>
@@ -562,7 +562,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://www.aidansu.com/2017/use-ubuntu-to-development/index.html">
 <meta property="og:site_name" content="AidanSu">
 <meta property="og:description" content="本周，Ubuntu 17.04 发布了，但我并没有打算更新系统，因为我不想再当白老鼠了，之前已经吃过亏，更新了 Ubuntu 16.10 后发现很多 BUG，各种大大小小的问题，总之搞到你很烦，所以我还是坚持使用 Ubuntu 16.0４，估计18.04稳定版出来后我会用，因为Ubuntu将在明年的Ubuntu 18.04 LTS上切换到GNOME。为什么不用 Windows ? 因为我们是做程序">
-<meta property="og:updated_time" content="2017-04-20T05:54:20.628Z">
+<meta property="og:updated_time" content="2017-04-24T08:14:46.518Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 ubuntu 16.04 做开发">
 <meta name="twitter:description" content="本周，Ubuntu 17.04 发布了，但我并没有打算更新系统，因为我不想再当白老鼠了，之前已经吃过亏，更新了 Ubuntu 16.10 后发现很多 BUG，各种大大小小的问题，总之搞到你很烦，所以我还是坚持使用 Ubuntu 16.0４，估计18.04稳定版出来后我会用，因为Ubuntu将在明年的Ubuntu 18.04 LTS上切换到GNOME。为什么不用 Windows ? 因为我们是做程序">
@@ -400,7 +400,7 @@
 <a id="more"></a>
 <h3 id="更新系统"><a href="#更新系统" class="headerlink" title="更新系统"></a>更新系统</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get update</div></pre></td></tr></table></figure>
 <h3 id="任务栏置底"><a href="#任务栏置底" class="headerlink" title="任务栏置底"></a>任务栏置底</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gsettings <span class="built_in">set</span> com.canonical.Unity.Launcher launcher-position Bottom</div></pre></td></tr></table></figure>
-<h3 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install git</div><div class="line">$ git config --global user.email <span class="string">"aidansu@163.com"</span></div><div class="line">$ git config --global user.name <span class="string">"aidansu"</span></div></pre></td></tr></table></figure>
+<h3 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install git<span class="comment">### 安装 G</span></div><div class="line">$ git config --global user.email <span class="string">"aidansu@163.com"</span></div><div class="line">$ git config --global user.name <span class="string">"aidansu"</span></div></pre></td></tr></table></figure>
 <h3 id="安装-Vim"><a href="#安装-Vim" class="headerlink" title="安装 Vim"></a>安装 Vim</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install vim</div></pre></td></tr></table></figure>
 <h3 id="安装-chromium-浏览器和-flash-插件"><a href="#安装-chromium-浏览器和-flash-插件" class="headerlink" title="安装 chromium 浏览器和 flash 插件"></a>安装 chromium 浏览器和 flash 插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install chromium-browser;</div><div class="line">$ sudo apt install adobe-flashplugin;</div></pre></td></tr></table></figure>
 <h3 id="安装-QQ"><a href="#安装-QQ" class="headerlink" title="安装 QQ"></a>安装 QQ</h3><p>先下载 Wine QQ，官方地址：<a href="http://www.ubuntukylin.com/application/" target="_blank" rel="external">http://www.ubuntukylin.com/application/</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ sudo dpkg -i fonts-wqy-microhei_0.2.0-beta-2_all.deb </div><div class="line">$ sudo dpkg -i ttf-wqy-microhei_0.2.0-beta-2_all.deb </div><div class="line">$ sudo dpkg -i wine-qqintl_0.1.3-2_i386.deb</div><div class="line">$ sudo apt-get  <span class="_">-f</span> install</div><div class="line">$ sudo dpkg -i wine-qqintl_0.1.3-2_i386.deb</div></pre></td></tr></table></figure></p>
@@ -555,7 +555,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
