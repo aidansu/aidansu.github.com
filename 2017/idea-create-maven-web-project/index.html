@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://www.aidansu.com/images/2017/idea-new-project-next.png">
 <meta property="og:image" content="http://www.aidansu.com/images/2017/idea-new-project-maven.png">
 <meta property="og:image" content="http://www.aidansu.com/images/2017/idea-project-list.jpg">
-<meta property="og:updated_time" content="2017-04-24T11:40:33.082Z">
+<meta property="og:updated_time" content="2017-04-26T01:06:21.765Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Intellij IDEA 创建 Maven Web 项目">
 <meta name="twitter:description" content="Intellij IDEA 应该是最好用的 Java IDE，建议使用最新版本。而 Eclipse 几年前已经被我抛弃了，如果你对它有情怀，那就继续使用吧，反正只是一个工具。 下载安装 Intellij IDEA官方下载地址： http://www.jetbrains.com/idea/  解决 Maven 加载慢的问题如果不解决这个问题，每次创建项目的时候都要等上几分钟或者更长的时间，所以创建项">
@@ -382,7 +382,7 @@
 <li><p>为了防止每次访问 maven 主站下载 catalog，这里预下载，并拷贝到 .m2 目录下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ curl http://repo1.maven.org/maven2/archetype-catalog.xml &gt;&gt; archetype-catalog.xml</div><div class="line">$ mv archetype-catalog.xml .m2/</div></pre></td></tr></table></figure>
 </li>
-<li><p>更改 maven 的仓库，在IDEA的安装目录下找到 plugins/maven/lib/maven3/conf 目录，修改该目录下的 setting.xml 文件，在<mirrors>标签下添加仓库地址：</mirrors></p>
+<li><p>更改 maven 的仓库，在IDEA的安装目录下找到 plugins/maven/lib/maven3/conf 目录，修改该目录下的 setting.xml 文件，在<code>&lt;mirrors&gt;</code>标签下添加仓库地址：</p>
 <pre><code class="xml"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span>
  <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span>
  <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>
@@ -433,6 +433,27 @@
     <div>
       
         
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/pay/tenpay.png" alt="aidan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/pay/alipay.png" alt="aidan Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
 
       
     </div>

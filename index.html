@@ -698,7 +698,7 @@
 <li><p>为了防止每次访问 maven 主站下载 catalog，这里预下载，并拷贝到 .m2 目录下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ curl http://repo1.maven.org/maven2/archetype-catalog.xml &gt;&gt; archetype-catalog.xml</div><div class="line">$ mv archetype-catalog.xml .m2/</div></pre></td></tr></table></figure>
 </li>
-<li><p>更改 maven 的仓库，在IDEA的安装目录下找到 plugins/maven/lib/maven3/conf 目录，修改该目录下的 setting.xml 文件，在<mirrors>标签下添加仓库地址：</p>
+<li><p>更改 maven 的仓库，在IDEA的安装目录下找到 plugins/maven/lib/maven3/conf 目录，修改该目录下的 setting.xml 文件，在<code>&lt;mirrors&gt;</code>标签下添加仓库地址：</p>
 <pre><code class="xml"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span>
  <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span>
  <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>

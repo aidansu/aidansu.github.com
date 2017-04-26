@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://www.aidansu.com/images/2017/spring-overview.png">
 <meta property="og:image" content="http://www.aidansu.com/images/2017/spring-ioc.png">
 <meta property="og:image" content="http://www.aidansu.com/images/2017/spring-aop.png">
-<meta property="og:updated_time" content="2017-04-24T08:13:49.618Z">
+<meta property="og:updated_time" content="2017-04-26T01:08:47.789Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="了解 Spring 框架">
 <meta name="twitter:description" content="当我写这篇博客的时候 Spring Framework 刚刚发布了最新的稳定版本 4.3.8，自从 spring 4 开始，案例都采用 Spring Boot，很明显，Spring Boot 是一种趋势。Spring 框架可以帮我们处理很多底层的事情，我们开发人员就可以更专注于业务逻辑的实现，这是所有 Java 框架都尊崇的理念。Spring 是一个开源框架，也是一个基于依赖注入、控制反转的轻量级">
@@ -384,7 +384,7 @@
 <p>使用 maven 创建 Java 应用 hello-spring，在 pom.xml 文件中添加Spring Core依赖<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>Spring 中为了减少 xml 中的配置，可以声明一个配置类 AppConfig 来对 bean 进行配置。</p>
 <blockquote>
-<p>@Configuration 注解该类，等价与 xml 中配置 beans；@Configuration 注释这个普通 Java 对象(POJO)是一个 Spring 管理的对象池，只能用于类。<br>@Bean 标注方法等价于 xml 中配置 bean。@Bean 注释这个方法生产一个 MyBean 类型的对象。对象的名字默认“myBean”，只能用于配置类的方法。</p>
+<p>@Configuration 注解该类，等价于 xml 中配置 beans；@Configuration 注释这个普通 Java 对象(POJO)是一个 Spring 管理的对象池，只能用于类。<br>@Bean 标注方法等价于 xml 中配置 bean。@Bean 注释这个方法生产一个 MyBean 类型的对象。对象的名字默认“myBean”，只能用于配置类的方法。</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppConfig</span> </span>&#123;</div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="function"><span class="keyword">public</span> MyBean <span class="title">myBean</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MyBeanImpl();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>添加接口类型<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyBean</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sayBean</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -422,6 +422,27 @@
     <div>
       
         
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/pay/tenpay.png" alt="aidan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/pay/alipay.png" alt="aidan Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
 
       
     </div>
