@@ -260,6 +260,166 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.aidansu.com/2017/spring-mvc-mysql-jpa/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="aidan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AidanSu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/spring-mvc-mysql-jpa/" itemprop="url">
+                  Spring MVC 连接 MySQL 数据库 JPA
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-03T15:46:56+08:00">
+                2017-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术水波纹/" itemprop="url" rel="index">
+                    <span itemprop="name">技术水波纹</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/spring-mvc-mysql-jpa/" class="leancloud_visitors" data-flag-title="Spring MVC 连接 MySQL 数据库 JPA">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在上一篇博客《Spring MVC 连接 MySQL 数据库 Hibernate》中介绍了在 Spring MVC 中使用 Hibernate 来链接数据库，虽然比 JDBC 方便了很多，但复杂一些的查询还是很麻烦，有没有更方便的方法？当然有，在 Java EE 5 规范中已经提出的 Java 持久化接口 Java Persistence API 简称 JPA。它吸取了目前 Java 持久化技术的优点，旨在规范、简化 Java 对象的持久化工作。JPA 的宗旨是为 POJO 提供持久化标准规范，并不是依赖于某一个ORM框架，Hibernate3.2+、TopLink 10.1.3 以及 OpenJPA 都提供了 JPA 的实现。JPA 的总体思想和现有 Hibernate、TopLink、JDO等ORM框架大体一致。主要提供：ORM 映射元数据、操作实体对象 API、查询语言。</p>
+<p>在 Spring 2.0.1 中，正式提供对 JPA 的支持。Spring 使得 JPA 配置变得更加灵活，将 EntityManager 的创建与销毁、事务管理等代码抽取出来，并由其统一管理，开发者只需关心核心业务逻辑的实现代码，无需过多关注 EntityManager 的创建、事务处理等 JPA 相关的处理。Spring Data JPA 则更进一步，主要针对的就是 Spring 唯一没有简化到的业务逻辑代码，通过规范方法的名字，根据符合规范的名字来确定方法需要实现什么样的逻辑，开发者连仅剩的实现持久层业务逻辑的工作都省了，唯一要做的，就只是声明持久层的接口，其他都交给 Spring Data JPA 来帮你完成！</p>
+<p>JPA 只是一种规范，需要 Provider 来实现其功能的，Hibernate 就是 JPA Provider 中很强的一个，从功能上来说，JPA 就是 Hibernate 功能的一个子集。Hibernate 从3.2开始，就开始兼容 JPA。我们还是通过项目来学习简单的 JPA 操作，还是可以使用上次的 <a href="https://github.com/aidansu/spring-mvc-mysql">spring-mvc-mysql</a> 项目稍作修改，不过改成用 Hibernate 分支。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/spring-mvc-mysql-jpa/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://www.aidansu.com/2017/spring-mvc-mysql-hibernate/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -369,8 +529,8 @@
 
       
         
-          <p>在上一篇博客《Spring MVC 连接 MySQL 数据库 JDBC》中介绍了在 Spring MVC 中使用 JDBC 来链接数据库。JDBC 可以说是访问数据库的最原始、最直接的方法。这种方式的特点是运行效率高，而缺点是程序代码中嵌入大量的 SQL 语句，使得项目难以维护，虽然 MVC 的分层结构把数据持久层单独出来，把数据库访问操作封装起来，业务层只需调用 API 就可以了。但是，如果数据模型非常复杂，就需要非常专业和有经验的开发人员来开发，还需要有足够的时间。</p>
-<p>开发人员不是只需要关注业务实现吗？有没有中间件可以做这个事情呢？是的，目前已经有好多种现成的持久化中间件可以选择，有：Hiherante，TopLink，JDO等，其中 Hiberante 最受欢迎，它是基于 Java 的开发源代码的持久化中间件，对 JDBC 做了轻量级封装，不仅提供了 ORM 映射服务，还提供数据查询和缓存功能，开发人员可以方便地通过它提供的 API 来操纵数据库。大大减少了开发的工作量，降低了持久化层开发的门槛。</p>
+          <p>在上一篇博客《Spring MVC 连接 MySQL 数据库 JDBC》中介绍了在 Spring MVC 中使用 JDBC 来链接数据库。JDBC 可以说是访问数据库的最原始、最直接的方法。这种方式的特点是运行效率高，而缺点是程序代码中嵌入大量的 SQL 语句，使得项目难以维护，虽然 MVC 的分层结构把数据持久层单独出来，把数据库访问操作封装起来，业务层只需调用 API 就可以了。但是，如果数据模型非常复杂，代码量较大，特别是访问字段较多的表的时候，代码显得繁琐、累赘，容易出错，就需要非常专业和有经验的开发人员来开发，还需要有足够的时间。</p>
+<p>开发人员不是只需要专注于业务逻辑的实现吗？有没有中间件可以做这个事情呢？是的，目前已经有好多种现成的持久化中间件可以选择，有：Hiherante，TopLink，JDO等，其中 Hiberante 最受欢迎，它是基于 Java 的开发源代码的持久化中间件，对 JDBC 做了轻量级封装，不仅提供了 ORM 映射服务，还提供数据查询和缓存功能，开发人员可以方便地通过它提供的 API 来操纵数据库。大大减少了开发的工作量，降低了持久化层开发的门槛。</p>
 <p>我们还是通过项目来学习简单的 Hiberante 链接 MySQL 数据库。可以使用上次的 <a href="https://github.com/aidansu/spring-mvc-mysql">spring-mvc-mysql</a> 项目 JDBC 分支，修改 Dao 持久化层就可以了，这就是 MVC 分层结构的强大之处。<br>
           <!--noindex-->
           <div class="post-button text-center">
@@ -1758,7 +1918,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1780,7 +1940,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
