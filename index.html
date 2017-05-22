@@ -260,6 +260,166 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.aidansu.com/2017/building-a-restful-web-service-client/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="aidan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AidanSu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/building-a-restful-web-service-client/" itemprop="url">
+                  构建 RESTful Service Client
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-22T18:53:24+08:00">
+                2017-05-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术水波纹/" itemprop="url" rel="index">
+                    <span itemprop="name">技术水波纹</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/building-a-restful-web-service-client/" class="leancloud_visitors" data-flag-title="构建 RESTful Service Client">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在上一篇文章《构建 RESTful Service 》中我们已经介绍了构建 RESTful 服务端，现在我们来构建 RESTful 的客户端。每种框架都提供了各种访问服务端的实现。如 Apache Httpclient，JAX-RS2 client，Feign Client，Spring RestTemplate 。其实都没有什么特别，就是普通 HTTP 访问协议进一步的封装。本文主要介绍两种方式，分别是 Spring RestTemplate 和 Feign Client，如果喜欢使用 Spring 的同学可能会偏向使用 RestTemplate，它提供了多种便捷访问远程Http服务的方法，能够大大提高客户端的编写效率，所以很多客户端比如 Android 或者第三方服务商都是使用 RestTemplate 请求 RESTful 服务。Feign Client 可以把请求的服务写成接口的形式，请求回来的是一个本地接口的一个实现，极大地方便了使用和无缝调用。</p>
+<p>本次构建的客户端没有涉及异步访问 REST 服务，我将会另写一片文章专门介绍异步访问 REST 服务，因为这项技术相对来说难一些，内容比较多，也更为重要。</p>
+<h3 id="创建-REST-Client-服务端项目"><a href="#创建-REST-Client-服务端项目" class="headerlink" title="创建 REST-Client 服务端项目"></a>创建 REST-Client 服务端项目</h3><p>使用 maven 创建 maven-archetype-quickstart 为原型的项目 REST-Client 。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/building-a-restful-web-service-client/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://www.aidansu.com/2017/building-a-restfu-web-service/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -370,7 +530,7 @@
       
         
           <p>RESTful架构，就是目前最流行的一种互联网软件架构。它结构清晰、符合标准、易于理解、扩展方便，所以正得到越来越多网站的采用。REST这个词，是Roy Thomas Fielding 在他2000年的博士论文中提出的。RESTful service是一种架构模式，它是轻量级 web 服务，发挥 HTTP 协议的原生的GET，PUT，POST，DELETE。近几年，随着云服务技术的发展，其简单方便、易于理解和扩展，一举超越 SOAP 协议，成为事实的 Web 服务标准。Web 服务开发及其简单，就是定义接口，利用工具发布服务；客户端也是定义接口，利用工具生成通讯代理；HTTP 协议作为通讯工具。</p>
-<p>怎么构建 RESTful Service，有哪几种方式可以构建呢？本文通过 Spring 和 JAX-RS 这两种方式来实现 RESTful Service 服务端和客户端。本文代码基本来源与官方文档。项目还是基于 Spring Boot 来开发，因为 RESTful Service 其中一种是 Spring 的方式实现，还有 Spring Boot 真的太方便了。</p>
+<p>怎么构建 RESTful Service，有哪几种方式可以构建呢？本文通过 Spring 和 JAX-RS 这两种方式来实现 RESTful Service 服务端。本文代码基本来源与官方文档。项目还是基于 Spring Boot 来开发，因为 RESTful Service 其中一种是 Spring 的方式实现，还有 Spring Boot 真的太方便了。</p>
 <h3 id="创建-REST-Service-服务端项目"><a href="#创建-REST-Service-服务端项目" class="headerlink" title="创建 REST-Service 服务端项目"></a>创建 REST-Service 服务端项目</h3><p>使用 maven 创建 maven-archetype-quickstart 为原型的项目 REST-Service 。<br>
           <!--noindex-->
           <div class="post-button text-center">
@@ -1730,169 +1890,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.aidansu.com/2017/github-pages-build-blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="aidan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AidanSu">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/github-pages-build-blog/" itemprop="url">
-                  使用 GitHub Pages 搭建 Blog
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-14T11:43:43+08:00">
-                2017-04-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术水波纹/" itemprop="url" rel="index">
-                    <span itemprop="name">技术水波纹</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/github-pages-build-blog/" class="leancloud_visitors" data-flag-title="使用 GitHub Pages 搭建 Blog">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>网上流行这样的一段话</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。<br>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。<br>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我觉得很有道理，因为我每个阶段都经历过了，一开始我使用网易博客来写东西（那时候还没学编程），后来发现里面的模板不好看，有广告，又不能改，于是通过一个寒假的时间学习了wordpress，并搭建一个属于自己的个人博客，主题也是自己设计的。但后来主题看起来有点落后时代了，想改也有心无力，而且垃圾评论很多，基本都是广告，站点变迁很烦，那时候新浪云很便宜基本免费，但慢慢开始涨价了，我转到更强大的阿里云，但博客还在那边，意味着域名要重新备案，系统要重新搭建，数据库要变迁…于是我放弃了，重新做了这个网站。</p>
-<h3 id="GitHub-Pages"><a href="#GitHub-Pages" class="headerlink" title="GitHub Pages"></a>GitHub Pages</h3><p>准备工作：在GitHub上创建一个名为username.github.io的项目，其中username是您在GitHub上的用户名（或组织名称），如果用户名不匹配是无法正常使用的。这样就有了一个免费的域名和空间。<br>选择博客框架：GitHub Pages上只能放静态页面，所以只能选择静态博客框架，其中比较流行的有Jekyll，Hexo，Simple，Octopress，Pelican以及Lo·gecho等等，这些框架我都不太熟悉，但最后我选择了Hexo，选择的原因是：<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/github-pages-build-blog/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1942,7 +1939,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1964,7 +1961,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

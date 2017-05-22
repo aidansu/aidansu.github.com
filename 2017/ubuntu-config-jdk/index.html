@@ -96,7 +96,7 @@
 <meta property="og:description" content="下载 JDK在 Oracle 官网地址下载：　http://www.oracle.com/technetwork/java/javase/downloads/index.html 先勾选 Accept License Agreement，然后点击第二个红色框的连接下载">
 <meta property="og:image" content="http://www.aidansu.com/images/2017/jdk1.8.jpg">
 <meta property="og:image" content="http://www.aidansu.com/images/2017/java-version.png">
-<meta property="og:updated_time" content="2017-04-24T08:14:15.470Z">
+<meta property="og:updated_time" content="2017-05-22T06:21:39.061Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu 安装配置 JDK">
 <meta name="twitter:description" content="下载 JDK在 Oracle 官网地址下载：　http://www.oracle.com/technetwork/java/javase/downloads/index.html 先勾选 Accept License Agreement，然后点击第二个红色框的连接下载">
@@ -378,6 +378,7 @@
 <h3 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h3><p>把下载好的文件解压到 /opt/jdk/这个目录下</p>
 <h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>用 vim 打开 /etc/profile 文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo vim /etc/profile</div></pre></td></tr></table></figure></p>
 <p>在文件的最后面增加：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> JAVA_HOME=/opt/jdk/jdk1.8.0_121</div><div class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre</div><div class="line"></div><div class="line"><span class="built_in">export</span> CLASSPATH=<span class="variable">$CLASSPATH</span>:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre/lib</div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre/bin</div></pre></td></tr></table></figure></p>
+<p>保存并退出，输入以下命令使环境变量生效：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">source</span> /etc/profile</div></pre></td></tr></table></figure></p>
 <h3 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h3><p>在终端输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ java -version</div></pre></td></tr></table></figure></p>
 <p>就会出现以下信息（如果不行可以注销或重启电脑再试试）<br><img src="/images/2017/java-version.png" style="margin:0;border:0"></p>
 <p>完！</p>
@@ -545,7 +546,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -567,7 +568,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
