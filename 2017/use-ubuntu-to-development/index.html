@@ -94,7 +94,8 @@
 <meta property="og:url" content="http://www.aidansu.com/2017/use-ubuntu-to-development/index.html">
 <meta property="og:site_name" content="AidanSu">
 <meta property="og:description" content="本周，Ubuntu 17.04 发布了，但我并没有打算更新系统，因为我不想再当白老鼠了，之前已经吃过亏，更新了 Ubuntu 16.10 后发现很多 BUG，各种大大小小的问题，总之搞到你很烦，所以我还是坚持使用 Ubuntu 16.0４，估计18.04稳定版出来后我会用，因为Ubuntu将在明年的Ubuntu 18.04 LTS上切换到GNOME。 为什么不用 Windows ? 因为我们是做程">
-<meta property="og:updated_time" content="2017-05-02T01:51:35.242Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-06-28T09:54:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 Ubuntu 16.04 做开发">
 <meta name="twitter:description" content="本周，Ubuntu 17.04 发布了，但我并没有打算更新系统，因为我不想再当白老鼠了，之前已经吃过亏，更新了 Ubuntu 16.10 后发现很多 BUG，各种大大小小的问题，总之搞到你很烦，所以我还是坚持使用 Ubuntu 16.0４，估计18.04稳定版出来后我会用，因为Ubuntu将在明年的Ubuntu 18.04 LTS上切换到GNOME。 为什么不用 Windows ? 因为我们是做程">
@@ -401,11 +402,11 @@
 <a id="more"></a>
 <h3 id="更新系统"><a href="#更新系统" class="headerlink" title="更新系统"></a>更新系统</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get update</div></pre></td></tr></table></figure>
 <h3 id="任务栏置底"><a href="#任务栏置底" class="headerlink" title="任务栏置底"></a>任务栏置底</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gsettings <span class="built_in">set</span> com.canonical.Unity.Launcher launcher-position Bottom</div></pre></td></tr></table></figure>
-<h3 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install git<span class="comment">### 安装 G</span></div><div class="line">$ git config --global user.email <span class="string">"aidansu@163.com"</span></div><div class="line">$ git config --global user.name <span class="string">"aidansu"</span></div></pre></td></tr></table></figure>
+<h3 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install git</div><div class="line">$ git config --global user.email <span class="string">"aidansu@163.com"</span></div><div class="line">$ git config --global user.name <span class="string">"aidansu"</span></div></pre></td></tr></table></figure>
 <h3 id="安装-Vim"><a href="#安装-Vim" class="headerlink" title="安装 Vim"></a>安装 Vim</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install vim</div></pre></td></tr></table></figure>
 <h3 id="安装-chromium-浏览器和-flash-插件"><a href="#安装-chromium-浏览器和-flash-插件" class="headerlink" title="安装 chromium 浏览器和 flash 插件"></a>安装 chromium 浏览器和 flash 插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install chromium-browser;</div><div class="line">$ sudo apt install adobe-flashplugin;</div></pre></td></tr></table></figure>
-<h3 id="安装-QQ"><a href="#安装-QQ" class="headerlink" title="安装 QQ"></a>安装 QQ</h3><p>先下载 Wine QQ，官方地址：<a href="http://www.ubuntukylin.com/application/" target="_blank" rel="external">http://www.ubuntukylin.com/application/</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ sudo dpkg -i fonts-wqy-microhei_0.2.0-beta-2_all.deb </div><div class="line">$ sudo dpkg -i ttf-wqy-microhei_0.2.0-beta-2_all.deb </div><div class="line">$ sudo dpkg -i wine-qqintl_0.1.3-2_i386.deb</div><div class="line">$ sudo apt-get  <span class="_">-f</span> install</div><div class="line">$ sudo dpkg -i wine-qqintl_0.1.3-2_i386.deb</div></pre></td></tr></table></figure></p>
-<h3 id="安装搜狗输入法"><a href="#安装搜狗输入法" class="headerlink" title="安装搜狗输入法"></a>安装搜狗输入法</h3><p>先下载搜狗输入法，官方地址：<a href="http://pinyin.sogou.com/linux/?r=pinyin" target="_blank" rel="external">http://pinyin.sogou.com/linux/?r=pinyin</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo dpkg -i sogoupinyin_2.1.0.0082_amd64.deb</div><div class="line">$ sudo apt-get  <span class="_">-f</span> install</div></pre></td></tr></table></figure></p>
+<h3 id="安装-QQ"><a href="#安装-QQ" class="headerlink" title="安装 QQ"></a>安装 QQ</h3><p>先下载 Wine QQ，官方地址：<a href="http://www.ubuntukylin.com/application/" target="_blank" rel="external">http://www.ubuntukylin.com/application/</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ sudo dpkg -i fonts-wqy-microhei_0.2.0-beta-2_all.deb </div><div class="line">$ sudo dpkg -i ttf-wqy-microhei_0.2.0-beta-2_all.deb </div><div class="line">$ sudo dpkg -i wine-qqintl_0.1.3-2_i386.deb</div><div class="line">$ sudo apt-get  -f install</div><div class="line">$ sudo dpkg -i wine-qqintl_0.1.3-2_i386.deb</div></pre></td></tr></table></figure></p>
+<h3 id="安装搜狗输入法"><a href="#安装搜狗输入法" class="headerlink" title="安装搜狗输入法"></a>安装搜狗输入法</h3><p>先下载搜狗输入法，官方地址：<a href="http://pinyin.sogou.com/linux/?r=pinyin" target="_blank" rel="external">http://pinyin.sogou.com/linux/?r=pinyin</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo dpkg -i sogoupinyin_2.1.0.0082_amd64.deb</div><div class="line">$ sudo apt-get  -f install</div></pre></td></tr></table></figure></p>
 <h3 id="安装-MySQL"><a href="#安装-MySQL" class="headerlink" title="安装 MySQL"></a>安装 MySQL</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install mysql-server</div><div class="line">$ sudo apt-get install mysql-client</div><div class="line">$ sudo apt-get install libmysqlclient-dev</div></pre></td></tr></table></figure>
 <h3 id="安装-Redis"><a href="#安装-Redis" class="headerlink" title="安装 Redis"></a>安装 Redis</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install redis-server</div></pre></td></tr></table></figure>
 <h3 id="安装-Mongodb"><a href="#安装-Mongodb" class="headerlink" title="安装 Mongodb"></a>安装 Mongodb</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6</div><div class="line">$ <span class="built_in">echo</span> <span class="string">"deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse"</span> | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list</div><div class="line">$ sudo apt-get update</div><div class="line">$ sudo apt-get install -y mongodb-org</div><div class="line">$ sudo service mongod start</div></pre></td></tr></table></figure>
@@ -493,8 +494,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/ubuntu-config-jdk/" rel="next" title="Ubuntu 安装配置 JDK">
-                <i class="fa fa-chevron-left"></i> Ubuntu 安装配置 JDK
+              <a href="/2017/github-pages-build-blog/" rel="next" title="使用 GitHub Pages 搭建 Blog">
+                <i class="fa fa-chevron-left"></i> 使用 GitHub Pages 搭建 Blog
               </a>
             
           </div>
@@ -503,8 +504,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/github-pages-build-blog/" rel="prev" title="使用 GitHub Pages 搭建 Blog">
-                使用 GitHub Pages 搭建 Blog <i class="fa fa-chevron-right"></i>
+              <a href="/2017/ubuntu-config-jdk/" rel="prev" title="Ubuntu 安装配置 JDK">
+                Ubuntu 安装配置 JDK <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -577,7 +578,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -599,7 +600,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

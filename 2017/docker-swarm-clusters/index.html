@@ -1,0 +1,1011 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Docker,Swarm,Clusters,Worker,Stacks,Portainer,Visualizer," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Swarm 在 Docker 1.12 版本之前属于一个独立的项目，在 Docker 1.12 版本发布之后，该项目合并到了 Docker 中，成为 Docker 的一个子命令。目前，Swarm 是 Docker 社区提供的唯一一个原生支持 Docker 集群管理的工具。它可以把多个 Docker 主机组成的系统转换为单一的虚拟 Docker 主机，使得容器可以组成跨主机的子网网络。 了解 Swa">
+<meta name="keywords" content="Docker,Swarm,Clusters,Worker,Stacks,Portainer,Visualizer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker Swarm 集群">
+<meta property="og:url" content="http://www.aidansu.com/2017/docker-swarm-clusters/index.html">
+<meta property="og:site_name" content="AidanSu">
+<meta property="og:description" content="Swarm 在 Docker 1.12 版本之前属于一个独立的项目，在 Docker 1.12 版本发布之后，该项目合并到了 Docker 中，成为 Docker 的一个子命令。目前，Swarm 是 Docker 社区提供的唯一一个原生支持 Docker 集群管理的工具。它可以把多个 Docker 主机组成的系统转换为单一的虚拟 Docker 主机，使得容器可以组成跨主机的子网网络。 了解 Swa">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.aidansu.com/images/2017/docker-swarm-diagram.jpg">
+<meta property="og:image" content="http://www.aidansu.com/images/2017/docker-swarm-init.jpg">
+<meta property="og:image" content="http://www.aidansu.com/images/2017/docker-swarm-join-token-worker.jpg">
+<meta property="og:image" content="http://www.aidansu.com/images/2017/docker-node-ls.jpg">
+<meta property="og:image" content="http://www.aidansu.com/images/2017/docker-portainer-swarm.jpg">
+<meta property="og:image" content="http://www.aidansu.com/images/2017/docker-swarm-stack-ps.jpg">
+<meta property="og:image" content="http://www.aidansu.com/images/2017/docker-ingress-routing-mesh.png">
+<meta property="og:image" content="http://www.aidansu.com/images/2017/docker-swarm-stacks-redis.jpg">
+<meta property="og:image" content="http://www.aidansu.com/images/2017/docker-swarm-stacks-visualizer.jpg">
+<meta property="og:updated_time" content="2017-06-26T05:47:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker Swarm 集群">
+<meta name="twitter:description" content="Swarm 在 Docker 1.12 版本之前属于一个独立的项目，在 Docker 1.12 版本发布之后，该项目合并到了 Docker 中，成为 Docker 的一个子命令。目前，Swarm 是 Docker 社区提供的唯一一个原生支持 Docker 集群管理的工具。它可以把多个 Docker 主机组成的系统转换为单一的虚拟 Docker 主机，使得容器可以组成跨主机的子网网络。 了解 Swa">
+<meta name="twitter:image" content="http://www.aidansu.com/images/2017/docker-swarm-diagram.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.aidansu.com/2017/docker-swarm-clusters/"/>
+
+
+
+
+
+  <title> Docker Swarm 集群 | AidanSu </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AidanSu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.aidansu.com/2017/docker-swarm-clusters/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="aidan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AidanSu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Docker Swarm 集群
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-26T10:13:58+08:00">
+                2017-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术水波纹/" itemprop="url" rel="index">
+                    <span itemprop="name">技术水波纹</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/docker-swarm-clusters/" class="leancloud_visitors" data-flag-title="Docker Swarm 集群">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Swarm 在 Docker 1.12 版本之前属于一个独立的项目，在 Docker 1.12 版本发布之后，该项目合并到了 Docker 中，成为 Docker 的一个子命令。目前，Swarm 是 Docker 社区提供的唯一一个原生支持 Docker 集群管理的工具。它可以把多个 Docker 主机组成的系统转换为单一的虚拟 Docker 主机，使得容器可以组成跨主机的子网网络。</p>
+<h3 id="了解-Swarm-集群"><a href="#了解-Swarm-集群" class="headerlink" title="了解 Swarm 集群"></a>了解 Swarm 集群</h3><p>群集是一组运行 Docker 的计算机组成，其中部分机器是集群管理机（Swarm Manager） ，其他的是工作机（Worker）。在集群中，在 Manager 机器上使用 Docker 命令，会在群集上执行。群集中的机器可以是物理机或虚拟机。加入群集后，它们被统称节点（Node）。</p>
+<p>Swarm 管理机可以使用几种策略来运行容器，例如“最空闲节点”- 容器会填充最少使用的机器。或“全局策略”，它确保每个机器能只能获得指定容器的一个实例。您可以将这些策略写在 docker-compose.yml 这样的服务组合定义文件中，Swarm管理机会按策略部署。</p>
+<p>Swarm Manager 是群集中唯一可以执行 docker 命令的机器，或授权其他机器作为工人机（worker）加入群集。worker 只是提供能力，没有权力指挥其他机器工作。</p>
+<p>如果您已经熟悉单主机中使用 Docker。现在，可切换到 Docker 集群模式。启用群组模式（swarm mode）使当前的机器成为群组管理机。这时，这台 Docker 将运行管理这个群集的指令，而不再是在当前的机器上运行。<br><a id="more"></a><br>解一些基本概念，有关集群的 Docker 命令如下：</p>
+<blockquote>
+<p>docker swarm：集群管理，子命令有 init, join,join-token, leave, update<br>docker node：节点管理，子命令有 demote, inspect,ls, promote, rm, ps, update<br>docker service：服务管理，子命令有 create, inspect, ps, ls ,rm , scale, update<br>docker stack/deploy：用于多应用部署</p>
+</blockquote>
+<h3 id="Swarm-集群工作原理"><a href="#Swarm-集群工作原理" class="headerlink" title="Swarm 集群工作原理"></a>Swarm 集群工作原理</h3><p>一个 docker swarm 集群的组成结构，如图：<br><img src="/images/2017/docker-swarm-diagram.jpg" style="margin:0;border:0"><br>它分为两类节点，manager 和 worker。</p>
+<p>manager 节点处理集群管理任务：</p>
+<blockquote>
+<p>维护集群状态（配置）<br>调度服务<br>提供集群模式 HTTP API 端点服务</p>
+</blockquote>
+<p>管理节点共同维护一个强一致状态数据（你可以认为每个管理节点拥有一个同步的集群状态/配置数据库），任何一个经理退出都不会导致集群失效。</p>
+<p>高可靠模式 是指容器集群拥有 3 个以上 manager。一个 manager 是基数（如 3、5、7），一半以下 manager 失效都不会导致集群状态失效。Docker为群组建议最多七个管理器节点。</p>
+<blockquote>
+<p>多个 7 个 manager 不会提高可靠性，反而会提高开销</p>
+</blockquote>
+<p>强一致状态数据库常见实现包括： etcd 、consul 、zookeeper 等等。</p>
+<p>worker 节点的唯一目的就是运行容器（服务）。默认情况下，manager 同时承担 worker 的职能，所以一个 manager 可以单节点运行，所有容器运行在一个节点中。</p>
+<p>对于大型的容器集群，需要设置管理器节点的可用性设置为 Drain 以阻止服务的任务运行。</p>
+<p>docker node update 是一个很有用的命令，可以改变节点的 role，label 等</p>
+<h3 id="配置-Swarm-集群"><a href="#配置-Swarm-集群" class="headerlink" title="配置 Swarm 集群"></a>配置 Swarm 集群</h3><p>准备3个虚拟机，分别是 manager，worker1和worker2，如果还没有配置的同学可以查看前两篇《Docker 集群网络规划与 VM 网络配置》进行配置。</p>
+<h4 id="清理-manager-虚拟机"><a href="#清理-manager-虚拟机" class="headerlink" title="清理 manager 虚拟机"></a>清理 manager 虚拟机</h4><p>清理所有的容器 docker rm -f $(docker ps -q)<br>退出可能的集群状态 docker swarm leave –force</p>
+<p>在 manager 上启动 docker swarm mode:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker swarm init  --advertise-addr 192.168.56.100</div></pre></td></tr></table></figure></p>
+<p><img src="/images/2017/docker-swarm-init.jpg" style="margin:0;border:0"></p>
+<p>这时，manager 将在端口 192.168.56.100:2377 侦听集群节点请求。</p>
+<p>加入集群的指令：</p>
+<blockquote>
+<p>worker： docker swarm join-token worker<br>manager： docker swarm join-token manager</p>
+</blockquote>
+<p>获取 worker1 和 worker2 加入的指令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker swarm join-token worker</div></pre></td></tr></table></figure></p>
+<p><img src="/images/2017/docker-swarm-join-token-worker.jpg" style="margin:0;border:0"></p>
+<h4 id="将-worker1-和-worker2-加入集群"><a href="#将-worker1-和-worker2-加入集群" class="headerlink" title="将 worker1 和 worker2 加入集群"></a>将 worker1 和 worker2 加入集群</h4><p>分别用 ssh 连接两个 worker，输入刚刚在 manager 获取到的指令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker swarm join \</div><div class="line">  --token &lt;token&gt; \</div><div class="line">  &lt;ip&gt;:&lt;port&gt;</div></pre></td></tr></table></figure></p>
+<p>这时，我们的第一个集群就建完了。 如果因为防火墙，无法加入集群，要先关闭防火墙。</p>
+<h4 id="manager-上检查结果"><a href="#manager-上检查结果" class="headerlink" title="manager 上检查结果"></a>manager 上检查结果</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker node ls</div></pre></td></tr></table></figure>
+<p><img src="/images/2017/docker-node-ls.jpg" style="margin:0;border:0"></p>
+<h4 id="portainer-上检查结果"><a href="#portainer-上检查结果" class="headerlink" title="portainer 上检查结果"></a>portainer 上检查结果</h4><p>在 manager 上启动 Portainer ，打开浏览器<br><img src="/images/2017/docker-portainer-swarm.jpg" style="margin:0;border:0"></p>
+<h3 id="在集群中部署服务和使用服务"><a href="#在集群中部署服务和使用服务" class="headerlink" title="在集群中部署服务和使用服务"></a>在集群中部署服务和使用服务</h3><p>1、部署服务，在 manager 虚拟机中，cd 到 service_test目录，再输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker stack deploy -c docker-compose.yml myservice</div></pre></td></tr></table></figure></p>
+<p><img src="/images/2017/docker-swarm-stack-ps.jpg" style="margin:0;border:0"></p>
+<p>成功将服务（容器）平均分配到三台机器上了。</p>
+<h3 id="访问集群"><a href="#访问集群" class="headerlink" title="访问集群"></a>访问集群</h3><p>使用集群中任意一台机器的 IP， 我们都能看到循环访问不同容器服务的结果，体现了负载均衡。</p>
+<p>每个IP地址都工作的原因是群集中的节点参与入口路由网格（route mesh）。这样可以确保在群集中某个端口部署的服务始终将该端口保留给其自身，无论实际运行的是哪个节点。以下是在三节点群集my-web端口8080上发布的服务的路由网格的示例：</p>
+<p><img src="/images/2017/docker-ingress-routing-mesh.png" style="margin:0;border:0"></p>
+<p>结束服务：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker stack rm myservice</div></pre></td></tr></table></figure></p>
+<h3 id="部署一个简单应用"><a href="#部署一个简单应用" class="headerlink" title="部署一个简单应用"></a>部署一个简单应用</h3><p>1、新建一个 compose 文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> &amp;&amp; mkdir myapp &amp;&amp; <span class="built_in">cd</span> myapp</div><div class="line">cp ../service_test/docker-compose.yml docker-compose.yml</div><div class="line">mkdir data</div></pre></td></tr></table></figure></p>
+<p>注： data 目录用来存放 redis 的数据</p>
+<p>2、修改服务栈配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim docker-compose.yml</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">version: <span class="string">"3"</span></div><div class="line">services:</div><div class="line">  web:</div><div class="line">    <span class="comment"># replace username/repo:tag with your name and image details</span></div><div class="line">    <span class="comment"># image: registry.cn-shenzhen.aliyuncs.com/aidansu/hello-python:1.0</span></div><div class="line">    image: &lt;username/repository:tag&gt;</div><div class="line">    deploy:</div><div class="line">      replicas: 5</div><div class="line">      resources:</div><div class="line">        limits:</div><div class="line">          cpus: <span class="string">"0.1"</span></div><div class="line">          memory: 50M</div><div class="line">      restart_policy:</div><div class="line">        condition: on-failure</div><div class="line">    ports:</div><div class="line">      - <span class="string">"80:80"</span></div><div class="line">    networks:</div><div class="line">      - webnet</div><div class="line">  visualizer:</div><div class="line">    image: dockersamples/visualizer:stable</div><div class="line">    ports:</div><div class="line">      - <span class="string">"8080:8080"</span></div><div class="line">    volumes:</div><div class="line">      - <span class="string">"/var/run/docker.sock:/var/run/docker.sock"</span></div><div class="line">    deploy:</div><div class="line">      placement:</div><div class="line">        constraints: [node.role == manager]</div><div class="line">    networks:</div><div class="line">      - webnet</div><div class="line">  redis:</div><div class="line">    image: redis</div><div class="line">    ports:</div><div class="line">      - <span class="string">"6379:6379"</span></div><div class="line">    volumes:</div><div class="line">      - ./data:/data</div><div class="line">    deploy:</div><div class="line">      placement:</div><div class="line">        constraints: [node.role == manager]</div><div class="line">    networks:</div><div class="line">      - webnet</div><div class="line">networks:</div><div class="line">  webnet:</div></pre></td></tr></table></figure>
+<p>上述配置中，添加了 visualizer 集群容器可视化工具和 redis 这个服务，visualizer 和 redis 服务被指定到 [node.role == manager] 机器，因为它与这台机器要共享数据卷 ./data 映射到容器 /data 数据卷</p>
+<p>3、启动这个栈：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker stack deploy -c docker-compose.yml myservice</div></pre></td></tr></table></figure></p>
+<p><img src="/images/2017/docker-swarm-stacks-redis.jpg" style="margin:0;"></p>
+<p>网站会计数了，它们共享一个 Redis 数据服务。</p>
+<p><img src="/images/2017/docker-swarm-stacks-visualizer.jpg" style="margin:0;"></p>
+<p>visualizer 集群容器可视化工具的工作原理同 Portainer 相同, docker 的示例源代码 <a href="https://github.com/dockersamples/docker-swarm-visualizer" target="_blank" rel="external">docker-swarm-visualizer</a></p>
+<p>想了解更多关于 Docker 信息的可以查看最新的官方文档：<a href="https://docs.docker.com/" target="_blank" rel="external">https://docs.docker.com/</a></p>
+<p>完！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/pay/tenpay.png" alt="aidan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/pay/alipay.png" alt="aidan Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      aidan
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.aidansu.com/2017/docker-swarm-clusters/" title="Docker Swarm 集群">http://www.aidansu.com/2017/docker-swarm-clusters/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
+          
+            <a href="/tags/Swarm/" rel="tag"># Swarm</a>
+          
+            <a href="/tags/Clusters/" rel="tag"># Clusters</a>
+          
+            <a href="/tags/Worker/" rel="tag"># Worker</a>
+          
+            <a href="/tags/Stacks/" rel="tag"># Stacks</a>
+          
+            <a href="/tags/Portainer/" rel="tag"># Portainer</a>
+          
+            <a href="/tags/Visualizer/" rel="tag"># Visualizer</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/docker-containers-services/" rel="next" title="Docker 镜像、容器与服务">
+                <i class="fa fa-chevron-left"></i> Docker 镜像、容器与服务
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/rancher-management-platform/" rel="prev" title="Rancher 管理平台">
+                Rancher 管理平台 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="aidan" />
+          <p class="site-author-name" itemprop="name">aidan</p>
+           
+              <p class="site-description motion-element" itemprop="description">沉迷学习无法自拔</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/aidansu" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/shx0999" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/77881755/" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/aidansu" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#了解-Swarm-集群"><span class="nav-number">1.</span> <span class="nav-text">了解 Swarm 集群</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Swarm-集群工作原理"><span class="nav-number">2.</span> <span class="nav-text">Swarm 集群工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-Swarm-集群"><span class="nav-number">3.</span> <span class="nav-text">配置 Swarm 集群</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#清理-manager-虚拟机"><span class="nav-number">3.1.</span> <span class="nav-text">清理 manager 虚拟机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将-worker1-和-worker2-加入集群"><span class="nav-number">3.2.</span> <span class="nav-text">将 worker1 和 worker2 加入集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#manager-上检查结果"><span class="nav-number">3.3.</span> <span class="nav-text">manager 上检查结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#portainer-上检查结果"><span class="nav-number">3.4.</span> <span class="nav-text">portainer 上检查结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在集群中部署服务和使用服务"><span class="nav-number">4.</span> <span class="nav-text">在集群中部署服务和使用服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问集群"><span class="nav-number">5.</span> <span class="nav-text">访问集群</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署一个简单应用"><span class="nav-number">6.</span> <span class="nav-text">部署一个简单应用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">aidan</span>
+</div>
+
+<div>由<a class="theme-link" target="view_window" href="https://hexo.io">Hexo</a>强力驱动  |  <a class="theme-link" target="view_window" href="http://www.miitbeian.gov.cn">粤ICP备12003586号</a></div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("0ogotNGayeLET66f2g9FHgTF-gzGzoHsz", "KKqUX6o78nUnwRCvsXCaNlns");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

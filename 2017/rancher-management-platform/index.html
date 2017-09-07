@@ -1,0 +1,977 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Docker,Swarm,Clusters,Worker,Rancher," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Rancher是一个开源的全栈化企业级容器管理平台，也是全球唯一提供 Kubernetes、Mesos 和 Swarm 三种调度工具的企业级分发版和商业技术支持的容器管理平台。全图形化 UI 界面，简单易用。文档支持比较完善，特别是中文资源比较丰富。  中文网站：http://www.cnrancher.com/最新文档（英文，201707）： http://docs.rancher.com/ra">
+<meta name="keywords" content="Docker,Swarm,Clusters,Worker,Rancher">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rancher 管理平台">
+<meta property="og:url" content="http://www.aidansu.com/2017/rancher-management-platform/index.html">
+<meta property="og:site_name" content="AidanSu">
+<meta property="og:description" content="Rancher是一个开源的全栈化企业级容器管理平台，也是全球唯一提供 Kubernetes、Mesos 和 Swarm 三种调度工具的企业级分发版和商业技术支持的容器管理平台。全图形化 UI 界面，简单易用。文档支持比较完善，特别是中文资源比较丰富。  中文网站：http://www.cnrancher.com/最新文档（英文，201707）： http://docs.rancher.com/ra">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.aidansu.com/images/2017/rancher-containers-container.jpg">
+<meta property="og:updated_time" content="2017-06-27T00:32:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rancher 管理平台">
+<meta name="twitter:description" content="Rancher是一个开源的全栈化企业级容器管理平台，也是全球唯一提供 Kubernetes、Mesos 和 Swarm 三种调度工具的企业级分发版和商业技术支持的容器管理平台。全图形化 UI 界面，简单易用。文档支持比较完善，特别是中文资源比较丰富。  中文网站：http://www.cnrancher.com/最新文档（英文，201707）： http://docs.rancher.com/ra">
+<meta name="twitter:image" content="http://www.aidansu.com/images/2017/rancher-containers-container.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.aidansu.com/2017/rancher-management-platform/"/>
+
+
+
+
+
+  <title> Rancher 管理平台 | AidanSu </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AidanSu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.aidansu.com/2017/rancher-management-platform/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="aidan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AidanSu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Rancher 管理平台
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-27T10:40:34+08:00">
+                2017-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术水波纹/" itemprop="url" rel="index">
+                    <span itemprop="name">技术水波纹</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/rancher-management-platform/" class="leancloud_visitors" data-flag-title="Rancher 管理平台">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Rancher是一个开源的全栈化企业级容器管理平台，也是全球唯一提供 Kubernetes、Mesos 和 Swarm 三种调度工具的企业级分发版和商业技术支持的容器管理平台。全图形化 UI 界面，简单易用。文档支持比较完善，特别是中文资源比较丰富。</p>
+<blockquote>
+<p>中文网站：<a href="http://www.cnrancher.com/" target="_blank" rel="external">http://www.cnrancher.com/</a><br>最新文档（英文，201707）： <a href="http://docs.rancher.com/rancher/v1.6/en/" target="_blank" rel="external">http://docs.rancher.com/rancher/v1.6/en/</a></p>
+</blockquote>
+<h3 id="准备一台管理机"><a href="#准备一台管理机" class="headerlink" title="准备一台管理机"></a>准备一台管理机</h3><p>管理机是一台安装 docker 的 64 位 Linux 主机，内核版本 3.10+（用 uname -a 检查），内存至少有 1 GB 。 假设该机器（虚拟机）配置是： hostname = manager, ip=192.168.56.100，运行 Ubuntu service 16.04。</p>
+<h3 id="Rancher-版本"><a href="#Rancher-版本" class="headerlink" title="Rancher 版本"></a>Rancher 版本</h3><p>Rancher 有两个不同的版本，不同版本将有不同的开发文档。</p>
+<ul>
+<li>rancher/server:latest 最新的开发版本，适用于开发新功能，不适用于部署在生产环境中。</li>
+<li>rancher/server:stable 最新的稳定版本，适用于部署在生产环境中。<a id="more"></a>
+</li>
+</ul>
+<h3 id="启动-Rancher-服务"><a href="#启动-Rancher-服务" class="headerlink" title="启动 Rancher 服务"></a>启动 Rancher 服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo docker run -d --restart=unless-stopped -p 8080:8080 rancher/server:stable</div><div class="line"><span class="comment"># Tail the logs to show Rancher</span></div><div class="line">sudo docker logs -f &lt;CONTAINER_ID&gt;</div></pre></td></tr></table></figure>
+<p>UI 暴露在该机器 8080 端口，用浏览器访问 <a href="http://192.168.56.100:8080" target="_blank" rel="external">http://192.168.56.100:8080</a> ，看到 Rancher 管理界面。 第一次进入，会看到系统提示添加一台主机（Add Host）</p>
+<h3 id="添加主机"><a href="#添加主机" class="headerlink" title="添加主机"></a>添加主机</h3><p>为简化操作，我们将添加运行 Rancher 服务器容器的主机。而在实际的生产环境中，我们建议使用专用的主机来运行 Rancher 服务器。</p>
+<p>通过点击图形界面的 Infrastructure 标签来添加主机，然后您将会看到 Hosts 页面。Rancher 会提示您选择一个 IP 地址。这个 IP 地址必须可以被所有即将添加的主机访问到。把 Rancher 服务器的端口通过防火墙的 NAT 或者负载均衡器暴露出来，或者暴露到 Internet上在有些情况下是很有用的。如果你的主机有一个私有或者本地 IP 地址，例如： 192.168.<em>.</em>；Rancher 将打印一个提示信息，告诉您是否确认这个 IP 地址可以被正常访问到。</p>
+<p>在管理机选择（Add Host）。首先选择主机驱动，这里选择 “Custom”，如果是公有云则要选择驱动，如阿里云则需要先选驱动，其他都不需要改变。将下列脚本拷贝到每一台主机上运行以注册 Rancher:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo docker run --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.2 http://192.168.56.100:8080/v1/scripts/D69929FC39FC347D0B69:1483142400000:dnVO5fqp3P62agcedsuwnNhaAo</div></pre></td></tr></table></figure></p>
+<p>其中：</p>
+<blockquote>
+<p>–privileged 容器中的 root 拥有 host root 的特权。<br>-v /var/run/docker.sock:/var/run/docker.sock 获取了该主机 docker REST Api 访问入口。<br><a href="http://192.168.56.100:8080/v1" target="_blank" rel="external">http://192.168.56.100:8080/v1</a> rancher REST Api 入口。后面应该是创建主机的公有密钥等。</p>
+</blockquote>
+<h3 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h3><h4 id="使用-UI-创建容器"><a href="#使用-UI-创建容器" class="headerlink" title="使用 UI 创建容器"></a>使用 UI 创建容器</h4><p>菜单 STACKS -&gt; Users -&gt; Add Stack -&gt; Add service ：如果你熟悉 docker-compose.yml 和 docker service 命令 ，设置不是问题。需要注意的是 docker-compose.yml 支持 version 2 ! 不是 3</p>
+<p>使用默认的 ubuntu:14.04.3 镜像可以创建一个 first-Container 容器。这个容器只能启动在这个主机中，网络使用 10.42.<em>.</em></p>
+<h4 id="使用-docker-创建容器"><a href="#使用-docker-创建容器" class="headerlink" title="使用 docker 创建容器"></a>使用 docker 创建容器</h4><p>在 host 上执行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -d -it --name=second-container ubuntu:14.04.2</div></pre></td></tr></table></figure></p>
+<p>尽管我们在 manager 机器上， 菜单INFRASTRUCTURE -&gt; Hosts 可以看到并管理 second-container 容器，但它与 first-container 不在一个网络中。如果需要在 rancher managed 网络上，需要添加一个特殊标签：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -d -it --label io.rancher.container.network=<span class="literal">true</span> ubuntu:14.04.2</div></pre></td></tr></table></figure></p>
+<p>注意： 这个容器在 INFRASTRUCTURE -&gt; Hosts 中显示 standalone，它不属于任何服务或栈。</p>
+<p><img src="/images/2017/rancher-containers-container.jpg" style="margin:0;border:0"></p>
+<h4 id="容器-UI-管理"><a href="#容器-UI-管理" class="headerlink" title="容器 UI 管理"></a>容器 UI 管理</h4><p>在容器上下文菜单中，操作有：</p>
+<blockquote>
+<p>start， stop， delete | Execute Shell，View Logs，View in API | Edit </p>
+</blockquote>
+<p>其中：</p>
+<blockquote>
+<p>Execute Shell 类似 docker exec xxx /bin/bash<br>View in API 类似 docker inspect xxx</p>
+</blockquote>
+<p>未完待续……</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/pay/tenpay.png" alt="aidan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/pay/alipay.png" alt="aidan Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      aidan
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.aidansu.com/2017/rancher-management-platform/" title="Rancher 管理平台">http://www.aidansu.com/2017/rancher-management-platform/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
+          
+            <a href="/tags/Swarm/" rel="tag"># Swarm</a>
+          
+            <a href="/tags/Clusters/" rel="tag"># Clusters</a>
+          
+            <a href="/tags/Worker/" rel="tag"># Worker</a>
+          
+            <a href="/tags/Rancher/" rel="tag"># Rancher</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/docker-swarm-clusters/" rel="next" title="Docker Swarm 集群">
+                <i class="fa fa-chevron-left"></i> Docker Swarm 集群
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/android-studio-adb-wifi/" rel="prev" title="Android Studio 使用 WiFi 调试 App">
+                Android Studio 使用 WiFi 调试 App <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="aidan" />
+          <p class="site-author-name" itemprop="name">aidan</p>
+           
+              <p class="site-description motion-element" itemprop="description">沉迷学习无法自拔</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/aidansu" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/shx0999" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/77881755/" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/aidansu" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备一台管理机"><span class="nav-number">1.</span> <span class="nav-text">准备一台管理机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rancher-版本"><span class="nav-number">2.</span> <span class="nav-text">Rancher 版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动-Rancher-服务"><span class="nav-number">3.</span> <span class="nav-text">启动 Rancher 服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加主机"><span class="nav-number">4.</span> <span class="nav-text">添加主机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建容器"><span class="nav-number">5.</span> <span class="nav-text">创建容器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-UI-创建容器"><span class="nav-number">5.1.</span> <span class="nav-text">使用 UI 创建容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-docker-创建容器"><span class="nav-number">5.2.</span> <span class="nav-text">使用 docker 创建容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#容器-UI-管理"><span class="nav-number">5.3.</span> <span class="nav-text">容器 UI 管理</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">aidan</span>
+</div>
+
+<div>由<a class="theme-link" target="view_window" href="https://hexo.io">Hexo</a>强力驱动  |  <a class="theme-link" target="view_window" href="http://www.miitbeian.gov.cn">粤ICP备12003586号</a></div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("0ogotNGayeLET66f2g9FHgTF-gzGzoHsz", "KKqUX6o78nUnwRCvsXCaNlns");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1019 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Docker,Dockerfile,Container,Services,Python," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="在上一篇文章《Docker 集群网络规划与 VM 网络配置》中，我们准备好了三台虚拟机，虚拟机使用的是 VirtualBox ，虚拟机安装的是 ubuntu service 16.04 并安装好 docker 。如果还没有配置好的同学可以查看上一篇文章。 Docker 镜像 An image is a read-only template with instructions for creatin">
+<meta name="keywords" content="Docker,Dockerfile,Container,Services,Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker 镜像、容器与服务">
+<meta property="og:url" content="http://www.aidansu.com/2017/docker-containers-services/index.html">
+<meta property="og:site_name" content="AidanSu">
+<meta property="og:description" content="在上一篇文章《Docker 集群网络规划与 VM 网络配置》中，我们准备好了三台虚拟机，虚拟机使用的是 VirtualBox ，虚拟机安装的是 ubuntu service 16.04 并安装好 docker 。如果还没有配置好的同学可以查看上一篇文章。 Docker 镜像 An image is a read-only template with instructions for creatin">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.aidansu.com/images/2017/docker-image-container.png">
+<meta property="og:image" content="http://www.aidansu.com/images/2017/docker-image-container-aliyun-github.jpg">
+<meta property="og:image" content="http://www.aidansu.com/images/2017/docker-images-run.jpg">
+<meta property="og:image" content="http://www.aidansu.com/images/2017/docker-portainer.jpg">
+<meta property="og:image" content="http://www.aidansu.com/images/2017/docker-info.jpg">
+<meta property="og:image" content="http://www.aidansu.com/images/2017/docker-stack-ps.jpg">
+<meta property="og:image" content="http://www.aidansu.com/images/2017/docker-stack-curl.jpg">
+<meta property="og:updated_time" content="2017-06-26T17:40:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker 镜像、容器与服务">
+<meta name="twitter:description" content="在上一篇文章《Docker 集群网络规划与 VM 网络配置》中，我们准备好了三台虚拟机，虚拟机使用的是 VirtualBox ，虚拟机安装的是 ubuntu service 16.04 并安装好 docker 。如果还没有配置好的同学可以查看上一篇文章。 Docker 镜像 An image is a read-only template with instructions for creatin">
+<meta name="twitter:image" content="http://www.aidansu.com/images/2017/docker-image-container.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.aidansu.com/2017/docker-containers-services/"/>
+
+
+
+
+
+  <title> Docker 镜像、容器与服务 | AidanSu </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AidanSu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.aidansu.com/2017/docker-containers-services/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="aidan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AidanSu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Docker 镜像、容器与服务
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-23T10:48:11+08:00">
+                2017-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术水波纹/" itemprop="url" rel="index">
+                    <span itemprop="name">技术水波纹</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/docker-containers-services/" class="leancloud_visitors" data-flag-title="Docker 镜像、容器与服务">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在上一篇文章《Docker 集群网络规划与 VM 网络配置》中，我们准备好了三台虚拟机，虚拟机使用的是 VirtualBox ，虚拟机安装的是 ubuntu service 16.04 并安装好 docker 。如果还没有配置好的同学可以查看上一篇文章。</p>
+<h3 id="Docker-镜像"><a href="#Docker-镜像" class="headerlink" title="Docker 镜像"></a>Docker 镜像</h3><blockquote>
+<p>An image is a read-only template with instructions for creating a Docker Container.</p>
+</blockquote>
+<p>镜像是创建 docker 容器指令的只读模板。包含一个只读的文件系统镜像，应用程序在这个文件系统上运行，并拥有属于自己的网络、内存、CPU 等资源的定义。通常，一个镜像申明了自己主进程的应用。</p>
+<p>一个 docker 镜像可以构建于另一个 docker 镜像之上，这种层叠关系可以是多层的。第1层的镜像层我们称之为基础镜像（Base Image），其他层的镜像（除了最顶层）我们称之为父层镜像（Parent Image）。这些镜像继承了他们的父层镜像的所有属性和设置，并在Dockerfile中添加了自己的配置。如在 ubuntu 上添加自己的 apache 文件，然后在 apache 上建立 web 应用文件。<br><a id="more"></a><br>docker 镜像通过镜像 ID 进行识别。镜像 ID 是一个64字符的十六进制的字符串。但是当我们运行镜像时，通常我们不会使用镜像 ID 来引用镜像，而是使用镜像名来引用。要列出本地所有有效的镜像，可以使用命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker images</div></pre></td></tr></table></figure></p>
+<h3 id="Docker-容器"><a href="#Docker-容器" class="headerlink" title="Docker 容器"></a>Docker 容器</h3><blockquote>
+<p>A container is a runnable instance of an image.</p>
+</blockquote>
+<p>它会在所有的镜像层之上增加一个可写层,对现有文件变更将写在一个临时的卷上（新的一层），该主进程、相关进程、文件系统成为一个运行的实例。</p>
+<p>每个容器创建后，有运行、暂停、中止状态，直到移除。<br>程序运行的产生的数据，都在容器中的文件中，Restart 不会丢失数据。<br>当主进程结束时，该实例同时结束运行。使用 –rm 表示运行后自动删除容器。</p>
+<p>docker 容器可以使用命令创建：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run &lt;imageName&gt;</div></pre></td></tr></table></figure></p>
+<p>镜像与容器的区别<br><img src="/images/2017/docker-image-container.png" style="margin:0;border:0"></p>
+<h3 id="Docker-服务"><a href="#Docker-服务" class="headerlink" title="Docker 服务"></a>Docker 服务</h3><blockquote>
+<p>Services allow you to scale containers across multiple Docker daemons, which all work together as a swarm with multiple nodes.</p>
+</blockquote>
+<p>服务是一组运行于集群不同结点中可复制的容器的集合。通过服务发现机制，使用该服务的客户端可以透明的访问这些容器。这些容器的分布、升级、故障管理有集群统一管理。一般地，集群内部服务容器地选择由 动态DNS 实现。</p>
+<h3 id="建立私有镜像仓库"><a href="#建立私有镜像仓库" class="headerlink" title="建立私有镜像仓库"></a>建立私有镜像仓库</h3><p>进入阿里云开发者平台 <a href="https://dev.aliyun.com" target="_blank" rel="external">dev.aliyun.com</a> ，注册一个帐号，然后登录。</p>
+<p>管理中心 -&gt; Docker镜像仓库 -&gt; 镜像列表 -&gt; 华南1 -&gt; 创建镜像仓库</p>
+<p>仓库类型选择：公开，代码源选择本地仓库，通过命令推送镜像到镜像库，当然也可以直接使用GitHub上的项目创建镜像库。</p>
+<p><img src="/images/2017/docker-image-container-aliyun-github.jpg" style="margin:0;"></p>
+<p>仓库使用操作： 如上传 hello-python 镜像</p>
+<blockquote>
+<p>列表： docker images<br>登录： docker login –username=[your account] registry.cn-shenzhen.aliyuncs.com<br>tag： docker tag [ImageId] registry.cn-shenzhen.aliyuncs.com/aidansu/hello-python:[镜像版本号]<br>上传： docker push registry.cn-shenzhen.aliyuncs.com/aidansu/hello-python:[镜像版本号]<br>下载： docker push registry.cn-shenzhen.aliyuncs.com/aidansu/hello-python:[镜像版本号]<br>tag： docker tag registry.cn-shenzhen.aliyuncs.com/aidansu/hello-python:[镜像版本号] hello-python<br>删除： docker rmi registry.cn-shenzhen.aliyuncs.com/aidansu/hello-python:[镜像版本号]<br>运行： docker run –rm hello-python<br>退出： docker logout registry.cn-shenzhen.aliyuncs.com</p>
+</blockquote>
+<h3 id="创建镜像"><a href="#创建镜像" class="headerlink" title="创建镜像"></a>创建镜像</h3><h4 id="创建一个项目目录，如-pythonweb，然后-cd-到该目录"><a href="#创建一个项目目录，如-pythonweb，然后-cd-到该目录" class="headerlink" title="创建一个项目目录，如 pythonweb，然后 cd 到该目录"></a>创建一个项目目录，如 pythonweb，然后 cd 到该目录</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir pythonweb &amp;&amp; <span class="built_in">cd</span> pythonweb</div></pre></td></tr></table></figure>
+<h4 id="创建一个简单-web-应用程序，使用-Python-语言"><a href="#创建一个简单-web-应用程序，使用-Python-语言" class="headerlink" title="创建一个简单 web 应用程序，使用 Python 语言"></a>创建一个简单 web 应用程序，使用 Python 语言</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim app.py</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</div><div class="line"><span class="keyword">from</span> redis <span class="keyword">import</span> Redis, RedisError</div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> socket</div><div class="line"></div><div class="line"><span class="comment"># Connect to Redis</span></div><div class="line">redis = Redis(host=<span class="string">"redis"</span>, db=<span class="number">0</span>, socket_connect_timeout=<span class="number">2</span>, socket_timeout=<span class="number">2</span>)</div><div class="line"></div><div class="line">app = Flask(__name__)</div><div class="line"></div><div class="line"><span class="meta">@app.route("/")</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        visits = redis.incr(<span class="string">"counter"</span>)</div><div class="line">    <span class="keyword">except</span> RedisError:</div><div class="line">        visits = <span class="string">"&lt;i&gt;cannot connect to Redis, counter disabled&lt;/i&gt;"</span></div><div class="line">&lt;!-- more --&gt;</div><div class="line">    html = <span class="string">"&lt;h3&gt;Hello &#123;name&#125;!&lt;/h3&gt;"</span> \</div><div class="line">           <span class="string">"&lt;b&gt;Hostname:&lt;/b&gt; &#123;hostname&#125;&lt;br/&gt;"</span> \</div><div class="line">           <span class="string">"&lt;b&gt;Visits:&lt;/b&gt; &#123;visits&#125;"</span></div><div class="line">    <span class="keyword">return</span> html.format(name=os.getenv(<span class="string">"NAME"</span>, <span class="string">"world"</span>), hostname=socket.gethostname(), visits=visits)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    app.run(host=<span class="string">'0.0.0.0'</span>, port=<span class="number">80</span>)</div></pre></td></tr></table></figure>
+<h4 id="创建镜像指令文件-dockerfile"><a href="#创建镜像指令文件-dockerfile" class="headerlink" title="创建镜像指令文件 dockerfile"></a>创建镜像指令文件 dockerfile</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim dockerfile</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Use an official Python runtime as a base image</span></div><div class="line">FROM python:2.7-slim</div><div class="line"></div><div class="line"><span class="comment"># Set the working directory to /app</span></div><div class="line">WORKDIR /app</div><div class="line"></div><div class="line"><span class="comment"># Copy the current directory contents into the container at /app</span></div><div class="line">ADD . /app</div><div class="line"></div><div class="line"><span class="comment"># Install any needed packages specified in requirements.txt</span></div><div class="line">RUN pip install -r requirements.txt</div><div class="line"></div><div class="line"><span class="comment"># Make port 80 available to the world outside this container</span></div><div class="line">EXPOSE 80</div><div class="line"></div><div class="line"><span class="comment"># Define environment variable</span></div><div class="line">ENV NAME World</div><div class="line"></div><div class="line"><span class="comment"># Run app.py when the container launches</span></div><div class="line">CMD [<span class="string">"python"</span>, <span class="string">"app.py"</span>]</div></pre></td></tr></table></figure>
+<p>指令语法：</p>
+<blockquote>
+<p>FROM 表示从 python:2.7-slim 镜像基础上开始构建。这个镜像在哪里，docker hub 的仓库。 镜像命名规则 [镜像:版本]<br>WORKDIR 设置主进程的工作目录 /app<br>ADD 将当前目录内容复制到基础镜像文件系统的 /app<br>RUN 在基础镜像文件系统上运行 pip install -r requirements.txt 这时 pip 下载依赖包到基础镜像之上<br>EXPOSE 暴露容器对外的 TCP 端口 80<br>ENV 定义进程的环境变量 NAME World<br>CMD 设置主进程启动的命令 [“python”, “app.py”] 。因此，容器一般是单进程应用</p>
+</blockquote>
+<h4 id="创建-requirements-txt"><a href="#创建-requirements-txt" class="headerlink" title="创建 requirements.txt"></a>创建 requirements.txt</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim requirements.txt</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Flask</div><div class="line">Redis</div></pre></td></tr></table></figure>
+<h4 id="构建-pythonweb-的镜像"><a href="#构建-pythonweb-的镜像" class="headerlink" title="构建 pythonweb 的镜像"></a>构建 pythonweb 的镜像</h4><p>检查是否已经创建了 dockerfile 、app.py 、requirements.txt 三个文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls</div></pre></td></tr></table></figure></p>
+<p>创建 tag 为 hello-python 的镜像：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker build -t hello-python .</div></pre></td></tr></table></figure></p>
+<p>完成之后，检查镜像文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker images</div></pre></td></tr></table></figure></p>
+<h3 id="在容器中运行-app"><a href="#在容器中运行-app" class="headerlink" title="在容器中运行 app"></a>在容器中运行 app</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -p 4000:80 hello-python</div></pre></td></tr></table></figure>
+<blockquote>
+<p>docker run 运行镜像的命令<br>-d 后台运行<br>-p 端口映射，将容器的 80 端口映射到主机（host）的 4000 端口</p>
+</blockquote>
+<p>检查结果：<br><img src="/images/2017/docker-images-run.jpg" style="margin:0;"><br>也可以使用命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl 192.168.56.100:4000</div></pre></td></tr></table></figure></p>
+<p>检查容器的进程：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ docker ps</div><div class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                  NAMES</div><div class="line">ab82c40651d5        hello-python        <span class="string">"python app.py"</span>     19 minutes ago      Up 19 minutes       0.0.0.0:4000-&gt;80/tcp   nervous_stonebraker</div></pre></td></tr></table></figure></p>
+<p>结束并清理进程：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker stop ab82c40651d5</div></pre></td></tr></table></figure></p>
+<h3 id="上传镜像到远程仓库"><a href="#上传镜像到远程仓库" class="headerlink" title="上传镜像到远程仓库"></a>上传镜像到远程仓库</h3><p>登录阿里云docker registry:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker login --username=aidansu@163.com registry.cn-shenzhen.aliyuncs.com</div></pre></td></tr></table></figure></p>
+<p>将镜像推送到registry：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker tag [ImageId] registry.cn-shenzhen.aliyuncs.com/aidansu/hello-python:[镜像版本号]</div><div class="line">docker push registry.cn-shenzhen.aliyuncs.com/aidansu/hello-python:[镜像版本号]</div></pre></td></tr></table></figure></p>
+<p>其中[ImageId]，[镜像版本号]请你根据自己的镜像信息进行填写。</p>
+<h3 id="使用图形化管理工具"><a href="#使用图形化管理工具" class="headerlink" title="使用图形化管理工具"></a>使用图形化管理工具</h3><p>启动图形化管理工具 Portainer<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer</div></pre></td></tr></table></figure></p>
+<p>在浏览器输入 http://<your machine="" ip="">:9000 就进入了图形管理界面：<br><img src="/images/2017/docker-portainer.jpg" style="margin:0;border:0"></your></p>
+<h3 id="运行服务"><a href="#运行服务" class="headerlink" title="运行服务"></a>运行服务</h3><p>运行一个服务，需要使用 docker-compose.yml 文件，这是服务组合的定义。</p>
+<p>1、创建一个目录，例如 service_test：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> &amp;&amp; mkdir service_test &amp;&amp; <span class="built_in">cd</span> service_test</div></pre></td></tr></table></figure></p>
+<p>2、编写服务定义<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim docker-compose.yml</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">version: <span class="string">"3"</span></div><div class="line">services:</div><div class="line">  web:</div><div class="line">    <span class="comment"># replace username/repo:tag with your name and image details</span></div><div class="line">    <span class="comment"># image: registry.cn-shenzhen.aliyuncs.com/aidansu/hello-python:1.0</span></div><div class="line">    image: &lt;username/repository:tag&gt;</div><div class="line">    deploy:</div><div class="line">      replicas: 5</div><div class="line">      resources:</div><div class="line">        limits:</div><div class="line">          cpus: <span class="string">"0.1"</span></div><div class="line">          memory: 50M</div><div class="line">      restart_policy:</div><div class="line">        condition: on-failure</div><div class="line">    ports:</div><div class="line">      - <span class="string">"80:80"</span></div><div class="line">    networks:</div><div class="line">      - webnet</div><div class="line">networks:</div><div class="line">  webnet:</div></pre></td></tr></table></figure>
+<p>yaml 描述：</p>
+<blockquote>
+<p>version = “3”；不能修改<br>services<br>  web 服务名称<br>  镜像： 请使用你仓库中的镜像<br>  部署：申明使用 5 个容器实例，每个资源，重新启动条件<br>  端口映射：80：80<br>  网络： webnet<br>networks<br>  webnet： 定义这个应用使用的 overlay 网络</p>
+</blockquote>
+<p>3、启动服务</p>
+<p>在启动服务之前，务必初始化集群模式 。注意：多网卡必须说明在那块网卡上组建集群。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker swarm init --advertise-addr 192.168.56.100</div></pre></td></tr></table></figure></p>
+<p>检查是否在集群模式的命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker info</div></pre></td></tr></table></figure></p>
+<p><img src="/images/2017/docker-info.jpg" style="margin:0;border:0"></p>
+<p>启动应用程序服务：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker stack deploy -c docker-compose.yml myservice</div></pre></td></tr></table></figure></p>
+<p>检查部署的结果：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker stack ps myservice</div></pre></td></tr></table></figure></p>
+<p><img src="/images/2017/docker-stack-ps.jpg" style="margin:0;border:0"></p>
+<p>使用浏览器或curl 访问 <a href="http://192.168.56.110：80/" target="_blank" rel="external">http://192.168.56.110：80/</a> 每次返回的 Hostname (主机名)都是不一样的，负载均衡实现了。</p>
+<p><img src="/images/2017/docker-stack-curl.jpg" style="margin:0;border:0"></p>
+<p>结束服务：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker stack rm myservice</div></pre></td></tr></table></figure></p>
+<p>想了解更多关于 Docker 信息的可以查看最新的官方文档：<a href="https://docs.docker.com/" target="_blank" rel="external">https://docs.docker.com/</a></p>
+<p>完！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/pay/tenpay.png" alt="aidan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/pay/alipay.png" alt="aidan Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      aidan
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.aidansu.com/2017/docker-containers-services/" title="Docker 镜像、容器与服务">http://www.aidansu.com/2017/docker-containers-services/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
+          
+            <a href="/tags/Dockerfile/" rel="tag"># Dockerfile</a>
+          
+            <a href="/tags/Container/" rel="tag"># Container</a>
+          
+            <a href="/tags/Services/" rel="tag"># Services</a>
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/docker-cluster-network-planning/" rel="next" title="Docker 集群网络规划与 VM 网络配置">
+                <i class="fa fa-chevron-left"></i> Docker 集群网络规划与 VM 网络配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/docker-swarm-clusters/" rel="prev" title="Docker Swarm 集群">
+                Docker Swarm 集群 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="aidan" />
+          <p class="site-author-name" itemprop="name">aidan</p>
+           
+              <p class="site-description motion-element" itemprop="description">沉迷学习无法自拔</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/aidansu" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/shx0999" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/77881755/" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/aidansu" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-镜像"><span class="nav-number">1.</span> <span class="nav-text">Docker 镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-容器"><span class="nav-number">2.</span> <span class="nav-text">Docker 容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-服务"><span class="nav-number">3.</span> <span class="nav-text">Docker 服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立私有镜像仓库"><span class="nav-number">4.</span> <span class="nav-text">建立私有镜像仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建镜像"><span class="nav-number">5.</span> <span class="nav-text">创建镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一个项目目录，如-pythonweb，然后-cd-到该目录"><span class="nav-number">5.1.</span> <span class="nav-text">创建一个项目目录，如 pythonweb，然后 cd 到该目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一个简单-web-应用程序，使用-Python-语言"><span class="nav-number">5.2.</span> <span class="nav-text">创建一个简单 web 应用程序，使用 Python 语言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建镜像指令文件-dockerfile"><span class="nav-number">5.3.</span> <span class="nav-text">创建镜像指令文件 dockerfile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建-requirements-txt"><span class="nav-number">5.4.</span> <span class="nav-text">创建 requirements.txt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构建-pythonweb-的镜像"><span class="nav-number">5.5.</span> <span class="nav-text">构建 pythonweb 的镜像</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在容器中运行-app"><span class="nav-number">6.</span> <span class="nav-text">在容器中运行 app</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上传镜像到远程仓库"><span class="nav-number">7.</span> <span class="nav-text">上传镜像到远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用图形化管理工具"><span class="nav-number">8.</span> <span class="nav-text">使用图形化管理工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行服务"><span class="nav-number">9.</span> <span class="nav-text">运行服务</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">aidan</span>
+</div>
+
+<div>由<a class="theme-link" target="view_window" href="https://hexo.io">Hexo</a>强力驱动  |  <a class="theme-link" target="view_window" href="http://www.miitbeian.gov.cn">粤ICP备12003586号</a></div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("0ogotNGayeLET66f2g9FHgTF-gzGzoHsz", "KKqUX6o78nUnwRCvsXCaNlns");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
