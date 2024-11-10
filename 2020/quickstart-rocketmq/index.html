@@ -1,0 +1,949 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Docker,Kubernetes,RocketMQ," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="本文使用 RocketMQ 4.5.0 本文所使用的配置文件，在GiHub项目中 https://github.com/aidansu/spring-cloud-alibaba-components-install 本文部署的是开发环境，用于开发测试，并不是高可用的生产环境！  RocketMQ 是一款具有低延迟，高性能和可靠性的分布式消息中间件，最初由阿里团队研发并大规模应用于生产系统，在2">
+<meta name="keywords" content="Docker,Kubernetes,RocketMQ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快速部署开发使用的 RocketMQ">
+<meta property="og:url" content="http://www.aidansu.com/2020/quickstart-rocketmq/index.html">
+<meta property="og:site_name" content="AidanSu">
+<meta property="og:description" content="本文使用 RocketMQ 4.5.0 本文所使用的配置文件，在GiHub项目中 https://github.com/aidansu/spring-cloud-alibaba-components-install 本文部署的是开发环境，用于开发测试，并不是高可用的生产环境！  RocketMQ 是一款具有低延迟，高性能和可靠性的分布式消息中间件，最初由阿里团队研发并大规模应用于生产系统，在2">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.aidansu.com/images/2020/rocketmq-logo.jpg">
+<meta property="og:updated_time" content="2020-12-20T15:25:47.355Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="快速部署开发使用的 RocketMQ">
+<meta name="twitter:description" content="本文使用 RocketMQ 4.5.0 本文所使用的配置文件，在GiHub项目中 https://github.com/aidansu/spring-cloud-alibaba-components-install 本文部署的是开发环境，用于开发测试，并不是高可用的生产环境！  RocketMQ 是一款具有低延迟，高性能和可靠性的分布式消息中间件，最初由阿里团队研发并大规模应用于生产系统，在2">
+<meta name="twitter:image" content="http://www.aidansu.com/images/2020/rocketmq-logo.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.aidansu.com/2020/quickstart-rocketmq/"/>
+
+
+
+
+
+  <title> 快速部署开发使用的 RocketMQ | AidanSu </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AidanSu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.aidansu.com/2020/quickstart-rocketmq/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="aidan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AidanSu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                快速部署开发使用的 RocketMQ
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-08T13:39:43+08:00">
+                2020-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/quickstart-rocketmq/" class="leancloud_visitors" data-flag-title="快速部署开发使用的 RocketMQ">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/images/2020/rocketmq-logo.jpg" style="width:100%;border:0"></p>
+<blockquote>
+<p>本文使用 RocketMQ 4.5.0</p>
+<p>本文所使用的配置文件，在GiHub项目中 <a href="https://github.com/aidansu/spring-cloud-alibaba-components-install" target="_blank" rel="external">https://github.com/aidansu/spring-cloud-alibaba-components-install</a></p>
+<p>本文部署的是开发环境，用于开发测试，并不是高可用的生产环境！</p>
+</blockquote>
+<p>RocketMQ 是一款具有低延迟，高性能和可靠性的分布式消息中间件，最初由阿里团队研发并大规模应用于生产系统，在2016年底捐赠给 Apache 开源基金会成为孵化项目，经过不到一年时间正式成为了Apache顶级项目；RocketMQ 和 Kafka 在概念和原理上都非常相似，所以也经常被拿来对比；官方也给出了 ActiveMQ、Kafka 和 RocketMQ 的对比：<a href="http://rocketmq.apache.org/docs/motivation/" target="_blank" rel="external">http://rocketmq.apache.org/docs/motivation/</a> 。</p>
+<p>官方有提供 RocketMQ 的安装教程，地址：<a href="http://rocketmq.apache.org/docs/quick-start/" target="_blank" rel="external">http://rocketmq.apache.org/docs/quick-start/</a> 。本文将不再重复官方的安装方式，直接给出 docker-compose 和 kubernetes 的安装方式，其中 rocketmq 的 docker 镜像采用官方提供的：apacherocketmq/rocketmq:4.5.0（这已经是官方最低版本的镜像了），rocketmq-console 的 docker 镜像官方只提供一个版本：apacherocketmq/rocketmq-console:2.0.0，很不幸，这个版本是有 Bug 的，我在使用过程中遇到了这个BUG，并发现有人已经提交了Issues，地址：<a href="https://github.com/apache/rocketmq-externals/issues/614" target="_blank" rel="external">https://github.com/apache/rocketmq-externals/issues/614</a> 。于是我根据源代码构建了一个 rocketmq-console 1.0.1版本的镜像，镜像地址：aidansu/rocketmq-console:1.0.1</p>
+<a id="more"></a>
+<h1 id="docker-compose-部署-RocketMQ"><a href="#docker-compose-部署-RocketMQ" class="headerlink" title="docker-compose 部署 RocketMQ"></a>docker-compose 部署 RocketMQ</h1><p>下载配置文件，进入 /rocketmq/docker 文件夹，以下是 docker-compose.yaml 的设置，从配置中可以看到启动了3个服务，分别是 NameServer、Broker Server 和 Rocketmq-Console。<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="attr">version:</span> <span class="string">'2'</span></div><div class="line"></div><div class="line"><span class="attr">services:</span></div><div class="line"><span class="attr">  rmqnamesrv:</span></div><div class="line"><span class="attr">    image:</span> <span class="string">apacherocketmq/rocketmq:4.5.0</span></div><div class="line"><span class="attr">    container_name:</span> <span class="string">rmqnamesrv</span></div><div class="line"><span class="attr">    restart:</span> <span class="string">always</span></div><div class="line"><span class="attr">    ports:</span></div><div class="line"><span class="bullet">      -</span> <span class="number">9876</span><span class="string">:9876</span></div><div class="line"><span class="attr">    volumes:</span></div><div class="line"><span class="bullet">      -</span> <span class="string">./data/logs:/opt/logs</span></div><div class="line"><span class="bullet">      -</span> <span class="string">./data/store:/opt/store</span></div><div class="line"><span class="attr">    command:</span> <span class="string">sh</span> <span class="string">mqnamesrv</span></div><div class="line"><span class="attr">  rmqbroker:</span></div><div class="line"><span class="attr">    image:</span> <span class="string">apacherocketmq/rocketmq:4.5.0</span></div><div class="line"><span class="attr">    container_name:</span> <span class="string">rmqbroker</span></div><div class="line"><span class="attr">    restart:</span> <span class="string">always</span>    </div><div class="line"><span class="attr">    ports:</span></div><div class="line"><span class="bullet">      -</span> <span class="number">10909</span><span class="string">:10909</span></div><div class="line"><span class="bullet">      -</span> <span class="number">10911</span><span class="string">:10911</span></div><div class="line"><span class="attr">    volumes:</span></div><div class="line"><span class="bullet">      -</span> <span class="string">./data/logs:/opt/logs</span></div><div class="line"><span class="bullet">      -</span> <span class="string">./data/store:/opt/store</span></div><div class="line"><span class="attr">    command:</span> <span class="string">sh</span> <span class="string">mqbroker</span> <span class="bullet">-n</span> <span class="attr">rmqnamesrv:9876</span></div><div class="line"><span class="attr">    environment:</span></div><div class="line"><span class="bullet">      -</span> <span class="string">NAMESRV_ADDR=</span> <span class="attr">rmqnamesrv:9876</span></div><div class="line"><span class="bullet">      -</span> <span class="string">JAVA_OPTS=</span> <span class="bullet">-Duser.home=/opt</span></div><div class="line"><span class="bullet">      -</span> <span class="string">JAVA_OPT_EXT=</span> <span class="bullet">-server</span> <span class="bullet">-Xms128m</span> <span class="bullet">-Xmx1024m</span> <span class="bullet">-Xmn128m</span></div><div class="line"><span class="attr">    depends_on:</span></div><div class="line"><span class="bullet">      -</span> <span class="string">rmqnamesrv</span></div><div class="line"><span class="attr">  rmqconsole:</span></div><div class="line"><span class="attr">    image:</span> <span class="string">aidansu/rocketmq-console:1.0.1</span></div><div class="line"><span class="attr">    container_name:</span> <span class="string">rmqconsole</span></div><div class="line"><span class="attr">    restart:</span> <span class="string">always</span>    </div><div class="line"><span class="attr">    ports:</span></div><div class="line"><span class="bullet">      -</span> <span class="number">30875</span><span class="string">:8080</span></div><div class="line"><span class="attr">    environment:</span></div><div class="line"><span class="bullet">      -</span> <span class="string">JAVA_OPTS=</span> <span class="bullet">-Drocketmq.config.namesrvAddr=rmqnamesrv:9876</span> <span class="bullet">-Dcom.rocketmq.sendMessageWithVIPChannel=false</span></div><div class="line"><span class="attr">    depends_on:</span></div><div class="line"><span class="bullet">      -</span> <span class="string">rmqnamesrv</span></div></pre></td></tr></table></figure></p>
+<h1 id="kubernetes-部署-RocketMQ"><a href="#kubernetes-部署-RocketMQ" class="headerlink" title="kubernetes 部署 RocketMQ"></a>kubernetes 部署 RocketMQ</h1><p>进入 /rocketmq/kubernetes 文件夹，有两个文件，分别是 rocketmq.yaml 和 rocketmq-console.yaml； 下面将分别列出这两个文件的配置。</p>
+<p>rocketmq.yaml 的配置<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></div><div class="line"><span class="attr">kind:</span> <span class="string">Service</span></div><div class="line"><span class="attr">metadata:</span></div><div class="line"><span class="attr">  name:</span> <span class="string">rocketmq</span></div><div class="line"><span class="attr">  labels:</span></div><div class="line"><span class="attr">    app:</span> <span class="string">rocketmq</span></div><div class="line"><span class="attr">spec:</span></div><div class="line"><span class="attr">  type:</span> <span class="string">NodePort</span></div><div class="line"><span class="attr">  ports:</span></div><div class="line"><span class="attr">    - port:</span> <span class="number">9876</span></div><div class="line"><span class="attr">      targetPort:</span> <span class="number">9876</span></div><div class="line"><span class="attr">      nodePort:</span> <span class="number">30876</span></div><div class="line"><span class="attr">      name:</span> <span class="string">rocketmq</span></div><div class="line"><span class="attr">  selector:</span></div><div class="line"><span class="attr">    app:</span> <span class="string">rocketmq</span></div><div class="line"></div><div class="line"><span class="meta">---</span></div><div class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></div><div class="line"><span class="attr">apiVersion:</span> <span class="string">extensions/v1beta1</span></div><div class="line"><span class="attr">metadata:</span></div><div class="line"><span class="attr">  name:</span> <span class="string">rocketmq</span></div><div class="line"><span class="attr">spec:</span></div><div class="line"><span class="attr">  replicas:</span> <span class="number">1</span></div><div class="line"><span class="attr">  selector:</span></div><div class="line"><span class="attr">    matchLabels:</span></div><div class="line"><span class="attr">      app:</span> <span class="string">rocketmq</span></div><div class="line"><span class="attr">      name:</span> <span class="string">rocketmq</span></div><div class="line"><span class="attr">  template:</span></div><div class="line"><span class="attr">    metadata:</span></div><div class="line"><span class="attr">      labels:</span></div><div class="line"><span class="attr">        app:</span> <span class="string">rocketmq</span></div><div class="line"><span class="attr">        name:</span> <span class="string">rocketmq</span></div><div class="line"><span class="attr">    spec:</span></div><div class="line"><span class="attr">      containers:</span></div><div class="line"><span class="attr">        - name:</span> <span class="string">rocketmq</span></div><div class="line"><span class="attr">          image:</span> <span class="string">apacherocketmq/rocketmq:4.5.0</span></div><div class="line"><span class="attr">          imagePullPolicy:</span> <span class="string">IfNotPresent</span></div><div class="line"><span class="attr">          command:</span> <span class="string">["sh","mqnamesrv"]</span></div><div class="line"><span class="attr">          ports:</span></div><div class="line"><span class="attr">            - containerPort:</span> <span class="number">9876</span></div><div class="line"></div><div class="line"><span class="bullet">-</span><span class="bullet">--</span>          </div><div class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></div><div class="line"><span class="attr">apiVersion:</span> <span class="string">extensions/v1beta1</span></div><div class="line"><span class="attr">metadata:</span></div><div class="line"><span class="attr">  name:</span> <span class="string">rocketmq-broker</span></div><div class="line"><span class="attr">spec:</span></div><div class="line"><span class="attr">  replicas:</span> <span class="number">1</span></div><div class="line"><span class="attr">  selector:</span></div><div class="line"><span class="attr">    matchLabels:</span></div><div class="line"><span class="attr">      app:</span> <span class="string">rocketmq-broker</span></div><div class="line"><span class="attr">      name:</span> <span class="string">rocketmq-broker</span></div><div class="line"><span class="attr">  template:</span></div><div class="line"><span class="attr">    metadata:</span></div><div class="line"><span class="attr">      labels:</span></div><div class="line"><span class="attr">        app:</span> <span class="string">rocketmq-broker</span></div><div class="line"><span class="attr">        name:</span> <span class="string">rocketmq-broker</span></div><div class="line"><span class="attr">    spec:</span></div><div class="line"><span class="attr">      containers:</span></div><div class="line"><span class="attr">        - name:</span> <span class="string">rocketmq-broker</span></div><div class="line"><span class="attr">          image:</span> <span class="string">apacherocketmq/rocketmq:4.5.0</span></div><div class="line"><span class="attr">          imagePullPolicy:</span> <span class="string">IfNotPresent</span></div><div class="line"><span class="attr">          command:</span> <span class="string">["sh","mqbroker",</span> <span class="string">"-n"</span><span class="string">,"rocketmq:9876"]</span></div><div class="line"><span class="attr">          ports:</span></div><div class="line"><span class="attr">            - containerPort:</span> <span class="number">10909</span></div><div class="line"><span class="attr">            - containerPort:</span> <span class="number">10911</span></div></pre></td></tr></table></figure></p>
+<p>rocketmq-console.yaml 的配置<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></div><div class="line"><span class="attr">kind:</span> <span class="string">ConfigMap</span></div><div class="line"><span class="attr">metadata:</span></div><div class="line"><span class="attr">  name:</span> <span class="string">rocketmq-console-config</span></div><div class="line"><span class="attr">data:</span></div><div class="line">  <span class="string">users.properties:</span> <span class="string">| </span></div><div class="line"><span class="string">    rocketmq=rocketmq,1</span></div><div class="line"><span class="string">---</span></div><div class="line"><span class="string"></span><span class="attr">apiVersion:</span> <span class="string">v1</span></div><div class="line"><span class="attr">kind:</span> <span class="string">Service</span></div><div class="line"><span class="attr">metadata:</span></div><div class="line"><span class="attr">  name:</span> <span class="string">rocketmq-console</span></div><div class="line"><span class="attr">  labels:</span></div><div class="line"><span class="attr">    app:</span> <span class="string">rocketmq-console</span></div><div class="line"><span class="attr">spec:</span></div><div class="line"><span class="attr">  type:</span> <span class="string">NodePort</span></div><div class="line"><span class="attr">  ports:</span></div><div class="line"><span class="attr">    - port:</span> <span class="number">8080</span></div><div class="line"><span class="attr">      name:</span> <span class="string">server</span></div><div class="line"><span class="attr">      targetPort:</span> <span class="number">8080</span></div><div class="line"><span class="attr">      nodePort:</span> <span class="number">30875</span> </div><div class="line"><span class="attr">  selector:</span></div><div class="line"><span class="attr">    app:</span> <span class="string">rocketmq-console</span></div><div class="line"></div><div class="line"><span class="bullet">-</span><span class="bullet">--</span>          </div><div class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></div><div class="line"><span class="attr">apiVersion:</span> <span class="string">extensions/v1beta1</span></div><div class="line"><span class="attr">metadata:</span></div><div class="line"><span class="attr">  name:</span> <span class="string">rocketmq-console</span></div><div class="line"><span class="attr">spec:</span></div><div class="line"><span class="attr">  replicas:</span> <span class="number">1</span></div><div class="line"><span class="attr">  selector:</span></div><div class="line"><span class="attr">    matchLabels:</span></div><div class="line"><span class="attr">      app:</span> <span class="string">rocketmq-console</span></div><div class="line"><span class="attr">      name:</span> <span class="string">rocketmq-console</span></div><div class="line"><span class="attr">  template:</span></div><div class="line"><span class="attr">    metadata:</span></div><div class="line"><span class="attr">      labels:</span></div><div class="line"><span class="attr">        app:</span> <span class="string">rocketmq-console</span></div><div class="line"><span class="attr">        name:</span> <span class="string">rocketmq-console</span></div><div class="line"><span class="attr">    spec:</span></div><div class="line"><span class="attr">      volumes:</span></div><div class="line"><span class="attr">        - name:</span> <span class="string">rocketmq-console-conf</span></div><div class="line"><span class="attr">          configMap:</span></div><div class="line"><span class="attr">              name:</span> <span class="string">rocketmq-console-config</span></div><div class="line"><span class="attr">      containers:</span></div><div class="line"><span class="attr">        - name:</span> <span class="string">rocketmq-console</span></div><div class="line"><span class="attr">          image:</span> <span class="string">aidansu/rocketmq-console:1.0.1</span></div><div class="line"><span class="attr">          imagePullPolicy:</span> <span class="string">IfNotPresent</span></div><div class="line"><span class="attr">          ports:</span></div><div class="line"><span class="attr">            - containerPort:</span> <span class="number">8080</span></div><div class="line"><span class="attr">              name:</span> <span class="string">client</span></div><div class="line"><span class="attr">          env:</span></div><div class="line"><span class="attr">            - name:</span> <span class="string">TZ</span></div><div class="line"><span class="attr">              value:</span> <span class="string">Asia/Shanghai</span></div><div class="line"><span class="attr">            - name:</span> <span class="string">JAVA_OPTS</span></div><div class="line"><span class="attr">              value:</span> <span class="bullet">-Drocketmq.config.namesrvAddr=rocketmq:9876</span> <span class="bullet">-Dcom.rocketmq.sendMessageWithVIPChannel=false</span> </div><div class="line">              <span class="comment"># -Drocketmq.config.loginRequired=true 是否开启登录验证，如果开启账号：rocketmq；密码：rocketmq</span></div><div class="line"><span class="attr">          volumeMounts:</span></div><div class="line"><span class="attr">            - name:</span> <span class="string">rocketmq-console-conf</span></div><div class="line"><span class="attr">              mountPath:</span> <span class="string">"/tmp/rocketmq-console/data/users.properties"</span></div><div class="line"><span class="attr">              subPath:</span> <span class="string">users.properties</span></div></pre></td></tr></table></figure></p>
+<p>通过 kubectl apply 启动 RocketMQ 和 RocketMQ-Console<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># cd 到 rocketmq/kubernetes 目录</span></div><div class="line">$ <span class="built_in">cd</span> rocketmq/kubernetes</div><div class="line">$ kubectl apply -f rocketmq.yaml</div><div class="line">$ kubectl apply -f rocketmq-console.yaml</div></pre></td></tr></table></figure></p>
+<h1 id="打开-rocketmq-console-控制台"><a href="#打开-rocketmq-console-控制台" class="headerlink" title="打开 rocketmq-console 控制台"></a>打开 rocketmq-console 控制台</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">地址：http://localhost:30875/</div><div class="line"><span class="comment"># 如果开启登录验证</span></div><div class="line"><span class="comment"># 用户：rocketmq</span></div><div class="line"><span class="comment"># 密码：rocketmq</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/pay/tenpay.png" alt="aidan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/pay/alipay.png" alt="aidan Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      aidan
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.aidansu.com/2020/quickstart-rocketmq/" title="快速部署开发使用的 RocketMQ">http://www.aidansu.com/2020/quickstart-rocketmq/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
+          
+            <a href="/tags/Kubernetes/" rel="tag"># Kubernetes</a>
+          
+            <a href="/tags/RocketMQ/" rel="tag"># RocketMQ</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/quickstart-sentinel-dashboard/" rel="next" title="快速部署开发使用的 Sentinel-Dashboard">
+                <i class="fa fa-chevron-left"></i> 快速部署开发使用的 Sentinel-Dashboard
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="aidan" />
+          <p class="site-author-name" itemprop="name">aidan</p>
+           
+              <p class="site-description motion-element" itemprop="description">沉迷学习无法自拔</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/aidansu" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/shx0999" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/77881755/" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/aidansu" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#docker-compose-部署-RocketMQ"><span class="nav-number">1.</span> <span class="nav-text">docker-compose 部署 RocketMQ</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kubernetes-部署-RocketMQ"><span class="nav-number">2.</span> <span class="nav-text">kubernetes 部署 RocketMQ</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#打开-rocketmq-console-控制台"><span class="nav-number">3.</span> <span class="nav-text">打开 rocketmq-console 控制台</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">aidan</span>
+</div>
+
+<div>由<a class="theme-link" target="view_window" href="https://hexo.io">Hexo</a>强力驱动  |  <a class="theme-link" target="view_window" href="https://beian.miit.gov.cn">粤ICP备12003586号</a></div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("0ogotNGayeLET66f2g9FHgTF-gzGzoHsz", "KKqUX6o78nUnwRCvsXCaNlns");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

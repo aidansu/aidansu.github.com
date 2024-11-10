@@ -1,217 +1,294 @@
 <!doctype html>
 
 
+
+  
+
+
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
-    <meta http-equiv="Cache-Control" content="no-transform"/>
-    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
-    <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
 
 
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
-          rel="stylesheet" type="text/css">
 
 
-    <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"/>
-
-    <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css"/>
 
 
-    <meta name="keywords" content="Java,Spring Boot,RESTful,JAX-RS,CXF,"/>
 
 
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0"/>
 
 
-    <meta name="description"
-          content="RESTful架构，就是目前最流行的一种互联网软件架构。它结构清晰、符合标准、易于理解、扩展方便，所以正得到越来越多网站的采用。REST这个词，是Roy Thomas Fielding 在他2000年的博士论文中提出的。RESTful service是一种架构模式，它是轻量级 web 服务，发挥 HTTP 协议的原生的GET，PUT，POST，DELETE。近几年，随着云服务技术的发展，其简单方便">
-    <meta name="keywords" content="Java,Spring Boot,RESTful,JAX-RS,CXF">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="构建 RESTful Service">
-    <meta property="og:url" content="http://www.aidansu.com/2017/building-a-restfu-web-service/index.html">
-    <meta property="og:site_name" content="AidanSu">
-    <meta property="og:description"
-          content="RESTful架构，就是目前最流行的一种互联网软件架构。它结构清晰、符合标准、易于理解、扩展方便，所以正得到越来越多网站的采用。REST这个词，是Roy Thomas Fielding 在他2000年的博士论文中提出的。RESTful service是一种架构模式，它是轻量级 web 服务，发挥 HTTP 协议的原生的GET，PUT，POST，DELETE。近几年，随着云服务技术的发展，其简单方便">
-    <meta property="og:locale" content="zh-Hans">
-    <meta property="og:updated_time" content="2017-09-13T16:16:18.000Z">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="构建 RESTful Service">
-    <meta name="twitter:description"
-          content="RESTful架构，就是目前最流行的一种互联网软件架构。它结构清晰、符合标准、易于理解、扩展方便，所以正得到越来越多网站的采用。REST这个词，是Roy Thomas Fielding 在他2000年的博士论文中提出的。RESTful service是一种架构模式，它是轻量级 web 服务，发挥 HTTP 协议的原生的GET，PUT，POST，DELETE。近几年，随着云服务技术的发展，其简单方便">
 
 
-    <script type="text/javascript" id="hexo.configurations">
-        var NexT = window.NexT || {};
-        var CONFIG = {
-            root: '/',
-            scheme: 'Pisces',
-            sidebar: {
-                "position": "left",
-                "display": "post",
-                "offset": 12,
-                "offset_float": 0,
-                "b2t": false,
-                "scrollpercent": false
-            },
-            fancybox: true,
-            motion: true,
-            duoshuo: {
-                userId: '0',
-                author: '博主'
-            },
-            algolia: {
-                applicationID: '',
-                apiKey: '',
-                indexName: '',
-                hits: {"per_page": 10},
-                labels: {
-                    "input_placeholder": "Search for Posts",
-                    "hits_empty": "We didn't find any results for the search: ${query}",
-                    "hits_stats": "${hits} results found in ${time} ms"
-                }
-            }
-        };
-    </script>
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
-    <link rel="canonical" href="http://www.aidansu.com/2017/building-a-restfu-web-service/"/>
 
 
-    <title> 构建 RESTful Service | AidanSu </title>
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java,Spring Boot,RESTful,JAX-RS,CXF," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="RESTful架构，就是目前最流行的一种互联网软件架构。它结构清晰、符合标准、易于理解、扩展方便，所以正得到越来越多网站的采用。REST这个词，是Roy Thomas Fielding 在他2000年的博士论文中提出的。RESTful service是一种架构模式，它是轻量级 web 服务，发挥 HTTP 协议的原生的GET，PUT，POST，DELETE。近几年，随着云服务技术的发展，其简单方便">
+<meta name="keywords" content="Java,Spring Boot,RESTful,JAX-RS,CXF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="构建 RESTful Service">
+<meta property="og:url" content="http://www.aidansu.com/2017/building-a-restfu-web-service/index.html">
+<meta property="og:site_name" content="AidanSu">
+<meta property="og:description" content="RESTful架构，就是目前最流行的一种互联网软件架构。它结构清晰、符合标准、易于理解、扩展方便，所以正得到越来越多网站的采用。REST这个词，是Roy Thomas Fielding 在他2000年的博士论文中提出的。RESTful service是一种架构模式，它是轻量级 web 服务，发挥 HTTP 协议的原生的GET，PUT，POST，DELETE。近几年，随着云服务技术的发展，其简单方便">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-13T16:16:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="构建 RESTful Service">
+<meta name="twitter:description" content="RESTful架构，就是目前最流行的一种互联网软件架构。它结构清晰、符合标准、易于理解、扩展方便，所以正得到越来越多网站的采用。REST这个词，是Roy Thomas Fielding 在他2000年的博士论文中提出的。RESTful service是一种架构模式，它是轻量级 web 服务，发挥 HTTP 协议的原生的GET，PUT，POST，DELETE。近几年，随着云服务技术的发展，其简单方便">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.aidansu.com/2017/building-a-restfu-web-service/"/>
+
+
+
+
+
+  <title> 构建 RESTful Service | AidanSu </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
+  
 
-<div class="container sidebar-position-left page-post-detail ">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-        <div class="header-inner">
-            <div class="site-brand-wrapper">
-                <div class="site-meta ">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AidanSu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
 
 
-                    <div class="custom-logo-site-title">
-                        <a href="/" class="brand" rel="start">
-                            <span class="logo-line-before"><i></i></span>
-                            <span class="site-title">AidanSu</span>
-                            <span class="logo-line-after"><i></i></span>
-                        </a>
-                    </div>
 
-                    <p class="site-subtitle">Quick notes</p>
-
-                </div>
-
-                <div class="site-nav-toggle">
-                    <button>
-                        <span class="btn-bar"></span>
-                        <span class="btn-bar"></span>
-                        <span class="btn-bar"></span>
-                    </button>
-                </div>
-            </div>
-
-            <nav class="site-nav">
-
-
-                <ul id="menu" class="menu">
-
-
-                    <li class="menu-item menu-item-home">
-                        <a href="/" rel="section">
-
-                            <i class="menu-item-icon fa fa-fw fa-home"></i> <br/>
-
-                            首页
-                        </a>
-                    </li>
-
-
-                    <li class="menu-item menu-item-archives">
-                        <a href="/archives" rel="section">
-
-                            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>
-
-                            归档
-                        </a>
-                    </li>
-
-
-                    <li class="menu-item menu-item-tags">
-                        <a href="/tags" rel="section">
-
-                            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>
-
-                            标签
-                        </a>
-                    </li>
-
-
-                    <li class="menu-item menu-item-about">
-                        <a href="/about" rel="section">
-
-                            <i class="menu-item-icon fa fa-fw fa-user"></i> <br/>
-
-                            关于
-                        </a>
-                    </li>
-
-
-                </ul>
-
-
-            </nav>
-
-
-        </div>
+ </div>
     </header>
 
     <main id="main" class="main">
-        <div class="main-inner">
-            <div class="content-wrap">
-                <div id="content" class="content">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
+  <div id="posts" class="posts-expand">
+    
 
-                    <div id="posts" class="posts-expand">
+  
 
+  
+  
+  
 
-                        <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-                            <link itemprop="mainEntityOfPage"
-                                  href="http://www.aidansu.com/2017/building-a-restfu-web-service/">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.aidansu.com/2017/building-a-restfu-web-service/">
 
-                            <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="aidan">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
-                            <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="AidanSu">
     </span>
 
+    
+      <header class="post-header">
 
-                            <header class="post-header">
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                构建 RESTful Service
+              
+            
+          </h1>
+        
 
-
-                                <h1 class="post-title" itemprop="name headline">
-
-
-                                    构建 RESTful Service
-
-
-                                </h1>
-
-
-                                <div class="post-meta">
+        <div class="post-meta">
           <span class="post-time">
             
               <span class="post-meta-item-icon">
@@ -230,8 +307,8 @@
             
           </span>
 
-
-                                    <span class="post-category">
+          
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -252,10 +329,15 @@
                 
               
             </span>
+          
 
+          
+            
+          
 
-                                    <span id="/2017/building-a-restfu-web-service/" class="leancloud_visitors"
-                                          data-flag-title="构建 RESTful Service">
+          
+          
+             <span id="/2017/building-a-restfu-web-service/" class="leancloud_visitors" data-flag-title="构建 RESTful Service">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,582 +347,249 @@
                
                  <span class="leancloud-visitors-count"></span>
              </span>
+          
 
-
-                                    <span class="post-meta-divider">|</span>
-                                    <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
 
 
-                                </div>
-                            </header>
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>RESTful架构，就是目前最流行的一种互联网软件架构。它结构清晰、符合标准、易于理解、扩展方便，所以正得到越来越多网站的采用。REST这个词，是Roy Thomas Fielding 在他2000年的博士论文中提出的。RESTful service是一种架构模式，它是轻量级 web 服务，发挥 HTTP 协议的原生的GET，PUT，POST，DELETE。近几年，随着云服务技术的发展，其简单方便、易于理解和扩展，一举超越 SOAP 协议，成为事实的 Web 服务标准。Web 服务开发及其简单，就是定义接口，利用工具发布服务；客户端也是定义接口，利用工具生成通讯代理；HTTP 协议作为通讯工具。</p>
+<p>怎么构建 RESTful Service，有哪几种方式可以构建呢？本文通过 Spring 和 JAX-RS 这两种方式来实现 RESTful Service 服务端。本文代码基本来源与官方文档。项目还是基于 Spring Boot 来开发，因为 RESTful Service 其中一种是 Spring 的方式实现，还有 Spring Boot 真的太方便了。</p>
+<h3 id="创建-REST-Service-服务端项目"><a href="#创建-REST-Service-服务端项目" class="headerlink" title="创建 REST-Service 服务端项目"></a>创建 REST-Service 服务端项目</h3><p>使用 maven 创建 maven-archetype-quickstart 为原型的项目 REST-Service 。<br><a id="more"></a></p>
+<h3 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.build.sourceEncoding</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">spring.boot.version</span>&gt;</span>1.3.6.RELEASE<span class="tag">&lt;/<span class="name">spring.boot.version</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">cxf.version</span>&gt;</span>3.1.10<span class="tag">&lt;/<span class="name">cxf.version</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">feign.version</span>&gt;</span>8.18.0<span class="tag">&lt;/<span class="name">feign.version</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jackson.version</span>&gt;</span>1.9.13<span class="tag">&lt;/<span class="name">jackson.version</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">junit.version</span>&gt;</span>4.9<span class="tag">&lt;/<span class="name">junit.version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.boot.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">type</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">type</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>import<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.cxf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cxf-spring-boot-starter-jaxrs<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;cxf.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.codehaus.jackson<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-jaxrs<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;jackson.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;junit.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="model-类"><a href="#model-类" class="headerlink" title="model 类"></a>model 类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@XmlRootElement</span>(name = <span class="string">"Customer"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">long</span> id;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Customer</span><span class="params">()</span></span>&#123;&#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Customer</span><span class="params">(<span class="keyword">long</span> id, String name)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.id = id;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> id;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">long</span> id)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.id = id;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>@XmlRootElement标签用于生成 xml 格式</p>
+<h3 id="Spring-风格的-REST"><a href="#Spring-风格的-REST" class="headerlink" title="Spring 风格的 REST"></a>Spring 风格的 REST</h3><p>在 com.aidansu.demo.controller 包下创建 CustomerControllerBySpring 类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/spring"</span>)</div><div class="line"><span class="meta">@Controller</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomerControllerBySpring</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String template = <span class="string">"Hello, %s!"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AtomicLong counter = <span class="keyword">new</span> AtomicLong();</div><div class="line"></div><div class="line">    <span class="meta">@RequestMapping</span>(value =<span class="string">"/greeting"</span>, method = RequestMethod.GET, produces = <span class="string">"application/json; charset=utf-8"</span>)</div><div class="line">    <span class="meta">@ResponseBody</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Customer <span class="title">greeting</span><span class="params">(@RequestParam(value=<span class="string">"name"</span>, defaultValue=<span class="string">"World"</span>)</span> String name) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Customer(counter.incrementAndGet(), String.format(template, name));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>@是java注解;<br>@RequestMapping 是一个用来处理请求地址映射的注解，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。<br>@Controller 用于标注控制层组件<br>@ResponseBody 返回JSON，XML或自定义mediaType内容到页面</p>
+<h3 id="JAX-RS-风格的-REST"><a href="#JAX-RS-风格的-REST" class="headerlink" title="JAX-RS 风格的 REST"></a>JAX-RS 风格的 REST</h3><p>在 com.aidansu.demo.controller 包下创建 CustomerControllerByCXF 类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Path</span>(<span class="string">"/cxf"</span>)</div><div class="line"><span class="meta">@Controller</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomerControllerByCXF</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String template = <span class="string">"Hello, %s!"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AtomicLong counter = <span class="keyword">new</span> AtomicLong();</div><div class="line"></div><div class="line">    <span class="meta">@GET</span></div><div class="line">    <span class="meta">@Path</span>(<span class="string">"/greeting"</span>)</div><div class="line">    <span class="meta">@Produces</span>(MediaType.APPLICATION_JSON)</div><div class="line">    <span class="function"><span class="keyword">public</span> Customer <span class="title">greeting</span><span class="params">(@DefaultValue(<span class="string">"World"</span>)</span> @<span class="title">FormParam</span><span class="params">(<span class="string">"name"</span>)</span> String name) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Customer(counter.incrementAndGet(), String.format(template, name));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>JAX-RS 也有自己的标注语义：<br>@Path 将URL从 “/cxf 路径的请求映射到该接口<br>@Produces 该接口方法默认返回 xml,我们可以制定为 MediaType.APPLICATION_JSON 返回 json 数据<br>@GET 这个方法处理 GET 请求<br>@Path(“/greeting”) 将 “/cxf/greeting” 的请求映射到 greeting 函数调用<br>@FormParam(“name”) 获取的参数，@DefaultValue(“World”) 可以定义默认返回值</p>
+<h3 id="Application-启动类"><a href="#Application-启动类" class="headerlink" title="Application 启动类"></a>Application 启动类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@SpringBootApplication</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    <span class="keyword">private</span> Bus bus;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        SpringApplication.run(Application.class, args);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Server <span class="title">rsServer</span><span class="params">()</span> </span>&#123;</div><div class="line">        JAXRSServerFactoryBean endpoint = <span class="keyword">new</span> JAXRSServerFactoryBean();</div><div class="line">        endpoint.setBus(bus);</div><div class="line">        endpoint.setServiceBeans(Arrays.&lt;Object&gt;asList(<span class="keyword">new</span> CustomerControllerByCXF()));</div><div class="line">        endpoint.setProviders(Arrays.&lt;Object&gt;asList(</div><div class="line">                <span class="keyword">new</span> JacksonJsonProvider(),</div><div class="line">                <span class="keyword">new</span> JAXBElementProvider()</div><div class="line">        ));</div><div class="line">        endpoint.setAddress(<span class="string">"/"</span>);</div><div class="line">        <span class="keyword">return</span> endpoint.create();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>Spring 风格的： <a href="http://localhost:8080/spring/greeting?name=aidansu" target="_blank" rel="external">http://localhost:8080/spring/greeting?name=aidansu</a><br>JAX-RS 风格的： <a href="http://localhost:8080/services/cxf/greeting?name=aidansu" target="_blank" rel="external">http://localhost:8080/services/cxf/greeting?name=aidansu</a></p>
+<p>这里需要注意的是 JAX-RS 风格的 REST 需要在端口号后面添加 /services </p>
+<p>本次项目 REST-Service 的项目代码已经放在 github 上，有需要的同学可以下载查看。地址： <a href="https://github.com/aidansu/REST-Service" target="_blank" rel="external">https://github.com/aidansu/REST-Service</a></p>
+<p>想了解更多关于 RESTful 信息的可以查看最新的官方文档<br>Spring：<a href="https://spring.io/guides/gs/rest-service/" target="_blank" rel="external">https://spring.io/guides/gs/rest-service/</a><br>JAX-RS：<a href="http://cxf.apache.org/index.html" target="_blank" rel="external">http://cxf.apache.org/index.html</a></p>
+<p>完！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/pay/tenpay.png" alt="aidan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/pay/alipay.png" alt="aidan Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
 
 
-                            <div class="post-body" itemprop="articleBody">
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      aidan
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.aidansu.com/2017/building-a-restfu-web-service/" title="构建 RESTful Service">http://www.aidansu.com/2017/building-a-restfu-web-service/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
 
 
-                                <p>RESTful架构，就是目前最流行的一种互联网软件架构。它结构清晰、符合标准、易于理解、扩展方便，所以正得到越来越多网站的采用。REST这个词，是Roy Thomas
-                                    Fielding 在他2000年的博士论文中提出的。RESTful service是一种架构模式，它是轻量级 web 服务，发挥 HTTP
-                                    协议的原生的GET，PUT，POST，DELETE。近几年，随着云服务技术的发展，其简单方便、易于理解和扩展，一举超越 SOAP 协议，成为事实的 Web
-                                    服务标准。Web 服务开发及其简单，就是定义接口，利用工具发布服务；客户端也是定义接口，利用工具生成通讯代理；HTTP 协议作为通讯工具。</p>
-                                <p>怎么构建 RESTful Service，有哪几种方式可以构建呢？本文通过 Spring 和 JAX-RS 这两种方式来实现 RESTful Service
-                                    服务端。本文代码基本来源与官方文档。项目还是基于 Spring Boot 来开发，因为 RESTful Service 其中一种是 Spring 的方式实现，还有
-                                    Spring Boot 真的太方便了。</p>
-                                <h3 id="创建-REST-Service-服务端项目"><a href="#创建-REST-Service-服务端项目" class="headerlink"
-                                                                  title="创建 REST-Service 服务端项目"></a>创建 REST-Service
-                                    服务端项目</h3>
-                                <p>使用 maven 创建 maven-archetype-quickstart 为原型的项目 REST-Service 。<br><a id="more"></a></p>
-                                <h3 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h3>
-                                <figure class="highlight xml">
-                                    <table>
-                                        <tr>
-                                            <td class="gutter">
-                                                <pre><div class="line">1</div><div class="line">2</div><div
-                                                        class="line">3</div><div class="line">4</div><div
-                                                        class="line">5</div><div class="line">6</div><div
-                                                        class="line">7</div><div class="line">8</div><div
-                                                        class="line">9</div><div class="line">10</div><div class="line">11</div><div
-                                                        class="line">12</div><div class="line">13</div><div
-                                                        class="line">14</div><div class="line">15</div><div
-                                                        class="line">16</div><div class="line">17</div><div
-                                                        class="line">18</div><div class="line">19</div><div
-                                                        class="line">20</div><div class="line">21</div><div
-                                                        class="line">22</div><div class="line">23</div><div
-                                                        class="line">24</div><div class="line">25</div><div
-                                                        class="line">26</div><div class="line">27</div><div
-                                                        class="line">28</div><div class="line">29</div><div
-                                                        class="line">30</div><div class="line">31</div><div
-                                                        class="line">32</div><div class="line">33</div><div
-                                                        class="line">34</div><div class="line">35</div><div
-                                                        class="line">36</div><div class="line">37</div><div
-                                                        class="line">38</div><div class="line">39</div><div
-                                                        class="line">40</div><div class="line">41</div><div
-                                                        class="line">42</div><div class="line">43</div><div
-                                                        class="line">44</div><div class="line">45</div><div
-                                                        class="line">46</div><div class="line">47</div></pre>
-                                            </td>
-                                            <td class="code">
-                                                <pre><div class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></div><div
-                                                        class="line">    <span class="tag">&lt;<span class="name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span
-                                                        class="tag">&lt;/<span
-                                                        class="name">project.build.sourceEncoding</span>&gt;</span></div><div
-                                                        class="line">    <span class="tag">&lt;<span class="name">spring.boot.version</span>&gt;</span>1.3.6.RELEASE<span
-                                                        class="tag">&lt;/<span class="name">spring.boot.version</span>&gt;</span></div><div
-                                                        class="line">    <span class="tag">&lt;<span class="name">cxf.version</span>&gt;</span>3.1.10<span
-                                                        class="tag">&lt;/<span
-                                                        class="name">cxf.version</span>&gt;</span></div><div
-                                                        class="line">    <span class="tag">&lt;<span class="name">feign.version</span>&gt;</span>8.18.0<span
-                                                        class="tag">&lt;/<span
-                                                        class="name">feign.version</span>&gt;</span></div><div
-                                                        class="line">    <span class="tag">&lt;<span class="name">jackson.version</span>&gt;</span>1.9.13<span
-                                                        class="tag">&lt;/<span
-                                                        class="name">jackson.version</span>&gt;</span></div><div
-                                                        class="line">    <span class="tag">&lt;<span class="name">junit.version</span>&gt;</span>4.9<span
-                                                        class="tag">&lt;/<span
-                                                        class="name">junit.version</span>&gt;</span></div><div
-                                                        class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></div><div
-                                                        class="line"></div><div class="line"><span class="tag">&lt;<span
-                                                        class="name">dependencyManagement</span>&gt;</span></div><div
-                                                        class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div
-                                                        class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div
-                                                        class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span
-                                                        class="tag">&lt;/<span
-                                                        class="name">groupId</span>&gt;</span></div><div class="line">        <span
-                                                        class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-dependencies<span
-                                                        class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div
-                                                        class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.boot.version&#125;<span
-                                                        class="tag">&lt;/<span
-                                                        class="name">version</span>&gt;</span></div><div class="line">        <span
-                                                        class="tag">&lt;<span
-                                                        class="name">type</span>&gt;</span>pom<span
-                                                        class="tag">&lt;/<span class="name">type</span>&gt;</span></div><div
-                                                        class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>import<span
-                                                        class="tag">&lt;/<span
-                                                        class="name">scope</span>&gt;</span></div><div class="line">        <span
-                                                        class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div
-                                                        class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div><div
-                                                        class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></div><div
-                                                        class="line"></div><div class="line"><span class="tag">&lt;<span
-                                                        class="name">dependencies</span>&gt;</span></div><div
-                                                        class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div
-                                                        class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span
-                                                        class="tag">&lt;/<span
-                                                        class="name">groupId</span>&gt;</span></div><div class="line">        <span
-                                                        class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span
-                                                        class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div
-                                                        class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span
-                                                        class="tag">&lt;/<span
-                                                        class="name">scope</span>&gt;</span></div><div class="line">    <span
-                                                        class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div
-                                                        class="line"></div><div class="line">    <span
-                                                        class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div
-                                                        class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.cxf<span
-                                                        class="tag">&lt;/<span
-                                                        class="name">groupId</span>&gt;</span></div><div class="line">        <span
-                                                        class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cxf-spring-boot-starter-jaxrs<span
-                                                        class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div
-                                                        class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;cxf.version&#125;<span
-                                                        class="tag">&lt;/<span
-                                                        class="name">version</span>&gt;</span></div><div class="line">    <span
-                                                        class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div
-                                                        class="line"></div><div class="line">    <span
-                                                        class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div
-                                                        class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.codehaus.jackson<span
-                                                        class="tag">&lt;/<span
-                                                        class="name">groupId</span>&gt;</span></div><div class="line">        <span
-                                                        class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-jaxrs<span
-                                                        class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div
-                                                        class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;jackson.version&#125;<span
-                                                        class="tag">&lt;/<span
-                                                        class="name">version</span>&gt;</span></div><div class="line">    <span
-                                                        class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div
-                                                        class="line"></div><div class="line">    <span
-                                                        class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div
-                                                        class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span
-                                                        class="tag">&lt;/<span
-                                                        class="name">groupId</span>&gt;</span></div><div class="line">        <span
-                                                        class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span
-                                                        class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div
-                                                        class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;junit.version&#125;<span
-                                                        class="tag">&lt;/<span
-                                                        class="name">version</span>&gt;</span></div><div class="line">        <span
-                                                        class="tag">&lt;<span
-                                                        class="name">scope</span>&gt;</span>test<span
-                                                        class="tag">&lt;/<span
-                                                        class="name">scope</span>&gt;</span></div><div class="line">    <span
-                                                        class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div
-                                                        class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div></pre>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </figure>
-                                <h3 id="model-类"><a href="#model-类" class="headerlink" title="model 类"></a>model 类</h3>
-                                <figure class="highlight java">
-                                    <table>
-                                        <tr>
-                                            <td class="gutter">
-                                                <pre><div class="line">1</div><div class="line">2</div><div
-                                                        class="line">3</div><div class="line">4</div><div
-                                                        class="line">5</div><div class="line">6</div><div
-                                                        class="line">7</div><div class="line">8</div><div
-                                                        class="line">9</div><div class="line">10</div><div class="line">11</div><div
-                                                        class="line">12</div><div class="line">13</div><div
-                                                        class="line">14</div><div class="line">15</div><div
-                                                        class="line">16</div><div class="line">17</div><div
-                                                        class="line">18</div><div class="line">19</div><div
-                                                        class="line">20</div><div class="line">21</div><div
-                                                        class="line">22</div><div class="line">23</div><div
-                                                        class="line">24</div><div class="line">25</div><div
-                                                        class="line">26</div><div class="line">27</div><div
-                                                        class="line">28</div><div class="line">29</div><div
-                                                        class="line">30</div></pre>
-                                            </td>
-                                            <td class="code">
-                                                <pre><div class="line"><span class="meta">@XmlRootElement</span>(name = <span
-                                                        class="string">"Customer"</span>)</div><div class="line"><span
-                                                        class="keyword">public</span> <span class="class"><span
-                                                        class="keyword">class</span> <span class="title">Customer</span> </span>&#123;</div><div
-                                                        class="line"></div><div class="line">    <span class="keyword">private</span> <span
-                                                        class="keyword">long</span> id;</div><div class="line"></div><div
-                                                        class="line">    <span class="keyword">private</span> String name;</div><div
-                                                        class="line"></div><div class="line">    <span class="function"><span
-                                                        class="keyword">public</span> <span
-                                                        class="title">Customer</span><span
-                                                        class="params">()</span></span>&#123;&#125;</div><div
-                                                        class="line"></div><div class="line">    <span class="function"><span
-                                                        class="keyword">public</span> <span
-                                                        class="title">Customer</span><span class="params">(<span
-                                                        class="keyword">long</span> id, String name)</span> </span>&#123;</div><div
-                                                        class="line">        <span class="keyword">this</span>.id = id;</div><div
-                                                        class="line">        <span class="keyword">this</span>.name = name;</div><div
-                                                        class="line">    &#125;</div><div class="line"></div><div
-                                                        class="line">    <span class="function"><span class="keyword">public</span> <span
-                                                        class="keyword">long</span> <span
-                                                        class="title">getId</span><span class="params">()</span> </span>&#123;</div><div
-                                                        class="line">        <span
-                                                        class="keyword">return</span> id;</div><div class="line">    &#125;</div><div
-                                                        class="line"></div><div class="line">    <span class="function"><span
-                                                        class="keyword">public</span> <span class="keyword">void</span> <span
-                                                        class="title">setId</span><span class="params">(<span
-                                                        class="keyword">long</span> id)</span> </span>&#123;</div><div
-                                                        class="line">        <span class="keyword">this</span>.id = id;</div><div
-                                                        class="line">    &#125;</div><div class="line"></div><div
-                                                        class="line">    <span class="function"><span class="keyword">public</span> String <span
-                                                        class="title">getName</span><span
-                                                        class="params">()</span> </span>&#123;</div><div class="line">        <span
-                                                        class="keyword">return</span> name;</div><div class="line">    &#125;</div><div
-                                                        class="line"></div><div class="line">    <span class="function"><span
-                                                        class="keyword">public</span> <span class="keyword">void</span> <span
-                                                        class="title">setName</span><span
-                                                        class="params">(String name)</span> </span>&#123;</div><div
-                                                        class="line">        <span class="keyword">this</span>.name = name;</div><div
-                                                        class="line">    &#125;</div><div
-                                                        class="line">&#125;</div></pre>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </figure>
-                                <p>@XmlRootElement标签用于生成 xml 格式</p>
-                                <h3 id="Spring-风格的-REST"><a href="#Spring-风格的-REST" class="headerlink"
-                                                            title="Spring 风格的 REST"></a>Spring 风格的 REST</h3>
-                                <p>在 com.aidansu.demo.controller 包下创建 CustomerControllerBySpring 类<br>
-                                    <figure class="highlight java">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><div class="line">1</div><div class="line">2</div><div
-                                                            class="line">3</div><div class="line">4</div><div
-                                                            class="line">5</div><div class="line">6</div><div
-                                                            class="line">7</div><div class="line">8</div><div
-                                                            class="line">9</div><div class="line">10</div><div
-                                                            class="line">11</div><div class="line">12</div><div
-                                                            class="line">13</div><div class="line">14</div></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><div class="line"><span
-                                                            class="meta">@RequestMapping</span>(<span class="string">"/spring"</span>)</div><div
-                                                            class="line"><span class="meta">@Controller</span></div><div
-                                                            class="line"><span class="keyword">public</span> <span
-                                                            class="class"><span class="keyword">class</span> <span
-                                                            class="title">CustomerControllerBySpring</span> </span>&#123;</div><div
-                                                            class="line"></div><div class="line">    <span
-                                                            class="keyword">private</span> <span
-                                                            class="keyword">static</span> <span
-                                                            class="keyword">final</span> String template = <span
-                                                            class="string">"Hello, %s!"</span>;</div><div class="line">    <span
-                                                            class="keyword">private</span> <span
-                                                            class="keyword">final</span> AtomicLong counter = <span
-                                                            class="keyword">new</span> AtomicLong();</div><div
-                                                            class="line"></div><div class="line">    <span class="meta">@RequestMapping</span>(value =<span
-                                                            class="string">"/greeting"</span>, method = RequestMethod.GET, produces = <span
-                                                            class="string">"application/json; charset=utf-8"</span>)</div><div
-                                                            class="line">    <span
-                                                            class="meta">@ResponseBody</span></div><div class="line">    <span
-                                                            class="function"><span class="keyword">public</span> Customer <span
-                                                            class="title">greeting</span><span class="params">(@RequestParam(value=<span
-                                                            class="string">"name"</span>, defaultValue=<span
-                                                            class="string">"World"</span>)</span> String name) </span>&#123;</div><div
-                                                            class="line">        <span
-                                                            class="keyword">return</span> <span
-                                                            class="keyword">new</span> Customer(counter.incrementAndGet(), String.format(template, name));</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">&#125;</div></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                </p>
-                                <p>@是java注解;<br>@RequestMapping
-                                    是一个用来处理请求地址映射的注解，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。<br>@Controller
-                                    用于标注控制层组件<br>@ResponseBody 返回JSON，XML或自定义mediaType内容到页面</p>
-                                <h3 id="JAX-RS-风格的-REST"><a href="#JAX-RS-风格的-REST" class="headerlink"
-                                                            title="JAX-RS 风格的 REST"></a>JAX-RS 风格的 REST</h3>
-                                <p>在 com.aidansu.demo.controller 包下创建 CustomerControllerByCXF 类<br>
-                                    <figure class="highlight java">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><div class="line">1</div><div class="line">2</div><div
-                                                            class="line">3</div><div class="line">4</div><div
-                                                            class="line">5</div><div class="line">6</div><div
-                                                            class="line">7</div><div class="line">8</div><div
-                                                            class="line">9</div><div class="line">10</div><div
-                                                            class="line">11</div><div class="line">12</div><div
-                                                            class="line">13</div><div class="line">14</div><div
-                                                            class="line">15</div></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><div class="line"><span class="meta">@Path</span>(<span
-                                                            class="string">"/cxf"</span>)</div><div class="line"><span
-                                                            class="meta">@Controller</span></div><div class="line"><span
-                                                            class="keyword">public</span> <span class="class"><span
-                                                            class="keyword">class</span> <span class="title">CustomerControllerByCXF</span> </span>&#123;</div><div
-                                                            class="line"></div><div class="line">    <span
-                                                            class="keyword">private</span> <span
-                                                            class="keyword">static</span> <span
-                                                            class="keyword">final</span> String template = <span
-                                                            class="string">"Hello, %s!"</span>;</div><div class="line">    <span
-                                                            class="keyword">private</span> <span
-                                                            class="keyword">final</span> AtomicLong counter = <span
-                                                            class="keyword">new</span> AtomicLong();</div><div
-                                                            class="line"></div><div class="line">    <span class="meta">@GET</span></div><div
-                                                            class="line">    <span class="meta">@Path</span>(<span
-                                                            class="string">"/greeting"</span>)</div><div class="line">    <span
-                                                            class="meta">@Produces</span>(MediaType.APPLICATION_JSON)</div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> Customer <span class="title">greeting</span><span
-                                                            class="params">(@DefaultValue(<span
-                                                            class="string">"World"</span>)</span> @<span class="title">FormParam</span><span
-                                                            class="params">(<span class="string">"name"</span>)</span> String name) </span>&#123;</div><div
-                                                            class="line">        <span
-                                                            class="keyword">return</span> <span
-                                                            class="keyword">new</span> Customer(counter.incrementAndGet(), String.format(template, name));</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">&#125;</div></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                </p>
-                                <p>JAX-RS 也有自己的标注语义：<br>@Path 将URL从 “/cxf 路径的请求映射到该接口<br>@Produces 该接口方法默认返回 xml,我们可以制定为
-                                    MediaType.APPLICATION_JSON 返回 json 数据<br>@GET 这个方法处理 GET 请求<br>@Path(“/greeting”) 将
-                                    “/cxf/greeting” 的请求映射到 greeting 函数调用<br>@FormParam(“name”)
-                                    获取的参数，@DefaultValue(“World”) 可以定义默认返回值</p>
-                                <h3 id="Application-启动类"><a href="#Application-启动类" class="headerlink"
-                                                            title="Application 启动类"></a>Application 启动类</h3>
-                                <figure class="highlight java">
-                                    <table>
-                                        <tr>
-                                            <td class="gutter">
-                                                <pre><div class="line">1</div><div class="line">2</div><div
-                                                        class="line">3</div><div class="line">4</div><div
-                                                        class="line">5</div><div class="line">6</div><div
-                                                        class="line">7</div><div class="line">8</div><div
-                                                        class="line">9</div><div class="line">10</div><div class="line">11</div><div
-                                                        class="line">12</div><div class="line">13</div><div
-                                                        class="line">14</div><div class="line">15</div><div
-                                                        class="line">16</div><div class="line">17</div><div
-                                                        class="line">18</div><div class="line">19</div><div
-                                                        class="line">20</div><div class="line">21</div><div
-                                                        class="line">22</div><div class="line">23</div></pre>
-                                            </td>
-                                            <td class="code">
-                                                <pre><div class="line"><span class="meta">@SpringBootApplication</span></div><div
-                                                        class="line"><span class="keyword">public</span> <span
-                                                        class="class"><span class="keyword">class</span> <span
-                                                        class="title">Application</span> </span>&#123;</div><div
-                                                        class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div
-                                                        class="line">    <span
-                                                        class="keyword">private</span> Bus bus;</div><div
-                                                        class="line"></div><div class="line">    <span class="function"><span
-                                                        class="keyword">public</span> <span
-                                                        class="keyword">static</span> <span class="keyword">void</span> <span
-                                                        class="title">main</span><span
-                                                        class="params">(String[] args)</span> </span>&#123;</div><div
-                                                        class="line">        SpringApplication.run(Application.class, args);</div><div
-                                                        class="line">    &#125;</div><div class="line"></div><div
-                                                        class="line">    <span class="meta">@Bean</span></div><div
-                                                        class="line">    <span class="function"><span class="keyword">public</span> Server <span
-                                                        class="title">rsServer</span><span
-                                                        class="params">()</span> </span>&#123;</div><div class="line">        JAXRSServerFactoryBean endpoint = <span
-                                                        class="keyword">new</span> JAXRSServerFactoryBean();</div><div
-                                                        class="line">        endpoint.setBus(bus);</div><div
-                                                        class="line">        endpoint.setServiceBeans(Arrays.&lt;Object&gt;asList(<span
-                                                        class="keyword">new</span> CustomerControllerByCXF()));</div><div
-                                                        class="line">        endpoint.setProviders(Arrays.&lt;Object&gt;asList(</div><div
-                                                        class="line">                <span class="keyword">new</span> JacksonJsonProvider(),</div><div
-                                                        class="line">                <span class="keyword">new</span> JAXBElementProvider()</div><div
-                                                        class="line">        ));</div><div class="line">        endpoint.setAddress(<span
-                                                        class="string">"/"</span>);</div><div class="line">        <span
-                                                        class="keyword">return</span> endpoint.create();</div><div
-                                                        class="line">    &#125;</div><div
-                                                        class="line">&#125;</div></pre>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </figure>
-                                <h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3>
-                                <p>Spring 风格的： <a href="http://localhost:8080/spring/greeting?name=aidansu"
-                                                  target="_blank" rel="external">http://localhost:8080/spring/greeting?name=aidansu</a><br>JAX-RS
-                                    风格的： <a href="http://localhost:8080/services/cxf/greeting?name=aidansu"
-                                            target="_blank" rel="external">http://localhost:8080/services/cxf/greeting?name=aidansu</a>
-                                </p>
-                                <p>这里需要注意的是 JAX-RS 风格的 REST 需要在端口号后面添加 /services </p>
-                                <p>本次项目 REST-Service 的项目代码已经放在 github 上，有需要的同学可以下载查看。地址： <a
-                                        href="https://github.com/aidansu/REST-Service" target="_blank" rel="external">https://github.com/aidansu/REST-Service</a>
-                                </p>
-                                <p>想了解更多关于 RESTful 信息的可以查看最新的官方文档<br>Spring：<a
-                                        href="https://spring.io/guides/gs/rest-service/" target="_blank" rel="external">https://spring.io/guides/gs/rest-service/</a><br>JAX-RS：<a
-                                        href="http://cxf.apache.org/index.html" target="_blank" rel="external">http://cxf.apache.org/index.html</a>
-                                </p>
-                                <p>完！</p>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
+          
+            <a href="/tags/RESTful/" rel="tag"># RESTful</a>
+          
+            <a href="/tags/JAX-RS/" rel="tag"># JAX-RS</a>
+          
+            <a href="/tags/CXF/" rel="tag"># CXF</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/spring-mvc-mysql-jpa/" rel="next" title="Spring MVC 连接 MySQL 数据库 JPA">
+                <i class="fa fa-chevron-left"></i> Spring MVC 连接 MySQL 数据库 JPA
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/building-a-restful-web-service-client/" rel="prev" title="构建 RESTful Service Client">
+                构建 RESTful Service Client <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
 
 
-                            </div>
 
-                            <div>
-
-
-                            </div>
-
-                            <div>
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
-                                <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-                                    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
-                                    <button id="rewardButton" disable="enable"
-                                            onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-                                        <span>赏</span>
-                                    </button>
-                                    <div id="QR" style="display: none;">
-
-                                        <div id="wechat" style="display: inline-block">
-                                            <img id="wechat_qr" src="/images/pay/tenpay.png" alt="aidan WeChat Pay"/>
-                                            <p>微信打赏</p>
-                                        </div>
+          </div>
+          
 
 
-                                        <div id="alipay" style="display: inline-block">
-                                            <img id="alipay_qr" src="/images/pay/alipay.png" alt="aidan Alipay"/>
-                                            <p>支付宝打赏</p>
-                                        </div>
-
-                                    </div>
-                                </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
 
 
-                            </div>
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
 
-                            <div>
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
 
+      
 
-                                <ul class="post-copyright">
-                                    <li class="post-copyright-author">
-                                        <strong>本文作者：</strong>
-                                        aidan
-                                    </li>
-                                    <li class="post-copyright-link">
-                                        <strong>本文链接：</strong>
-                                        <a href="http://www.aidansu.com/2017/building-a-restfu-web-service/"
-                                           title="构建 RESTful Service">http://www.aidansu.com/2017/building-a-restfu-web-service/</a>
-                                    </li>
-                                    <li class="post-copyright-license">
-                                        <strong>版权声明： </strong>
-                                        本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/"
-                                                             rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a>
-                                        许可协议。转载请注明出处！
-                                    </li>
-                                </ul>
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="aidan" />
+          <p class="site-author-name" itemprop="name">aidan</p>
+           
+              <p class="site-description motion-element" itemprop="description">沉迷学习无法自拔</p>
+          
+        </div>
+        <nav class="site-state motion-element">
 
-                            </div>
-
-                            <footer class="post-footer">
-
-                                <div class="post-tags">
-
-                                    <a href="/tags/Java/" rel="tag"># Java</a>
-
-                                    <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
-
-                                    <a href="/tags/RESTful/" rel="tag"># RESTful</a>
-
-                                    <a href="/tags/JAX-RS/" rel="tag"># JAX-RS</a>
-
-                                    <a href="/tags/CXF/" rel="tag"># CXF</a>
-
-                                </div>
-
-
-                                <div class="post-nav">
-                                    <div class="post-nav-next post-nav-item">
-
-                                        <a href="/2017/spring-mvc-mysql-jpa/" rel="next"
-                                           title="Spring MVC 连接 MySQL 数据库 JPA">
-                                            <i class="fa fa-chevron-left"></i> Spring MVC 连接 MySQL 数据库 JPA
-                                        </a>
-
-                                    </div>
-
-                                    <span class="post-nav-divider"></span>
-
-                                    <div class="post-nav-prev post-nav-item">
-
-                                        <a href="/2017/building-a-restful-web-service-client/" rel="prev"
-                                           title="构建 RESTful Service Client">
-                                            构建 RESTful Service Client <i class="fa fa-chevron-right"></i>
-                                        </a>
-
-                                    </div>
-                                </div>
-
-
-                            </footer>
-                        </article>
-
-
-                        <div class="post-spread">
-
-                        </div>
-                    </div>
-
-
-                </div>
-
-
-                <div class="comments" id="comments">
-
-                </div>
-
-
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
             </div>
+          
 
-
-            <div class="sidebar-toggle">
-                <div class="sidebar-toggle-line-wrap">
-                    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-                    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-                    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-                </div>
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
             </div>
+          
 
-            <aside id="sidebar" class="sidebar">
-                <div class="sidebar-inner">
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
 
+        </nav>
 
-                    <ul class="sidebar-nav motion-element">
-                        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-                            文章目录
-                        </li>
-                        <li class="sidebar-nav-overview" data-target="site-overview">
-                            站点概览
-                        </li>
-                    </ul>
+        
 
-
-                    <section class="site-overview sidebar-panel">
-                        <div class="site-author motion-element" itemprop="author" itemscope
-                             itemtype="http://schema.org/Person">
-                            <img class="site-author-image" itemprop="image"
-                                 src="/images/avatar.png"
-                                 alt="aidan"/>
-                            <p class="site-author-name" itemprop="name">aidan</p>
-
-                            <p class="site-description motion-element" itemprop="description">沉迷学习无法自拔</p>
-
-                        </div>
-                        <nav class="site-state motion-element">
-
-
-                            <div class="site-state-item site-state-posts">
-                                <a href="/archives">
-                                    <span class="site-state-item-count">21</span>
-                                    <span class="site-state-item-name">日志</span>
-                                </a>
-                            </div>
-
-
-                            <div class="site-state-item site-state-categories">
-                                <a href="/categories/index.html">
-                                    <span class="site-state-item-count">2</span>
-                                    <span class="site-state-item-name">分类</span>
-                                </a>
-                            </div>
-
-
-                            <div class="site-state-item site-state-tags">
-                                <a href="/tags/index.html">
-                                    <span class="site-state-item-count">36</span>
-                                    <span class="site-state-item-name">标签</span>
-                                </a>
-                            </div>
-
-
-                        </nav>
-
-
-                        <div class="links-of-author motion-element">
+        <div class="links-of-author motion-element">
           
             
               <span class="links-of-author-item">
@@ -851,8 +600,8 @@
                   GitHub
                 </a>
               </span>
-
-                            <span class="links-of-author-item">
+            
+              <span class="links-of-author-item">
                 <a href="http://weibo.com/shx0999" target="_blank" title="微博">
                   
                     <i class="fa fa-fw fa-weibo"></i>
@@ -860,8 +609,8 @@
                   微博
                 </a>
               </span>
-
-                            <span class="links-of-author-item">
+            
+              <span class="links-of-author-item">
                 <a href="https://www.douban.com/people/77881755/" target="_blank" title="豆瓣">
                   
                     <i class="fa fa-fw fa-globe"></i>
@@ -869,8 +618,8 @@
                   豆瓣
                 </a>
               </span>
-
-                            <span class="links-of-author-item">
+            
+              <span class="links-of-author-item">
                 <a href="https://www.zhihu.com/people/aidansu" target="_blank" title="知乎">
                   
                     <i class="fa fa-fw fa-globe"></i>
@@ -878,253 +627,330 @@
                   知乎
                 </a>
               </span>
-
-
-                        </div>
-
-
-                    </section>
-
-
-                    <!--noindex-->
-                    <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-                        <div class="post-toc">
-
-
-                            <div class="post-toc-content">
-                                <ol class="nav">
-                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                        href="#创建-REST-Service-服务端项目"><span
-                                            class="nav-number">1.</span> <span
-                                            class="nav-text">创建 REST-Service 服务端项目</span></a></li>
-                                    <li class="nav-item nav-level-3"><a class="nav-link" href="#pom-xml"><span
-                                            class="nav-number">2.</span> <span class="nav-text">pom.xml</span></a></li>
-                                    <li class="nav-item nav-level-3"><a class="nav-link" href="#model-类"><span
-                                            class="nav-number">3.</span> <span class="nav-text">model 类</span></a></li>
-                                    <li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-风格的-REST"><span
-                                            class="nav-number">4.</span> <span
-                                            class="nav-text">Spring 风格的 REST</span></a></li>
-                                    <li class="nav-item nav-level-3"><a class="nav-link" href="#JAX-RS-风格的-REST"><span
-                                            class="nav-number">5.</span> <span
-                                            class="nav-text">JAX-RS 风格的 REST</span></a></li>
-                                    <li class="nav-item nav-level-3"><a class="nav-link" href="#Application-启动类"><span
-                                            class="nav-number">6.</span> <span
-                                            class="nav-text">Application 启动类</span></a></li>
-                                    <li class="nav-item nav-level-3"><a class="nav-link" href="#运行"><span
-                                            class="nav-number">7.</span> <span class="nav-text">运行</span></a></li>
-                                </ol>
-                            </div>
-
-
-                        </div>
-                    </section>
-                    <!--/noindex-->
-
-
-                </div>
-            </aside>
-
-
+            
+          
         </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-REST-Service-服务端项目"><span class="nav-number">1.</span> <span class="nav-text">创建 REST-Service 服务端项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pom-xml"><span class="nav-number">2.</span> <span class="nav-text">pom.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#model-类"><span class="nav-number">3.</span> <span class="nav-text">model 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-风格的-REST"><span class="nav-number">4.</span> <span class="nav-text">Spring 风格的 REST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JAX-RS-风格的-REST"><span class="nav-number">5.</span> <span class="nav-text">JAX-RS 风格的 REST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Application-启动类"><span class="nav-number">6.</span> <span class="nav-text">Application 启动类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行"><span class="nav-number">7.</span> <span class="nav-text">运行</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
-        <div class="footer-inner">
-            <div class="copyright">
-
-                &copy;
-                <span itemprop="copyrightYear">2017</span>
-                <span class="with-love">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-                <span class="author" itemprop="copyrightHolder">aidan</span>
-            </div>
+  <span class="author" itemprop="copyrightHolder">aidan</span>
+</div>
 
-            <div>由<a class="theme-link" target="view_window" href="https://hexo.io">Hexo</a>强力驱动 | <a class="theme-link"
-                                                                                                      target="view_window"
-                                                                                                      href="http://www.miitbeian.gov.cn">粤ICP备12003586号</a>
-            </div>
+<div>由<a class="theme-link" target="view_window" href="https://hexo.io">Hexo</a>强力驱动  |  <a class="theme-link" target="view_window" href="https://beian.miit.gov.cn">粤ICP备12003586号</a></div>
 
 
-            <div class="busuanzi-count">
-                <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-
-                <span class="site-uv">
+  
+    <span class="site-uv">
       <i class="fa fa-user"></i>
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
       
     </span>
+  
 
-
-                <span class="site-pv">
+  
+    <span class="site-pv">
       <i class="fa fa-eye"></i>
       <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
       
     </span>
-
-            </div>
-
-
-        </div>
-    </footer>
-
-
-    <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-
-    </div>
-
-
+  
 </div>
 
 
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
 <script type="text/javascript">
-    if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-        window.Promise = null;
-    }
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
 
-<script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
 
-<script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
-<script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
 
-<script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
 
 
-<script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
-<script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-<script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-<script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
-<script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
-<script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-<script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
-<script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+  
 
 
-<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-<script>AV.initialize("0ogotNGayeLET66f2g9FHgTF-gzGzoHsz", "KKqUX6o78nUnwRCvsXCaNlns");</script>
-<script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("0ogotNGayeLET66f2g9FHgTF-gzGzoHsz", "KKqUX6o78nUnwRCvsXCaNlns");</script>
+  <script>
     function showTime(Counter) {
-        var query = new AV.Query(Counter);
-        var entries = [];
-        var $visitors = $(".leancloud_visitors");
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
 
-        $visitors.each(function () {
-            entries.push($(this).attr("id").trim());
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
         });
-
-        query.containedIn('url', entries);
-        query.find()
-            .done(function (results) {
-                var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-                if (results.length === 0) {
-                    $visitors.find(COUNT_CONTAINER_REF).text(0);
-                    return;
-                }
-
-                for (var i = 0; i < results.length; i++) {
-                    var item = results[i];
-                    var url = item.get('url');
-                    var time = item.get('time');
-                    var element = document.getElementById(url);
-
-                    $(element).find(COUNT_CONTAINER_REF).text(time);
-                }
-                for (var i = 0; i < entries.length; i++) {
-                    var url = entries[i];
-                    var element = document.getElementById(url);
-                    var countSpan = $(element).find(COUNT_CONTAINER_REF);
-                    if (countSpan.text() == '') {
-                        countSpan.text(0);
-                    }
-                }
-            })
-            .fail(function (object, error) {
-                console.log("Error: " + error.code + " " + error.message);
-            });
     }
 
     function addCount(Counter) {
-        var $visitors = $(".leancloud_visitors");
-        var url = $visitors.attr('id').trim();
-        var title = $visitors.attr('data-flag-title').trim();
-        var query = new AV.Query(Counter);
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
 
-        query.equalTo("url", url);
-        query.find({
-            success: function (results) {
-                if (results.length > 0) {
-                    var counter = results[0];
-                    counter.fetchWhenSave(true);
-                    counter.increment("time");
-                    counter.save(null, {
-                        success: function (counter) {
-                            var $element = $(document.getElementById(url));
-                            $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                        },
-                        error: function (counter, error) {
-                            console.log('Failed to save Visitor num, with error message: ' + error.message);
-                        }
-                    });
-                } else {
-                    var newcounter = new Counter();
-                    /* Set ACL */
-                    var acl = new AV.ACL();
-                    acl.setPublicReadAccess(true);
-                    acl.setPublicWriteAccess(true);
-                    newcounter.setACL(acl);
-                    /* End Set ACL */
-                    newcounter.set("title", title);
-                    newcounter.set("url", url);
-                    newcounter.set("time", 1);
-                    newcounter.save(null, {
-                        success: function (newcounter) {
-                            var $element = $(document.getElementById(url));
-                            $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                        },
-                        error: function (newcounter, error) {
-                            console.log('Failed to create');
-                        }
-                    });
-                }
-            },
-            error: function (error) {
-                console.log('Error:' + error.code + " " + error.message);
-            }
-        });
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
     }
 
-    $(function () {
-        var Counter = AV.Object.extend("Counter");
-        if ($('.leancloud_visitors').length == 1) {
-            addCount(Counter);
-        } else if ($('.post-title-link').length > 1) {
-            showTime(Counter);
-        }
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
     });
-</script>
+  </script>
 
+
+
+  
+
+  
+
+  
+
+  
 
 </body>
 </html>

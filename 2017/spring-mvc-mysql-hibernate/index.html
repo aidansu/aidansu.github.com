@@ -1,219 +1,296 @@
 <!doctype html>
 
 
+
+  
+
+
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
-    <meta http-equiv="Cache-Control" content="no-transform"/>
-    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
-    <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
 
 
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
-          rel="stylesheet" type="text/css">
 
 
-    <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"/>
-
-    <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css"/>
 
 
-    <meta name="keywords" content="Java,Spring,MySQL,Hibernate,"/>
 
 
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0"/>
 
 
-    <meta name="description"
-          content="在上一篇博客《Spring MVC 连接 MySQL 数据库 JDBC》中介绍了在 Spring MVC 中使用 JDBC 来链接数据库。JDBC 可以说是访问数据库的最原始、最直接的方法。这种方式的特点是运行效率高，而缺点是程序代码中嵌入大量的 SQL 语句，使得项目难以维护，虽然 MVC 的分层结构把数据持久层单独出来，把数据库访问操作封装起来，业务层只需调用 API 就可以了。但是，如果数据">
-    <meta name="keywords" content="Java,Spring,MySQL,Hibernate">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Spring MVC 连接 MySQL 数据库 Hibernate">
-    <meta property="og:url" content="http://www.aidansu.com/2017/spring-mvc-mysql-hibernate/index.html">
-    <meta property="og:site_name" content="AidanSu">
-    <meta property="og:description"
-          content="在上一篇博客《Spring MVC 连接 MySQL 数据库 JDBC》中介绍了在 Spring MVC 中使用 JDBC 来链接数据库。JDBC 可以说是访问数据库的最原始、最直接的方法。这种方式的特点是运行效率高，而缺点是程序代码中嵌入大量的 SQL 语句，使得项目难以维护，虽然 MVC 的分层结构把数据持久层单独出来，把数据库访问操作封装起来，业务层只需调用 API 就可以了。但是，如果数据">
-    <meta property="og:locale" content="zh-Hans">
-    <meta property="og:image" content="http://www.aidansu.com/images/2017/spring-mvc-mysql-hibernate-run.png">
-    <meta property="og:updated_time" content="2017-09-13T11:21:26.000Z">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Spring MVC 连接 MySQL 数据库 Hibernate">
-    <meta name="twitter:description"
-          content="在上一篇博客《Spring MVC 连接 MySQL 数据库 JDBC》中介绍了在 Spring MVC 中使用 JDBC 来链接数据库。JDBC 可以说是访问数据库的最原始、最直接的方法。这种方式的特点是运行效率高，而缺点是程序代码中嵌入大量的 SQL 语句，使得项目难以维护，虽然 MVC 的分层结构把数据持久层单独出来，把数据库访问操作封装起来，业务层只需调用 API 就可以了。但是，如果数据">
-    <meta name="twitter:image" content="http://www.aidansu.com/images/2017/spring-mvc-mysql-hibernate-run.png">
 
 
-    <script type="text/javascript" id="hexo.configurations">
-        var NexT = window.NexT || {};
-        var CONFIG = {
-            root: '/',
-            scheme: 'Pisces',
-            sidebar: {
-                "position": "left",
-                "display": "post",
-                "offset": 12,
-                "offset_float": 0,
-                "b2t": false,
-                "scrollpercent": false
-            },
-            fancybox: true,
-            motion: true,
-            duoshuo: {
-                userId: '0',
-                author: '博主'
-            },
-            algolia: {
-                applicationID: '',
-                apiKey: '',
-                indexName: '',
-                hits: {"per_page": 10},
-                labels: {
-                    "input_placeholder": "Search for Posts",
-                    "hits_empty": "We didn't find any results for the search: ${query}",
-                    "hits_stats": "${hits} results found in ${time} ms"
-                }
-            }
-        };
-    </script>
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
-    <link rel="canonical" href="http://www.aidansu.com/2017/spring-mvc-mysql-hibernate/"/>
 
 
-    <title> Spring MVC 连接 MySQL 数据库 Hibernate | AidanSu </title>
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java,Spring,MySQL,Hibernate," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="在上一篇博客《Spring MVC 连接 MySQL 数据库 JDBC》中介绍了在 Spring MVC 中使用 JDBC 来链接数据库。JDBC 可以说是访问数据库的最原始、最直接的方法。这种方式的特点是运行效率高，而缺点是程序代码中嵌入大量的 SQL 语句，使得项目难以维护，虽然 MVC 的分层结构把数据持久层单独出来，把数据库访问操作封装起来，业务层只需调用 API 就可以了。但是，如果数据">
+<meta name="keywords" content="Java,Spring,MySQL,Hibernate">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring MVC 连接 MySQL 数据库 Hibernate">
+<meta property="og:url" content="http://www.aidansu.com/2017/spring-mvc-mysql-hibernate/index.html">
+<meta property="og:site_name" content="AidanSu">
+<meta property="og:description" content="在上一篇博客《Spring MVC 连接 MySQL 数据库 JDBC》中介绍了在 Spring MVC 中使用 JDBC 来链接数据库。JDBC 可以说是访问数据库的最原始、最直接的方法。这种方式的特点是运行效率高，而缺点是程序代码中嵌入大量的 SQL 语句，使得项目难以维护，虽然 MVC 的分层结构把数据持久层单独出来，把数据库访问操作封装起来，业务层只需调用 API 就可以了。但是，如果数据">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.aidansu.com/images/2017/spring-mvc-mysql-hibernate-run.png">
+<meta property="og:updated_time" content="2017-09-13T11:21:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring MVC 连接 MySQL 数据库 Hibernate">
+<meta name="twitter:description" content="在上一篇博客《Spring MVC 连接 MySQL 数据库 JDBC》中介绍了在 Spring MVC 中使用 JDBC 来链接数据库。JDBC 可以说是访问数据库的最原始、最直接的方法。这种方式的特点是运行效率高，而缺点是程序代码中嵌入大量的 SQL 语句，使得项目难以维护，虽然 MVC 的分层结构把数据持久层单独出来，把数据库访问操作封装起来，业务层只需调用 API 就可以了。但是，如果数据">
+<meta name="twitter:image" content="http://www.aidansu.com/images/2017/spring-mvc-mysql-hibernate-run.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.aidansu.com/2017/spring-mvc-mysql-hibernate/"/>
+
+
+
+
+
+  <title> Spring MVC 连接 MySQL 数据库 Hibernate | AidanSu </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
+  
 
-<div class="container sidebar-position-left page-post-detail ">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-        <div class="header-inner">
-            <div class="site-brand-wrapper">
-                <div class="site-meta ">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AidanSu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
 
 
-                    <div class="custom-logo-site-title">
-                        <a href="/" class="brand" rel="start">
-                            <span class="logo-line-before"><i></i></span>
-                            <span class="site-title">AidanSu</span>
-                            <span class="logo-line-after"><i></i></span>
-                        </a>
-                    </div>
 
-                    <p class="site-subtitle">Quick notes</p>
-
-                </div>
-
-                <div class="site-nav-toggle">
-                    <button>
-                        <span class="btn-bar"></span>
-                        <span class="btn-bar"></span>
-                        <span class="btn-bar"></span>
-                    </button>
-                </div>
-            </div>
-
-            <nav class="site-nav">
-
-
-                <ul id="menu" class="menu">
-
-
-                    <li class="menu-item menu-item-home">
-                        <a href="/" rel="section">
-
-                            <i class="menu-item-icon fa fa-fw fa-home"></i> <br/>
-
-                            首页
-                        </a>
-                    </li>
-
-
-                    <li class="menu-item menu-item-archives">
-                        <a href="/archives" rel="section">
-
-                            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>
-
-                            归档
-                        </a>
-                    </li>
-
-
-                    <li class="menu-item menu-item-tags">
-                        <a href="/tags" rel="section">
-
-                            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>
-
-                            标签
-                        </a>
-                    </li>
-
-
-                    <li class="menu-item menu-item-about">
-                        <a href="/about" rel="section">
-
-                            <i class="menu-item-icon fa fa-fw fa-user"></i> <br/>
-
-                            关于
-                        </a>
-                    </li>
-
-
-                </ul>
-
-
-            </nav>
-
-
-        </div>
+ </div>
     </header>
 
     <main id="main" class="main">
-        <div class="main-inner">
-            <div class="content-wrap">
-                <div id="content" class="content">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
+  <div id="posts" class="posts-expand">
+    
 
-                    <div id="posts" class="posts-expand">
+  
 
+  
+  
+  
 
-                        <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-                            <link itemprop="mainEntityOfPage"
-                                  href="http://www.aidansu.com/2017/spring-mvc-mysql-hibernate/">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.aidansu.com/2017/spring-mvc-mysql-hibernate/">
 
-                            <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="aidan">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
-                            <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="AidanSu">
     </span>
 
+    
+      <header class="post-header">
 
-                            <header class="post-header">
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Spring MVC 连接 MySQL 数据库 Hibernate
+              
+            
+          </h1>
+        
 
-
-                                <h1 class="post-title" itemprop="name headline">
-
-
-                                    Spring MVC 连接 MySQL 数据库 Hibernate
-
-
-                                </h1>
-
-
-                                <div class="post-meta">
+        <div class="post-meta">
           <span class="post-time">
             
               <span class="post-meta-item-icon">
@@ -232,8 +309,8 @@
             
           </span>
 
-
-                                    <span class="post-category">
+          
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -254,10 +331,15 @@
                 
               
             </span>
+          
 
+          
+            
+          
 
-                                    <span id="/2017/spring-mvc-mysql-hibernate/" class="leancloud_visitors"
-                                          data-flag-title="Spring MVC 连接 MySQL 数据库 Hibernate">
+          
+          
+             <span id="/2017/spring-mvc-mysql-hibernate/" class="leancloud_visitors" data-flag-title="Spring MVC 连接 MySQL 数据库 Hibernate">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -267,1092 +349,243 @@
                
                  <span class="leancloud-visitors-count"></span>
              </span>
+          
 
-
-                                    <span class="post-meta-divider">|</span>
-                                    <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
 
 
-                                </div>
-                            </header>
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在上一篇博客《Spring MVC 连接 MySQL 数据库 JDBC》中介绍了在 Spring MVC 中使用 JDBC 来链接数据库。JDBC 可以说是访问数据库的最原始、最直接的方法。这种方式的特点是运行效率高，而缺点是程序代码中嵌入大量的 SQL 语句，使得项目难以维护，虽然 MVC 的分层结构把数据持久层单独出来，把数据库访问操作封装起来，业务层只需调用 API 就可以了。但是，如果数据模型非常复杂，代码量较大，特别是访问字段较多的表的时候，代码显得繁琐、累赘，容易出错，就需要非常专业和有经验的开发人员来开发，还需要有足够的时间。</p>
+<p>开发人员不是只需要专注于业务逻辑的实现吗？有没有中间件可以做这个事情呢？是的，目前已经有好多种现成的持久化中间件可以选择，有：Hiherante，TopLink，JDO等，其中 Hiberante 最受欢迎，它是基于 Java 的开发源代码的持久化中间件，对 JDBC 做了轻量级封装，不仅提供了 ORM 映射服务，还提供数据查询和缓存功能，开发人员可以方便地通过它提供的 API 来操纵数据库。大大减少了开发的工作量，降低了持久化层开发的门槛。</p>
+<p>我们还是通过项目来学习简单的 Hiberante 链接 MySQL 数据库。可以使用上次的 <a href="https://github.com/aidansu/spring-mvc-mysql" target="_blank" rel="external">spring-mvc-mysql</a> 项目 JDBC 分支，修改 Dao 持久化层就可以了，这就是 MVC 分层结构的强大之处。<br><a id="more"></a></p>
+<h3 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h3><p>添加 Hiberante 所需的依赖<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- Hibernate --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hibernate<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hibernate-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;hibernate.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hibernate<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hibernate-entitymanager<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;hibernate.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="DataBaseConfig"><a href="#DataBaseConfig" class="headerlink" title="DataBaseConfig"></a>DataBaseConfig</h3><p>添加 Hibernate 事务管理器和 SessionFactory<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="meta">@PropertySource</span>(<span class="string">"classpath:config/application.properties"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DataBaseConfig</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String PROPERTY_NAME_DATABASE_DRIVER = <span class="string">"db.driver"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String PROPERTY_NAME_DATABASE_PASSWORD = <span class="string">"db.password"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String PROPERTY_NAME_DATABASE_URL = <span class="string">"db.url"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String PROPERTY_NAME_DATABASE_USERNAME = <span class="string">"db.username"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String PROPERTY_NAME_HIBERNATE_DIALECT = <span class="string">"hibernate.dialect"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String PROPERTY_NAME_HIBERNATE_FORMAT_SQL = <span class="string">"hibernate.format_sql"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO = <span class="string">"hibernate.hbm2ddl.auto"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String PROPERTY_NAME_HIBERNATE_NAMING_STRATEGY = <span class="string">"hibernate.ejb.naming_strategy"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String PROPERTY_NAME_HIBERNATE_SHOW_SQL = <span class="string">"hibernate.show_sql"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String PROPERTY_NAME_ENTITY_MANAGER_PACKAGES_TO_SCAN = <span class="string">"entity.manager.packages.to.scan"</span>;</div><div class="line"></div><div class="line">    <span class="meta">@Resource</span></div><div class="line">    <span class="keyword">private</span> Environment environment;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * Configures the data source.</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> DataSource.</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSource</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">final</span> HikariDataSource dataSource = <span class="keyword">new</span> HikariDataSource();</div><div class="line"></div><div class="line">        dataSource.setDriverClassName(environment.getRequiredProperty(PROPERTY_NAME_DATABASE_DRIVER));</div><div class="line">        dataSource.setJdbcUrl(environment.getRequiredProperty(PROPERTY_NAME_DATABASE_URL));</div><div class="line">        dataSource.setUsername(environment.getRequiredProperty(PROPERTY_NAME_DATABASE_USERNAME));</div><div class="line">        dataSource.setPassword(environment.getRequiredProperty(PROPERTY_NAME_DATABASE_PASSWORD));</div><div class="line"></div><div class="line">        <span class="keyword">return</span> dataSource;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * Spring JDBC Template</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> JdbcTemplate</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="function"><span class="keyword">public</span> JdbcTemplate <span class="title">jdbcTemplate</span><span class="params">()</span> </span>&#123;</div><div class="line">        JdbcTemplate jdbcTemplate = <span class="keyword">new</span> JdbcTemplate();</div><div class="line">        jdbcTemplate.setDataSource(dataSource());</div><div class="line">        <span class="keyword">return</span> jdbcTemplate;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * SessionFactory</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> LocalSessionFactoryBean</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="function"><span class="keyword">public</span> LocalSessionFactoryBean <span class="title">sessionFactory</span><span class="params">()</span></span>&#123;</div><div class="line">        LocalSessionFactoryBean localSessionFactoryBean = <span class="keyword">new</span> LocalSessionFactoryBean();</div><div class="line">        localSessionFactoryBean.setPackagesToScan(environment.getRequiredProperty(PROPERTY_NAME_ENTITY_MANAGER_PACKAGES_TO_SCAN));</div><div class="line">        localSessionFactoryBean.setDataSource(dataSource());</div><div class="line"></div><div class="line">        Properties hibernateProperties = <span class="keyword">new</span> Properties();</div><div class="line">        hibernateProperties.put(PROPERTY_NAME_HIBERNATE_DIALECT, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_DIALECT));</div><div class="line">        hibernateProperties.put(PROPERTY_NAME_HIBERNATE_FORMAT_SQL, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_FORMAT_SQL));</div><div class="line">        hibernateProperties.put(PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO));</div><div class="line">        hibernateProperties.put(PROPERTY_NAME_HIBERNATE_NAMING_STRATEGY, </div><div class="line">            environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_NAMING_STRATEGY));</div><div class="line">        hibernateProperties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL));</div><div class="line">        hibernateProperties.put(<span class="string">"hibernate.connection.CharSet"</span>, <span class="string">"UTF-8"</span>);</div><div class="line">        hibernateProperties.put(<span class="string">"hibernate.connection.characterEncoding"</span>, <span class="string">"UTF-8"</span>);</div><div class="line">        hibernateProperties.put(<span class="string">"hibernate.connection.useUnicode"</span>, <span class="string">"true"</span>);</div><div class="line"></div><div class="line">        localSessionFactoryBean.setHibernateProperties(hibernateProperties);</div><div class="line"></div><div class="line">        <span class="keyword">return</span>  localSessionFactoryBean;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * Transactio``` javanManager</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> HibernateTransactionManager</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="function"><span class="keyword">public</span> HibernateTransactionManager <span class="title">transactionManager</span><span class="params">()</span> </span>&#123;</div><div class="line">        HibernateTransactionManager hibernateTransactionManager = <span class="keyword">new</span> HibernateTransactionManager();</div><div class="line">        hibernateTransactionManager.setSessionFactory(sessionFactory().getObject());</div><div class="line"></div><div class="line">        <span class="keyword">return</span> hibernateTransactionManager;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="application-properties"><a href="#application-properties" class="headerlink" title="application.properties"></a>application.properties</h3><p>添加 Hiberante 配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">### Hibernate</span></div><div class="line">hibernate.dialect=org.hibernate.dialect.MySQL5Dialect</div><div class="line">hibernate.format_sql=<span class="literal">false</span></div><div class="line">hibernate.hbm2ddl.auto=update</div><div class="line">hibernate.ejb.naming_strategy=org.hibernate.cfg.ImprovedNamingStrategy</div><div class="line">hibernate.show_sql=<span class="literal">false</span></div><div class="line">hibernate.database=MYSQL</div><div class="line"></div><div class="line"><span class="comment">### Entity.Manager</span></div><div class="line">entity.manager.packages.to.scan=com.aidansu.demo.model</div></pre></td></tr></table></figure></p>
+<h3 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h3><p>给 User 类添加注解，删除 UserMapper 类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Entity</span></div><div class="line"><span class="meta">@Table</span>(name=<span class="string">"t_user"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Id</span></div><div class="line">    <span class="meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)</div><div class="line">    <span class="keyword">private</span> Long id;</div><div class="line">    <span class="keyword">private</span> String username;</div><div class="line">    <span class="keyword">private</span> String password;</div><div class="line">    <span class="keyword">private</span> String telephone;</div><div class="line">    <span class="meta">@Column</span>(name=<span class="string">"create_time"</span>)</div><div class="line">    <span class="keyword">private</span> Date createTime;</div><div class="line">    <span class="meta">@Column</span>(name=<span class="string">"last_login_time"</span>)</div><div class="line">    <span class="keyword">private</span> Date lastLoginTime;</div><div class="line">    <span class="meta">@Column</span>(name=<span class="string">"update_time"</span>)</div><div class="line">    <span class="keyword">private</span> Date updateTime;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String username, String password, String telephone, Date createTime, Date lastLoginTime, Date updateTime)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.username = username;</div><div class="line">        <span class="keyword">this</span>.password = password;</div><div class="line">        <span class="keyword">this</span>.telephone = telephone;</div><div class="line">        <span class="keyword">this</span>.createTime = createTime;</div><div class="line">        <span class="keyword">this</span>.lastLoginTime = lastLoginTime;</div><div class="line">        <span class="keyword">this</span>.updateTime = updateTime;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Long <span class="title">getId</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> id;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Long id)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.id = id;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> username;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsername</span><span class="params">(String username)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.username = username;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> password;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.password = password;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getTelephone</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> telephone;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTelephone</span><span class="params">(String telephone)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.telephone = telephone;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Date <span class="title">getCreateTime</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> createTime;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCreateTime</span><span class="params">(Date createTime)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.createTime = createTime;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Date <span class="title">getLastLoginTime</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> lastLoginTime;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLastLoginTime</span><span class="params">(Date lastLoginTime)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.lastLoginTime = lastLoginTime;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Date <span class="title">getUpdateTime</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> updateTime;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUpdateTime</span><span class="params">(Date updateTime)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.updateTime = updateTime;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Dao"><a href="#Dao" class="headerlink" title="Dao"></a>Dao</h3><p>创建一个 Hibernate 执行方法基础抽象类，封装了对象的增、删、查、改等操作。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseDAOHibernate</span>&lt;<span class="title">T</span>, <span class="title">ID</span> <span class="keyword">extends</span> <span class="title">Serializable</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    <span class="keyword">private</span> SessionFactory sessionFactory;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 获取模型类的抽象方法</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> 返回具体实现的模型类</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="keyword">protected</span> <span class="keyword">abstract</span> Class&lt;?&gt; getModelClass() ;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">protected</span> Session <span class="title">getSession</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> sessionFactory.openSession();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 创建或更新对象</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> obj 需要创建或更新的对象</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doCreateOrUpdateObject</span><span class="params">(Object obj)</span> </span>&#123;</div><div class="line">        Session session = sessionFactory.openSession();</div><div class="line">        Transaction tx = session.beginTransaction();</div><div class="line">        session.saveOrUpdate(obj);</div><div class="line">        tx.commit();</div><div class="line">        session.close();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 创建对象</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> obj 需要创建的对象</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span>	返回创建对象ID</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> Serializable <span class="title">doCreateObject</span><span class="params">(Object obj)</span> </span>&#123;</div><div class="line">        Session session = sessionFactory.openSession();</div><div class="line">        Transaction tx = session.beginTransaction();</div><div class="line">        Serializable serializable = session.save(obj);</div><div class="line">        tx.commit();</div><div class="line">        session.close();</div><div class="line">        <span class="keyword">return</span> serializable;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 更新对象</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> obj 需要更新的对象</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doUpdateObject</span><span class="params">(Object obj)</span> </span>&#123;</div><div class="line">        Session session = sessionFactory.openSession();</div><div class="line">        Transaction tx = session.beginTransaction();</div><div class="line">        session.update(obj);</div><div class="line">        tx.commit();</div><div class="line">        session.close();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 删除对象</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> obj 需要删除的对象</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doDeleteObject</span><span class="params">(Object obj)</span> </span>&#123;</div><div class="line">        Session session = sessionFactory.openSession();</div><div class="line">        Transaction tx = session.beginTransaction();</div><div class="line">        session.delete(obj);</div><div class="line">        tx.commit();</div><div class="line">        session.close();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 根据id查找对象</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> id 需要查找的对象ID</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span>	需要查找的对象</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> Object <span class="title">doFindObjectById</span><span class="params">(Serializable id)</span> </span>&#123;</div><div class="line">        Session session = sessionFactory.openSession();</div><div class="line">        Transaction tx = session.beginTransaction();</div><div class="line">        Object object = session.get(<span class="keyword">this</span>.getModelClass(), id);</div><div class="line">        tx.commit();</div><div class="line">        session.close();</div><div class="line">        <span class="keyword">return</span> object;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 根据id查找指定对象</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> clazz 指定需查找的对象类</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> id 需要查找的对象ID</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span>	需要查找的对象</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> Object <span class="title">doFindObjectById</span><span class="params">(Class&lt;?&gt; clazz, Serializable id)</span> </span>&#123;</div><div class="line">        Session session = sessionFactory.openSession();</div><div class="line">        Transaction tx = session.beginTransaction();</div><div class="line">        Object object = session.get(clazz, id);</div><div class="line">        tx.commit();</div><div class="line">        session.close();</div><div class="line">        <span class="keyword">return</span> object;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 查找所有对象</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span>	需要查找的对象列表</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> List&lt;T&gt; <span class="title">doFindObjects</span><span class="params">()</span> </span>&#123;</div><div class="line">        Session session = sessionFactory.openSession();</div><div class="line">        Transaction tx = session.beginTransaction();</div><div class="line">        Query query = session.createQuery(<span class="string">"from "</span>+getModelClass().getName());</div><div class="line">        List&lt;T&gt; list = query.list();</div><div class="line">        tx.commit();</div><div class="line">        session.close();</div><div class="line">        <span class="keyword">return</span> list;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 统计某个对象集合的总数</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> 记录总数</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">doCountObject</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> result ;</div><div class="line">        Session session = sessionFactory.openSession();</div><div class="line">        Transaction tx = session.beginTransaction();</div><div class="line">        String hql = <span class="string">"select count(*) from "</span> + getModelClass().getName();</div><div class="line">        Query query = session.createQuery(hql);</div><div class="line">        Long resultLonger = (Long) query.list().get(<span class="number">0</span>);</div><div class="line">        result = resultLonger.intValue();</div><div class="line">        tx.commit();</div><div class="line">        session.close();</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 通过HQL，根据模糊查询条件，统计记录数</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> properties 对象属性</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> values 需要查询的对象属性对应的值条件</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span>	统计数</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">doHQLCountObject</span><span class="params">(String[] properties, Object[] values)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</div><div class="line">        Session session = sessionFactory.openSession();</div><div class="line">        Transaction tx = session.beginTransaction();</div><div class="line">        String hql = <span class="string">"select count(*) from "</span> + <span class="keyword">this</span>.getModelClass().getName()+ <span class="string">" where 1=1 "</span>;</div><div class="line">        <span class="comment">//组装hql条件字符串</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; properties.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (i == <span class="number">0</span>)</div><div class="line">                hql += <span class="string">" and "</span> + properties[i] + <span class="string">" like :"</span> + properties[i] ;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                hql += <span class="string">" or "</span> + properties[i] + <span class="string">" like :"</span> + properties[i] ;</div><div class="line">        &#125;</div><div class="line">        Query query = session.createQuery(hql);</div><div class="line">        <span class="comment">//设置查询条件值</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; properties.length; i++) &#123;</div><div class="line">            query.setParameter(properties[i] , <span class="string">"%"</span> +  values[i] + <span class="string">"%"</span>);</div><div class="line">        &#125;</div><div class="line">        Long resultLonger = (Long) query.list().get(<span class="number">0</span>);</div><div class="line">        result = resultLonger.intValue();</div><div class="line">        tx.commit();</div><div class="line">        session.close();</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>修改 UserDAOImpl 类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Repository</span>(<span class="string">"UserDAO"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDAOImpl</span> <span class="keyword">extends</span> <span class="title">BaseDAOHibernate</span> <span class="keyword">implements</span> <span class="title">UserDAO</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> Class&lt;User&gt; <span class="title">getModelClass</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> User.class;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(User user)</span> </span>&#123;</div><div class="line">        doCreateObject(user);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(User user)</span> </span>&#123;</div><div class="line">        doUpdateObject(user);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(<span class="keyword">long</span> id)</span> </span>&#123;</div><div class="line">        doDeleteObject( findById( id ) ) ;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">findById</span><span class="params">(<span class="keyword">long</span> id)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> (User)doFindObjectById(id);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">findByUsername</span><span class="params">(String username)</span> </span>&#123;</div><div class="line">        Session session = <span class="keyword">null</span>;</div><div class="line">        Transaction tx = <span class="keyword">null</span>;</div><div class="line">        User user = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">try</span>&#123;</div><div class="line">            session = <span class="keyword">super</span>.getSession();</div><div class="line">            tx = session.beginTransaction();</div><div class="line">            String hql = <span class="string">"from User where username=? order by id desc"</span>;</div><div class="line">            user = (User)session.createQuery(hql).setParameter(<span class="number">0</span>,username).setMaxResults(<span class="number">1</span>).uniqueResult();</div><div class="line">            tx.commit();</div><div class="line">        &#125;<span class="keyword">catch</span>(HibernateException he)&#123;</div><div class="line">            <span class="keyword">if</span>(tx!=<span class="keyword">null</span>)&#123;</div><div class="line">                tx.rollback();</div><div class="line">            &#125;</div><div class="line">            he.printStackTrace();</div><div class="line">        &#125;<span class="keyword">finally</span>&#123;</div><div class="line">            <span class="keyword">if</span>(session!=<span class="keyword">null</span>)</div><div class="line">                session.close();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> user;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">findAll</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> (List&lt;User&gt;)doFindObjects();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Run"><a href="#Run" class="headerlink" title="Run"></a>Run</h3><p>需要在 Tomcat 容器上运行，点击 Run，服务器就会启动在 <a href="http://localhost:8080" target="_blank" rel="external">http://localhost:8080</a> 端口上。<br><img src="/images/2017/spring-mvc-mysql-hibernate-run.png" style="margin:0;border:0"></p>
+<p>本次项目 spring-mvc-mysql 的项目代码已经放在 github 上，有需要的同学可以下载查看。地址： <a href="https://github.com/aidansu/spring-mvc-mysql/tree/Hibernate" target="_blank" rel="external">https://github.com/aidansu/spring-mvc-mysql/tree/Hibernate</a> 分支 Hiberante</p>
+<p>完！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/pay/tenpay.png" alt="aidan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/pay/alipay.png" alt="aidan Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
 
 
-                            <div class="post-body" itemprop="articleBody">
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      aidan
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.aidansu.com/2017/spring-mvc-mysql-hibernate/" title="Spring MVC 连接 MySQL 数据库 Hibernate">http://www.aidansu.com/2017/spring-mvc-mysql-hibernate/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
 
 
-                                <p>在上一篇博客《Spring MVC 连接 MySQL 数据库 JDBC》中介绍了在 Spring MVC 中使用 JDBC 来链接数据库。JDBC
-                                    可以说是访问数据库的最原始、最直接的方法。这种方式的特点是运行效率高，而缺点是程序代码中嵌入大量的 SQL 语句，使得项目难以维护，虽然 MVC
-                                    的分层结构把数据持久层单独出来，把数据库访问操作封装起来，业务层只需调用 API
-                                    就可以了。但是，如果数据模型非常复杂，代码量较大，特别是访问字段较多的表的时候，代码显得繁琐、累赘，容易出错，就需要非常专业和有经验的开发人员来开发，还需要有足够的时间。</p>
-                                <p>
-                                    开发人员不是只需要专注于业务逻辑的实现吗？有没有中间件可以做这个事情呢？是的，目前已经有好多种现成的持久化中间件可以选择，有：Hiherante，TopLink，JDO等，其中
-                                    Hiberante 最受欢迎，它是基于 Java 的开发源代码的持久化中间件，对 JDBC 做了轻量级封装，不仅提供了 ORM
-                                    映射服务，还提供数据查询和缓存功能，开发人员可以方便地通过它提供的 API 来操纵数据库。大大减少了开发的工作量，降低了持久化层开发的门槛。</p>
-                                <p>我们还是通过项目来学习简单的 Hiberante 链接 MySQL 数据库。可以使用上次的 <a
-                                        href="https://github.com/aidansu/spring-mvc-mysql" target="_blank"
-                                        rel="external">spring-mvc-mysql</a> 项目 JDBC 分支，修改 Dao 持久化层就可以了，这就是 MVC
-                                    分层结构的强大之处。<br><a id="more"></a></p>
-                                <h3 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h3>
-                                <p>添加 Hiberante 所需的依赖<br>
-                                    <figure class="highlight xml">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><div class="line">1</div><div class="line">2</div><div
-                                                            class="line">3</div><div class="line">4</div><div
-                                                            class="line">5</div><div class="line">6</div><div
-                                                            class="line">7</div><div class="line">8</div><div
-                                                            class="line">9</div><div class="line">10</div><div
-                                                            class="line">11</div></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><div class="line"><span class="comment">&lt;!-- Hibernate --&gt;</span></div><div
-                                                            class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div
-                                                            class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hibernate<span
-                                                            class="tag">&lt;/<span
-                                                            class="name">groupId</span>&gt;</span></div><div
-                                                            class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hibernate-core<span
-                                                            class="tag">&lt;/<span
-                                                            class="name">artifactId</span>&gt;</span></div><div
-                                                            class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;hibernate.version&#125;<span
-                                                            class="tag">&lt;/<span
-                                                            class="name">version</span>&gt;</span></div><div
-                                                            class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div
-                                                            class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div
-                                                            class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hibernate<span
-                                                            class="tag">&lt;/<span
-                                                            class="name">groupId</span>&gt;</span></div><div
-                                                            class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hibernate-entitymanager<span
-                                                            class="tag">&lt;/<span
-                                                            class="name">artifactId</span>&gt;</span></div><div
-                                                            class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;hibernate.version&#125;<span
-                                                            class="tag">&lt;/<span
-                                                            class="name">version</span>&gt;</span></div><div
-                                                            class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                </p>
-                                <h3 id="DataBaseConfig"><a href="#DataBaseConfig" class="headerlink"
-                                                           title="DataBaseConfig"></a>DataBaseConfig</h3>
-                                <p>添加 Hibernate 事务管理器和 SessionFactory<br>
-                                    <figure class="highlight java">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><div class="line">1</div><div class="line">2</div><div
-                                                            class="line">3</div><div class="line">4</div><div
-                                                            class="line">5</div><div class="line">6</div><div
-                                                            class="line">7</div><div class="line">8</div><div
-                                                            class="line">9</div><div class="line">10</div><div
-                                                            class="line">11</div><div class="line">12</div><div
-                                                            class="line">13</div><div class="line">14</div><div
-                                                            class="line">15</div><div class="line">16</div><div
-                                                            class="line">17</div><div class="line">18</div><div
-                                                            class="line">19</div><div class="line">20</div><div
-                                                            class="line">21</div><div class="line">22</div><div
-                                                            class="line">23</div><div class="line">24</div><div
-                                                            class="line">25</div><div class="line">26</div><div
-                                                            class="line">27</div><div class="line">28</div><div
-                                                            class="line">29</div><div class="line">30</div><div
-                                                            class="line">31</div><div class="line">32</div><div
-                                                            class="line">33</div><div class="line">34</div><div
-                                                            class="line">35</div><div class="line">36</div><div
-                                                            class="line">37</div><div class="line">38</div><div
-                                                            class="line">39</div><div class="line">40</div><div
-                                                            class="line">41</div><div class="line">42</div><div
-                                                            class="line">43</div><div class="line">44</div><div
-                                                            class="line">45</div><div class="line">46</div><div
-                                                            class="line">47</div><div class="line">48</div><div
-                                                            class="line">49</div><div class="line">50</div><div
-                                                            class="line">51</div><div class="line">52</div><div
-                                                            class="line">53</div><div class="line">54</div><div
-                                                            class="line">55</div><div class="line">56</div><div
-                                                            class="line">57</div><div class="line">58</div><div
-                                                            class="line">59</div><div class="line">60</div><div
-                                                            class="line">61</div><div class="line">62</div><div
-                                                            class="line">63</div><div class="line">64</div><div
-                                                            class="line">65</div><div class="line">66</div><div
-                                                            class="line">67</div><div class="line">68</div><div
-                                                            class="line">69</div><div class="line">70</div><div
-                                                            class="line">71</div><div class="line">72</div><div
-                                                            class="line">73</div><div class="line">74</div><div
-                                                            class="line">75</div><div class="line">76</div><div
-                                                            class="line">77</div><div class="line">78</div><div
-                                                            class="line">79</div><div class="line">80</div><div
-                                                            class="line">81</div><div class="line">82</div><div
-                                                            class="line">83</div><div class="line">84</div><div
-                                                            class="line">85</div><div class="line">86</div><div
-                                                            class="line">87</div><div class="line">88</div><div
-                                                            class="line">89</div><div class="line">90</div><div
-                                                            class="line">91</div></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><div class="line"><span
-                                                            class="meta">@Configuration</span></div><div
-                                                            class="line"><span class="meta">@PropertySource</span>(<span
-                                                            class="string">"classpath:config/application.properties"</span>)</div><div
-                                                            class="line"><span class="keyword">public</span> <span
-                                                            class="class"><span class="keyword">class</span> <span
-                                                            class="title">DataBaseConfig</span> </span>&#123;</div><div
-                                                            class="line"></div><div class="line">    <span
-                                                            class="keyword">private</span> <span
-                                                            class="keyword">static</span> <span
-                                                            class="keyword">final</span> String PROPERTY_NAME_DATABASE_DRIVER = <span
-                                                            class="string">"db.driver"</span>;</div><div class="line">    <span
-                                                            class="keyword">private</span> <span
-                                                            class="keyword">static</span> <span
-                                                            class="keyword">final</span> String PROPERTY_NAME_DATABASE_PASSWORD = <span
-                                                            class="string">"db.password"</span>;</div><div class="line">    <span
-                                                            class="keyword">private</span> <span
-                                                            class="keyword">static</span> <span
-                                                            class="keyword">final</span> String PROPERTY_NAME_DATABASE_URL = <span
-                                                            class="string">"db.url"</span>;</div><div
-                                                            class="line">    <span class="keyword">private</span> <span
-                                                            class="keyword">static</span> <span
-                                                            class="keyword">final</span> String PROPERTY_NAME_DATABASE_USERNAME = <span
-                                                            class="string">"db.username"</span>;</div><div
-                                                            class="line"></div><div class="line">    <span
-                                                            class="keyword">private</span> <span
-                                                            class="keyword">static</span> <span
-                                                            class="keyword">final</span> String PROPERTY_NAME_HIBERNATE_DIALECT = <span
-                                                            class="string">"hibernate.dialect"</span>;</div><div
-                                                            class="line">    <span class="keyword">private</span> <span
-                                                            class="keyword">static</span> <span
-                                                            class="keyword">final</span> String PROPERTY_NAME_HIBERNATE_FORMAT_SQL = <span
-                                                            class="string">"hibernate.format_sql"</span>;</div><div
-                                                            class="line">    <span class="keyword">private</span> <span
-                                                            class="keyword">static</span> <span
-                                                            class="keyword">final</span> String PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO = <span
-                                                            class="string">"hibernate.hbm2ddl.auto"</span>;</div><div
-                                                            class="line">    <span class="keyword">private</span> <span
-                                                            class="keyword">static</span> <span
-                                                            class="keyword">final</span> String PROPERTY_NAME_HIBERNATE_NAMING_STRATEGY = <span
-                                                            class="string">"hibernate.ejb.naming_strategy"</span>;</div><div
-                                                            class="line">    <span class="keyword">private</span> <span
-                                                            class="keyword">static</span> <span
-                                                            class="keyword">final</span> String PROPERTY_NAME_HIBERNATE_SHOW_SQL = <span
-                                                            class="string">"hibernate.show_sql"</span>;</div><div
-                                                            class="line"></div><div class="line">    <span
-                                                            class="keyword">private</span> <span
-                                                            class="keyword">static</span> <span
-                                                            class="keyword">final</span> String PROPERTY_NAME_ENTITY_MANAGER_PACKAGES_TO_SCAN = <span
-                                                            class="string">"entity.manager.packages.to.scan"</span>;</div><div
-                                                            class="line"></div><div class="line">    <span class="meta">@Resource</span></div><div
-                                                            class="line">    <span class="keyword">private</span> Environment environment;</div><div
-                                                            class="line"></div><div class="line">    <span
-                                                            class="comment">/**</span></div><div class="line"><span
-                                                            class="comment">     * Configures the data source.</span></div><div
-                                                            class="line"><span class="comment">     *</span></div><div
-                                                            class="line"><span class="comment">     * <span
-                                                            class="doctag">@return</span> DataSource.</span></div><div
-                                                            class="line"><span class="comment">     */</span></div><div
-                                                            class="line">    <span class="meta">@Bean</span></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> DataSource <span
-                                                            class="title">dataSource</span><span
-                                                            class="params">()</span> </span>&#123;</div><div
-                                                            class="line"></div><div class="line">        <span
-                                                            class="keyword">final</span> HikariDataSource dataSource = <span
-                                                            class="keyword">new</span> HikariDataSource();</div><div
-                                                            class="line"></div><div class="line">        dataSource.setDriverClassName(environment.getRequiredProperty(PROPERTY_NAME_DATABASE_DRIVER));</div><div
-                                                            class="line">        dataSource.setJdbcUrl(environment.getRequiredProperty(PROPERTY_NAME_DATABASE_URL));</div><div
-                                                            class="line">        dataSource.setUsername(environment.getRequiredProperty(PROPERTY_NAME_DATABASE_USERNAME));</div><div
-                                                            class="line">        dataSource.setPassword(environment.getRequiredProperty(PROPERTY_NAME_DATABASE_PASSWORD));</div><div
-                                                            class="line"></div><div class="line">        <span
-                                                            class="keyword">return</span> dataSource;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="comment">/**</span></div><div
-                                                            class="line"><span class="comment">     * Spring JDBC Template</span></div><div
-                                                            class="line"><span class="comment">     *</span></div><div
-                                                            class="line"><span class="comment">     * <span
-                                                            class="doctag">@return</span> JdbcTemplate</span></div><div
-                                                            class="line"><span class="comment">     */</span></div><div
-                                                            class="line">    <span class="meta">@Bean</span></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> JdbcTemplate <span
-                                                            class="title">jdbcTemplate</span><span
-                                                            class="params">()</span> </span>&#123;</div><div
-                                                            class="line">        JdbcTemplate jdbcTemplate = <span
-                                                            class="keyword">new</span> JdbcTemplate();</div><div
-                                                            class="line">        jdbcTemplate.setDataSource(dataSource());</div><div
-                                                            class="line">        <span class="keyword">return</span> jdbcTemplate;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="comment">/**</span></div><div
-                                                            class="line"><span
-                                                            class="comment">     * SessionFactory</span></div><div
-                                                            class="line"><span class="comment">     *</span></div><div
-                                                            class="line"><span class="comment">     * <span
-                                                            class="doctag">@return</span> LocalSessionFactoryBean</span></div><div
-                                                            class="line"><span class="comment">     */</span></div><div
-                                                            class="line">    <span class="meta">@Bean</span></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> LocalSessionFactoryBean <span
-                                                            class="title">sessionFactory</span><span
-                                                            class="params">()</span></span>&#123;</div><div
-                                                            class="line">        LocalSessionFactoryBean localSessionFactoryBean = <span
-                                                            class="keyword">new</span> LocalSessionFactoryBean();</div><div
-                                                            class="line">        localSessionFactoryBean.setPackagesToScan(environment.getRequiredProperty(PROPERTY_NAME_ENTITY_MANAGER_PACKAGES_TO_SCAN));</div><div
-                                                            class="line">        localSessionFactoryBean.setDataSource(dataSource());</div><div
-                                                            class="line"></div><div class="line">        Properties hibernateProperties = <span
-                                                            class="keyword">new</span> Properties();</div><div
-                                                            class="line">        hibernateProperties.put(PROPERTY_NAME_HIBERNATE_DIALECT, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_DIALECT));</div><div
-                                                            class="line">        hibernateProperties.put(PROPERTY_NAME_HIBERNATE_FORMAT_SQL, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_FORMAT_SQL));</div><div
-                                                            class="line">        hibernateProperties.put(PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO));</div><div
-                                                            class="line">        hibernateProperties.put(PROPERTY_NAME_HIBERNATE_NAMING_STRATEGY, </div><div
-                                                            class="line">            environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_NAMING_STRATEGY));</div><div
-                                                            class="line">        hibernateProperties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL));</div><div
-                                                            class="line">        hibernateProperties.put(<span
-                                                            class="string">"hibernate.connection.CharSet"</span>, <span
-                                                            class="string">"UTF-8"</span>);</div><div class="line">        hibernateProperties.put(<span
-                                                            class="string">"hibernate.connection.characterEncoding"</span>, <span
-                                                            class="string">"UTF-8"</span>);</div><div class="line">        hibernateProperties.put(<span
-                                                            class="string">"hibernate.connection.useUnicode"</span>, <span
-                                                            class="string">"true"</span>);</div><div class="line"></div><div
-                                                            class="line">        localSessionFactoryBean.setHibernateProperties(hibernateProperties);</div><div
-                                                            class="line"></div><div class="line">        <span
-                                                            class="keyword">return</span>  localSessionFactoryBean;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="comment">/**</span></div><div
-                                                            class="line"><span class="comment">     * Transactio``` javanManager</span></div><div
-                                                            class="line"><span class="comment">     *</span></div><div
-                                                            class="line"><span class="comment">     * <span
-                                                            class="doctag">@return</span> HibernateTransactionManager</span></div><div
-                                                            class="line"><span class="comment">     */</span></div><div
-                                                            class="line">    <span class="meta">@Bean</span></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> HibernateTransactionManager <span
-                                                            class="title">transactionManager</span><span class="params">()</span> </span>&#123;</div><div
-                                                            class="line">        HibernateTransactionManager hibernateTransactionManager = <span
-                                                            class="keyword">new</span> HibernateTransactionManager();</div><div
-                                                            class="line">        hibernateTransactionManager.setSessionFactory(sessionFactory().getObject());</div><div
-                                                            class="line"></div><div class="line">        <span
-                                                            class="keyword">return</span> hibernateTransactionManager;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">&#125;</div></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                </p>
-                                <h3 id="application-properties"><a href="#application-properties" class="headerlink"
-                                                                   title="application.properties"></a>application.properties
-                                </h3>
-                                <p>添加 Hiberante 配置<br>
-                                    <figure class="highlight bash">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><div class="line">1</div><div class="line">2</div><div
-                                                            class="line">3</div><div class="line">4</div><div
-                                                            class="line">5</div><div class="line">6</div><div
-                                                            class="line">7</div><div class="line">8</div><div
-                                                            class="line">9</div><div class="line">10</div></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><div class="line"><span
-                                                            class="comment">### Hibernate</span></div><div class="line">hibernate.dialect=org.hibernate.dialect.MySQL5Dialect</div><div
-                                                            class="line">hibernate.format_sql=<span class="literal">false</span></div><div
-                                                            class="line">hibernate.hbm2ddl.auto=update</div><div
-                                                            class="line">hibernate.ejb.naming_strategy=org.hibernate.cfg.ImprovedNamingStrategy</div><div
-                                                            class="line">hibernate.show_sql=<span
-                                                            class="literal">false</span></div><div class="line">hibernate.database=MYSQL</div><div
-                                                            class="line"></div><div class="line"><span class="comment">### Entity.Manager</span></div><div
-                                                            class="line">entity.manager.packages.to.scan=com.aidansu.demo.model</div></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                </p>
-                                <h3 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h3>
-                                <p>给 User 类添加注解，删除 UserMapper 类<br>
-                                    <figure class="highlight java">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><div class="line">1</div><div class="line">2</div><div
-                                                            class="line">3</div><div class="line">4</div><div
-                                                            class="line">5</div><div class="line">6</div><div
-                                                            class="line">7</div><div class="line">8</div><div
-                                                            class="line">9</div><div class="line">10</div><div
-                                                            class="line">11</div><div class="line">12</div><div
-                                                            class="line">13</div><div class="line">14</div><div
-                                                            class="line">15</div><div class="line">16</div><div
-                                                            class="line">17</div><div class="line">18</div><div
-                                                            class="line">19</div><div class="line">20</div><div
-                                                            class="line">21</div><div class="line">22</div><div
-                                                            class="line">23</div><div class="line">24</div><div
-                                                            class="line">25</div><div class="line">26</div><div
-                                                            class="line">27</div><div class="line">28</div><div
-                                                            class="line">29</div><div class="line">30</div><div
-                                                            class="line">31</div><div class="line">32</div><div
-                                                            class="line">33</div><div class="line">34</div><div
-                                                            class="line">35</div><div class="line">36</div><div
-                                                            class="line">37</div><div class="line">38</div><div
-                                                            class="line">39</div><div class="line">40</div><div
-                                                            class="line">41</div><div class="line">42</div><div
-                                                            class="line">43</div><div class="line">44</div><div
-                                                            class="line">45</div><div class="line">46</div><div
-                                                            class="line">47</div><div class="line">48</div><div
-                                                            class="line">49</div><div class="line">50</div><div
-                                                            class="line">51</div><div class="line">52</div><div
-                                                            class="line">53</div><div class="line">54</div><div
-                                                            class="line">55</div><div class="line">56</div><div
-                                                            class="line">57</div><div class="line">58</div><div
-                                                            class="line">59</div><div class="line">60</div><div
-                                                            class="line">61</div><div class="line">62</div><div
-                                                            class="line">63</div><div class="line">64</div><div
-                                                            class="line">65</div><div class="line">66</div><div
-                                                            class="line">67</div><div class="line">68</div><div
-                                                            class="line">69</div><div class="line">70</div><div
-                                                            class="line">71</div><div class="line">72</div><div
-                                                            class="line">73</div><div class="line">74</div><div
-                                                            class="line">75</div><div class="line">76</div><div
-                                                            class="line">77</div><div class="line">78</div><div
-                                                            class="line">79</div><div class="line">80</div><div
-                                                            class="line">81</div><div class="line">82</div><div
-                                                            class="line">83</div><div class="line">84</div><div
-                                                            class="line">85</div></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><div class="line"><span class="meta">@Entity</span></div><div
-                                                            class="line"><span class="meta">@Table</span>(name=<span
-                                                            class="string">"t_user"</span>)</div><div class="line"><span
-                                                            class="keyword">public</span> <span class="class"><span
-                                                            class="keyword">class</span> <span class="title">User</span> <span
-                                                            class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;</div><div
-                                                            class="line"></div><div class="line">    <span class="meta">@Id</span></div><div
-                                                            class="line">    <span class="meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)</div><div
-                                                            class="line">    <span class="keyword">private</span> Long id;</div><div
-                                                            class="line">    <span class="keyword">private</span> String username;</div><div
-                                                            class="line">    <span class="keyword">private</span> String password;</div><div
-                                                            class="line">    <span class="keyword">private</span> String telephone;</div><div
-                                                            class="line">    <span
-                                                            class="meta">@Column</span>(name=<span class="string">"create_time"</span>)</div><div
-                                                            class="line">    <span class="keyword">private</span> Date createTime;</div><div
-                                                            class="line">    <span
-                                                            class="meta">@Column</span>(name=<span class="string">"last_login_time"</span>)</div><div
-                                                            class="line">    <span class="keyword">private</span> Date lastLoginTime;</div><div
-                                                            class="line">    <span
-                                                            class="meta">@Column</span>(name=<span class="string">"update_time"</span>)</div><div
-                                                            class="line">    <span class="keyword">private</span> Date updateTime;</div><div
-                                                            class="line"></div><div class="line">    <span
-                                                            class="function"><span class="keyword">public</span> <span
-                                                            class="title">User</span><span
-                                                            class="params">()</span> </span>&#123;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> <span
-                                                            class="title">User</span><span class="params">(String username, String password, String telephone, Date createTime, Date lastLoginTime, Date updateTime)</span> </span>&#123;</div><div
-                                                            class="line">        <span class="keyword">this</span>.username = username;</div><div
-                                                            class="line">        <span class="keyword">this</span>.password = password;</div><div
-                                                            class="line">        <span class="keyword">this</span>.telephone = telephone;</div><div
-                                                            class="line">        <span class="keyword">this</span>.createTime = createTime;</div><div
-                                                            class="line">        <span class="keyword">this</span>.lastLoginTime = lastLoginTime;</div><div
-                                                            class="line">        <span class="keyword">this</span>.updateTime = updateTime;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> Long <span
-                                                            class="title">getId</span><span
-                                                            class="params">()</span> </span>&#123;</div><div
-                                                            class="line">        <span class="keyword">return</span> id;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> <span
-                                                            class="keyword">void</span> <span class="title">setId</span><span
-                                                            class="params">(Long id)</span> </span>&#123;</div><div
-                                                            class="line">        <span class="keyword">this</span>.id = id;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> String <span class="title">getUsername</span><span
-                                                            class="params">()</span> </span>&#123;</div><div
-                                                            class="line">        <span class="keyword">return</span> username;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> <span
-                                                            class="keyword">void</span> <span
-                                                            class="title">setUsername</span><span class="params">(String username)</span> </span>&#123;</div><div
-                                                            class="line">        <span class="keyword">this</span>.username = username;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> String <span class="title">getPassword</span><span
-                                                            class="params">()</span> </span>&#123;</div><div
-                                                            class="line">        <span class="keyword">return</span> password;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> <span
-                                                            class="keyword">void</span> <span
-                                                            class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</div><div
-                                                            class="line">        <span class="keyword">this</span>.password = password;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> String <span class="title">getTelephone</span><span
-                                                            class="params">()</span> </span>&#123;</div><div
-                                                            class="line">        <span class="keyword">return</span> telephone;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> <span
-                                                            class="keyword">void</span> <span
-                                                            class="title">setTelephone</span><span class="params">(String telephone)</span> </span>&#123;</div><div
-                                                            class="line">        <span class="keyword">this</span>.telephone = telephone;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> Date <span class="title">getCreateTime</span><span
-                                                            class="params">()</span> </span>&#123;</div><div
-                                                            class="line">        <span class="keyword">return</span> createTime;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> <span
-                                                            class="keyword">void</span> <span class="title">setCreateTime</span><span
-                                                            class="params">(Date createTime)</span> </span>&#123;</div><div
-                                                            class="line">        <span class="keyword">this</span>.createTime = createTime;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> Date <span class="title">getLastLoginTime</span><span
-                                                            class="params">()</span> </span>&#123;</div><div
-                                                            class="line">        <span class="keyword">return</span> lastLoginTime;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> <span
-                                                            class="keyword">void</span> <span class="title">setLastLoginTime</span><span
-                                                            class="params">(Date lastLoginTime)</span> </span>&#123;</div><div
-                                                            class="line">        <span class="keyword">this</span>.lastLoginTime = lastLoginTime;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> Date <span class="title">getUpdateTime</span><span
-                                                            class="params">()</span> </span>&#123;</div><div
-                                                            class="line">        <span class="keyword">return</span> updateTime;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> <span
-                                                            class="keyword">void</span> <span class="title">setUpdateTime</span><span
-                                                            class="params">(Date updateTime)</span> </span>&#123;</div><div
-                                                            class="line">        <span class="keyword">this</span>.updateTime = updateTime;</div><div
-                                                            class="line">    &#125;</div><div class="line">&#125;</div></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                </p>
-                                <h3 id="Dao"><a href="#Dao" class="headerlink" title="Dao"></a>Dao</h3>
-                                <p>创建一个 Hibernate 执行方法基础抽象类，封装了对象的增、删、查、改等操作。<br>
-                                    <figure class="highlight java">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><div class="line">1</div><div class="line">2</div><div
-                                                            class="line">3</div><div class="line">4</div><div
-                                                            class="line">5</div><div class="line">6</div><div
-                                                            class="line">7</div><div class="line">8</div><div
-                                                            class="line">9</div><div class="line">10</div><div
-                                                            class="line">11</div><div class="line">12</div><div
-                                                            class="line">13</div><div class="line">14</div><div
-                                                            class="line">15</div><div class="line">16</div><div
-                                                            class="line">17</div><div class="line">18</div><div
-                                                            class="line">19</div><div class="line">20</div><div
-                                                            class="line">21</div><div class="line">22</div><div
-                                                            class="line">23</div><div class="line">24</div><div
-                                                            class="line">25</div><div class="line">26</div><div
-                                                            class="line">27</div><div class="line">28</div><div
-                                                            class="line">29</div><div class="line">30</div><div
-                                                            class="line">31</div><div class="line">32</div><div
-                                                            class="line">33</div><div class="line">34</div><div
-                                                            class="line">35</div><div class="line">36</div><div
-                                                            class="line">37</div><div class="line">38</div><div
-                                                            class="line">39</div><div class="line">40</div><div
-                                                            class="line">41</div><div class="line">42</div><div
-                                                            class="line">43</div><div class="line">44</div><div
-                                                            class="line">45</div><div class="line">46</div><div
-                                                            class="line">47</div><div class="line">48</div><div
-                                                            class="line">49</div><div class="line">50</div><div
-                                                            class="line">51</div><div class="line">52</div><div
-                                                            class="line">53</div><div class="line">54</div><div
-                                                            class="line">55</div><div class="line">56</div><div
-                                                            class="line">57</div><div class="line">58</div><div
-                                                            class="line">59</div><div class="line">60</div><div
-                                                            class="line">61</div><div class="line">62</div><div
-                                                            class="line">63</div><div class="line">64</div><div
-                                                            class="line">65</div><div class="line">66</div><div
-                                                            class="line">67</div><div class="line">68</div><div
-                                                            class="line">69</div><div class="line">70</div><div
-                                                            class="line">71</div><div class="line">72</div><div
-                                                            class="line">73</div><div class="line">74</div><div
-                                                            class="line">75</div><div class="line">76</div><div
-                                                            class="line">77</div><div class="line">78</div><div
-                                                            class="line">79</div><div class="line">80</div><div
-                                                            class="line">81</div><div class="line">82</div><div
-                                                            class="line">83</div><div class="line">84</div><div
-                                                            class="line">85</div><div class="line">86</div><div
-                                                            class="line">87</div><div class="line">88</div><div
-                                                            class="line">89</div><div class="line">90</div><div
-                                                            class="line">91</div><div class="line">92</div><div
-                                                            class="line">93</div><div class="line">94</div><div
-                                                            class="line">95</div><div class="line">96</div><div
-                                                            class="line">97</div><div class="line">98</div><div
-                                                            class="line">99</div><div class="line">100</div><div
-                                                            class="line">101</div><div class="line">102</div><div
-                                                            class="line">103</div><div class="line">104</div><div
-                                                            class="line">105</div><div class="line">106</div><div
-                                                            class="line">107</div><div class="line">108</div><div
-                                                            class="line">109</div><div class="line">110</div><div
-                                                            class="line">111</div><div class="line">112</div><div
-                                                            class="line">113</div><div class="line">114</div><div
-                                                            class="line">115</div><div class="line">116</div><div
-                                                            class="line">117</div><div class="line">118</div><div
-                                                            class="line">119</div><div class="line">120</div><div
-                                                            class="line">121</div><div class="line">122</div><div
-                                                            class="line">123</div><div class="line">124</div><div
-                                                            class="line">125</div><div class="line">126</div><div
-                                                            class="line">127</div><div class="line">128</div><div
-                                                            class="line">129</div><div class="line">130</div><div
-                                                            class="line">131</div><div class="line">132</div><div
-                                                            class="line">133</div><div class="line">134</div><div
-                                                            class="line">135</div><div class="line">136</div><div
-                                                            class="line">137</div><div class="line">138</div><div
-                                                            class="line">139</div><div class="line">140</div><div
-                                                            class="line">141</div><div class="line">142</div><div
-                                                            class="line">143</div><div class="line">144</div><div
-                                                            class="line">145</div><div class="line">146</div><div
-                                                            class="line">147</div><div class="line">148</div><div
-                                                            class="line">149</div><div class="line">150</div><div
-                                                            class="line">151</div><div class="line">152</div><div
-                                                            class="line">153</div><div class="line">154</div><div
-                                                            class="line">155</div><div class="line">156</div><div
-                                                            class="line">157</div><div class="line">158</div><div
-                                                            class="line">159</div><div class="line">160</div><div
-                                                            class="line">161</div><div class="line">162</div><div
-                                                            class="line">163</div><div class="line">164</div><div
-                                                            class="line">165</div><div class="line">166</div></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><div class="line"><span class="keyword">public</span> <span
-                                                            class="keyword">abstract</span> <span class="class"><span
-                                                            class="keyword">class</span> <span class="title">BaseDAOHibernate</span>&lt;<span
-                                                            class="title">T</span>, <span class="title">ID</span> <span
-                                                            class="keyword">extends</span> <span class="title">Serializable</span>&gt; </span>&#123;</div><div
-                                                            class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div
-                                                            class="line">    <span class="keyword">private</span> SessionFactory sessionFactory;</div><div
-                                                            class="line"></div><div class="line">    <span
-                                                            class="comment">/**</span></div><div class="line"><span
-                                                            class="comment">     * 获取模型类的抽象方法</span></div><div
-                                                            class="line"><span class="comment">     *</span></div><div
-                                                            class="line"><span class="comment">     * <span
-                                                            class="doctag">@return</span> 返回具体实现的模型类</span></div><div
-                                                            class="line"><span class="comment">     */</span></div><div
-                                                            class="line">    <span
-                                                            class="keyword">protected</span> <span class="keyword">abstract</span> Class&lt;?&gt; getModelClass() ;</div><div
-                                                            class="line"></div><div class="line">    <span
-                                                            class="function"><span class="keyword">protected</span> Session <span
-                                                            class="title">getSession</span><span
-                                                            class="params">()</span></span>&#123;</div><div
-                                                            class="line">        <span class="keyword">return</span> sessionFactory.openSession();</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="comment">/**</span></div><div
-                                                            class="line"><span
-                                                            class="comment">     * 创建或更新对象</span></div><div
-                                                            class="line"><span class="comment">     *</span></div><div
-                                                            class="line"><span class="comment">     * <span
-                                                            class="doctag">@param</span> obj 需要创建或更新的对象</span></div><div
-                                                            class="line"><span class="comment">     */</span></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">protected</span> <span
-                                                            class="keyword">void</span> <span class="title">doCreateOrUpdateObject</span><span
-                                                            class="params">(Object obj)</span> </span>&#123;</div><div
-                                                            class="line">        Session session = sessionFactory.openSession();</div><div
-                                                            class="line">        Transaction tx = session.beginTransaction();</div><div
-                                                            class="line">        session.saveOrUpdate(obj);</div><div
-                                                            class="line">        tx.commit();</div><div class="line">        session.close();</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="comment">/**</span></div><div
-                                                            class="line"><span class="comment">     * 创建对象</span></div><div
-                                                            class="line"><span class="comment">     *</span></div><div
-                                                            class="line"><span class="comment">     * <span
-                                                            class="doctag">@param</span> obj 需要创建的对象</span></div><div
-                                                            class="line"><span class="comment">     * <span
-                                                            class="doctag">@return</span>	返回创建对象ID</span></div><div
-                                                            class="line"><span class="comment">     */</span></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">protected</span> Serializable <span
-                                                            class="title">doCreateObject</span><span class="params">(Object obj)</span> </span>&#123;</div><div
-                                                            class="line">        Session session = sessionFactory.openSession();</div><div
-                                                            class="line">        Transaction tx = session.beginTransaction();</div><div
-                                                            class="line">        Serializable serializable = session.save(obj);</div><div
-                                                            class="line">        tx.commit();</div><div class="line">        session.close();</div><div
-                                                            class="line">        <span class="keyword">return</span> serializable;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="comment">/**</span></div><div
-                                                            class="line"><span class="comment">     * 更新对象</span></div><div
-                                                            class="line"><span class="comment">     *</span></div><div
-                                                            class="line"><span class="comment">     * <span
-                                                            class="doctag">@param</span> obj 需要更新的对象</span></div><div
-                                                            class="line"><span class="comment">     */</span></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">protected</span> <span
-                                                            class="keyword">void</span> <span class="title">doUpdateObject</span><span
-                                                            class="params">(Object obj)</span> </span>&#123;</div><div
-                                                            class="line">        Session session = sessionFactory.openSession();</div><div
-                                                            class="line">        Transaction tx = session.beginTransaction();</div><div
-                                                            class="line">        session.update(obj);</div><div
-                                                            class="line">        tx.commit();</div><div class="line">        session.close();</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="comment">/**</span></div><div
-                                                            class="line"><span class="comment">     * 删除对象</span></div><div
-                                                            class="line"><span class="comment">     *</span></div><div
-                                                            class="line"><span class="comment">     * <span
-                                                            class="doctag">@param</span> obj 需要删除的对象</span></div><div
-                                                            class="line"><span class="comment">     */</span></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">protected</span> <span
-                                                            class="keyword">void</span> <span class="title">doDeleteObject</span><span
-                                                            class="params">(Object obj)</span> </span>&#123;</div><div
-                                                            class="line">        Session session = sessionFactory.openSession();</div><div
-                                                            class="line">        Transaction tx = session.beginTransaction();</div><div
-                                                            class="line">        session.delete(obj);</div><div
-                                                            class="line">        tx.commit();</div><div class="line">        session.close();</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="comment">/**</span></div><div
-                                                            class="line"><span
-                                                            class="comment">     * 根据id查找对象</span></div><div
-                                                            class="line"><span class="comment">     *</span></div><div
-                                                            class="line"><span class="comment">     * <span
-                                                            class="doctag">@param</span> id 需要查找的对象ID</span></div><div
-                                                            class="line"><span class="comment">     * <span
-                                                            class="doctag">@return</span>	需要查找的对象</span></div><div
-                                                            class="line"><span class="comment">     */</span></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">protected</span> Object <span class="title">doFindObjectById</span><span
-                                                            class="params">(Serializable id)</span> </span>&#123;</div><div
-                                                            class="line">        Session session = sessionFactory.openSession();</div><div
-                                                            class="line">        Transaction tx = session.beginTransaction();</div><div
-                                                            class="line">        Object object = session.get(<span
-                                                            class="keyword">this</span>.getModelClass(), id);</div><div
-                                                            class="line">        tx.commit();</div><div class="line">        session.close();</div><div
-                                                            class="line">        <span class="keyword">return</span> object;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="comment">/**</span></div><div
-                                                            class="line"><span class="comment">     * 根据id查找指定对象</span></div><div
-                                                            class="line"><span class="comment">     *</span></div><div
-                                                            class="line"><span class="comment">     * <span
-                                                            class="doctag">@param</span> clazz 指定需查找的对象类</span></div><div
-                                                            class="line"><span class="comment">     * <span
-                                                            class="doctag">@param</span> id 需要查找的对象ID</span></div><div
-                                                            class="line"><span class="comment">     * <span
-                                                            class="doctag">@return</span>	需要查找的对象</span></div><div
-                                                            class="line"><span class="comment">     */</span></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">protected</span> Object <span class="title">doFindObjectById</span><span
-                                                            class="params">(Class&lt;?&gt; clazz, Serializable id)</span> </span>&#123;</div><div
-                                                            class="line">        Session session = sessionFactory.openSession();</div><div
-                                                            class="line">        Transaction tx = session.beginTransaction();</div><div
-                                                            class="line">        Object object = session.get(clazz, id);</div><div
-                                                            class="line">        tx.commit();</div><div class="line">        session.close();</div><div
-                                                            class="line">        <span class="keyword">return</span> object;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="comment">/**</span></div><div
-                                                            class="line"><span
-                                                            class="comment">     * 查找所有对象</span></div><div class="line"><span
-                                                            class="comment">     *</span></div><div class="line"><span
-                                                            class="comment">     * <span class="doctag">@return</span>	需要查找的对象列表</span></div><div
-                                                            class="line"><span class="comment">     */</span></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">protected</span> List&lt;T&gt; <span
-                                                            class="title">doFindObjects</span><span
-                                                            class="params">()</span> </span>&#123;</div><div
-                                                            class="line">        Session session = sessionFactory.openSession();</div><div
-                                                            class="line">        Transaction tx = session.beginTransaction();</div><div
-                                                            class="line">        Query query = session.createQuery(<span
-                                                            class="string">"from "</span>+getModelClass().getName());</div><div
-                                                            class="line">        List&lt;T&gt; list = query.list();</div><div
-                                                            class="line">        tx.commit();</div><div class="line">        session.close();</div><div
-                                                            class="line">        <span class="keyword">return</span> list;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="comment">/**</span></div><div
-                                                            class="line"><span class="comment">     * 统计某个对象集合的总数</span></div><div
-                                                            class="line"><span class="comment">     *</span></div><div
-                                                            class="line"><span class="comment">     * <span
-                                                            class="doctag">@return</span> 记录总数</span></div><div
-                                                            class="line"><span class="comment">     */</span></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">protected</span> <span
-                                                            class="keyword">int</span> <span
-                                                            class="title">doCountObject</span><span
-                                                            class="params">()</span> </span>&#123;</div><div
-                                                            class="line">        <span class="keyword">int</span> result ;</div><div
-                                                            class="line">        Session session = sessionFactory.openSession();</div><div
-                                                            class="line">        Transaction tx = session.beginTransaction();</div><div
-                                                            class="line">        String hql = <span class="string">"select count(*) from "</span> + getModelClass().getName();</div><div
-                                                            class="line">        Query query = session.createQuery(hql);</div><div
-                                                            class="line">        Long resultLonger = (Long) query.list().get(<span
-                                                            class="number">0</span>);</div><div class="line">        result = resultLonger.intValue();</div><div
-                                                            class="line">        tx.commit();</div><div class="line">        session.close();</div><div
-                                                            class="line">        <span class="keyword">return</span> result;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="comment">/**</span></div><div
-                                                            class="line"><span class="comment">     * 通过HQL，根据模糊查询条件，统计记录数</span></div><div
-                                                            class="line"><span class="comment">     *</span></div><div
-                                                            class="line"><span class="comment">     * <span
-                                                            class="doctag">@param</span> properties 对象属性</span></div><div
-                                                            class="line"><span class="comment">     * <span
-                                                            class="doctag">@param</span> values 需要查询的对象属性对应的值条件</span></div><div
-                                                            class="line"><span class="comment">     * <span
-                                                            class="doctag">@return</span>	统计数</span></div><div
-                                                            class="line"><span class="comment">     */</span></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">protected</span> <span
-                                                            class="keyword">int</span> <span class="title">doHQLCountObject</span><span
-                                                            class="params">(String[] properties, Object[] values)</span> </span>&#123;</div><div
-                                                            class="line">        <span class="keyword">int</span> result = <span
-                                                            class="number">0</span>;</div><div class="line">        Session session = sessionFactory.openSession();</div><div
-                                                            class="line">        Transaction tx = session.beginTransaction();</div><div
-                                                            class="line">        String hql = <span class="string">"select count(*) from "</span> + <span
-                                                            class="keyword">this</span>.getModelClass().getName()+ <span
-                                                            class="string">" where 1=1 "</span>;</div><div class="line">        <span
-                                                            class="comment">//组装hql条件字符串</span></div><div class="line">        <span
-                                                            class="keyword">for</span> (<span class="keyword">int</span> i = <span
-                                                            class="number">0</span>; i &lt; properties.length; i++) &#123;</div><div
-                                                            class="line">            <span class="keyword">if</span> (i == <span
-                                                            class="number">0</span>)</div><div class="line">                hql += <span
-                                                            class="string">" and "</span> + properties[i] + <span
-                                                            class="string">" like :"</span> + properties[i] ;</div><div
-                                                            class="line">            <span
-                                                            class="keyword">else</span></div><div class="line">                hql += <span
-                                                            class="string">" or "</span> + properties[i] + <span
-                                                            class="string">" like :"</span> + properties[i] ;</div><div
-                                                            class="line">        &#125;</div><div class="line">        Query query = session.createQuery(hql);</div><div
-                                                            class="line">        <span class="comment">//设置查询条件值</span></div><div
-                                                            class="line">        <span class="keyword">for</span> (<span
-                                                            class="keyword">int</span> i = <span class="number">0</span>; i &lt; properties.length; i++) &#123;</div><div
-                                                            class="line">            query.setParameter(properties[i] , <span
-                                                            class="string">"%"</span> +  values[i] + <span
-                                                            class="string">"%"</span>);</div><div class="line">        &#125;</div><div
-                                                            class="line">        Long resultLonger = (Long) query.list().get(<span
-                                                            class="number">0</span>);</div><div class="line">        result = resultLonger.intValue();</div><div
-                                                            class="line">        tx.commit();</div><div class="line">        session.close();</div><div
-                                                            class="line">        <span class="keyword">return</span> result;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">&#125;</div></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                </p>
-                                <p>修改 UserDAOImpl 类<br>
-                                    <figure class="highlight java">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><div class="line">1</div><div class="line">2</div><div
-                                                            class="line">3</div><div class="line">4</div><div
-                                                            class="line">5</div><div class="line">6</div><div
-                                                            class="line">7</div><div class="line">8</div><div
-                                                            class="line">9</div><div class="line">10</div><div
-                                                            class="line">11</div><div class="line">12</div><div
-                                                            class="line">13</div><div class="line">14</div><div
-                                                            class="line">15</div><div class="line">16</div><div
-                                                            class="line">17</div><div class="line">18</div><div
-                                                            class="line">19</div><div class="line">20</div><div
-                                                            class="line">21</div><div class="line">22</div><div
-                                                            class="line">23</div><div class="line">24</div><div
-                                                            class="line">25</div><div class="line">26</div><div
-                                                            class="line">27</div><div class="line">28</div><div
-                                                            class="line">29</div><div class="line">30</div><div
-                                                            class="line">31</div><div class="line">32</div><div
-                                                            class="line">33</div><div class="line">34</div><div
-                                                            class="line">35</div><div class="line">36</div><div
-                                                            class="line">37</div><div class="line">38</div><div
-                                                            class="line">39</div><div class="line">40</div><div
-                                                            class="line">41</div><div class="line">42</div><div
-                                                            class="line">43</div><div class="line">44</div><div
-                                                            class="line">45</div><div class="line">46</div><div
-                                                            class="line">47</div><div class="line">48</div><div
-                                                            class="line">49</div><div class="line">50</div><div
-                                                            class="line">51</div><div class="line">52</div><div
-                                                            class="line">53</div><div class="line">54</div><div
-                                                            class="line">55</div><div class="line">56</div><div
-                                                            class="line">57</div></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><div class="line"><span class="meta">@Repository</span>(<span
-                                                            class="string">"UserDAO"</span>)</div><div
-                                                            class="line"><span class="keyword">public</span> <span
-                                                            class="class"><span class="keyword">class</span> <span
-                                                            class="title">UserDAOImpl</span> <span class="keyword">extends</span> <span
-                                                            class="title">BaseDAOHibernate</span> <span class="keyword">implements</span> <span
-                                                            class="title">UserDAO</span></span>&#123;</div><div
-                                                            class="line"></div><div class="line">    <span class="meta">@Override</span></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">protected</span> Class&lt;User&gt; <span
-                                                            class="title">getModelClass</span><span
-                                                            class="params">()</span> </span>&#123;</div><div
-                                                            class="line">        <span class="keyword">return</span> User.class;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="meta">@Override</span></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> <span
-                                                            class="keyword">void</span> <span
-                                                            class="title">insert</span><span
-                                                            class="params">(User user)</span> </span>&#123;</div><div
-                                                            class="line">        doCreateObject(user);</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="meta">@Override</span></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> <span
-                                                            class="keyword">void</span> <span
-                                                            class="title">update</span><span
-                                                            class="params">(User user)</span> </span>&#123;</div><div
-                                                            class="line">        doUpdateObject(user);</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="meta">@Override</span></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> <span
-                                                            class="keyword">void</span> <span
-                                                            class="title">delete</span><span class="params">(<span
-                                                            class="keyword">long</span> id)</span> </span>&#123;</div><div
-                                                            class="line">        doDeleteObject( findById( id ) ) ;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="meta">@Override</span></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> User <span class="title">findById</span><span
-                                                            class="params">(<span class="keyword">long</span> id)</span> </span>&#123;</div><div
-                                                            class="line">        <span class="keyword">return</span> (User)doFindObjectById(id);</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="meta">@Override</span></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> User <span class="title">findByUsername</span><span
-                                                            class="params">(String username)</span> </span>&#123;</div><div
-                                                            class="line">        Session session = <span
-                                                            class="keyword">null</span>;</div><div class="line">        Transaction tx = <span
-                                                            class="keyword">null</span>;</div><div class="line">        User user = <span
-                                                            class="keyword">null</span>;</div><div class="line">        <span
-                                                            class="keyword">try</span>&#123;</div><div class="line">            session = <span
-                                                            class="keyword">super</span>.getSession();</div><div
-                                                            class="line">            tx = session.beginTransaction();</div><div
-                                                            class="line">            String hql = <span class="string">"from User where username=? order by id desc"</span>;</div><div
-                                                            class="line">            user = (User)session.createQuery(hql).setParameter(<span
-                                                            class="number">0</span>,username).setMaxResults(<span
-                                                            class="number">1</span>).uniqueResult();</div><div
-                                                            class="line">            tx.commit();</div><div
-                                                            class="line">        &#125;<span
-                                                            class="keyword">catch</span>(HibernateException he)&#123;</div><div
-                                                            class="line">            <span class="keyword">if</span>(tx!=<span
-                                                            class="keyword">null</span>)&#123;</div><div class="line">                tx.rollback();</div><div
-                                                            class="line">            &#125;</div><div class="line">            he.printStackTrace();</div><div
-                                                            class="line">        &#125;<span
-                                                            class="keyword">finally</span>&#123;</div><div class="line">            <span
-                                                            class="keyword">if</span>(session!=<span class="keyword">null</span>)</div><div
-                                                            class="line">                session.close();</div><div
-                                                            class="line">        &#125;</div><div
-                                                            class="line">        <span class="keyword">return</span> user;</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">    <span class="meta">@Override</span></div><div
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> List&lt;User&gt; <span
-                                                            class="title">findAll</span><span class="params">()</span> </span>&#123;</div><div
-                                                            class="line">        <span class="keyword">return</span> (List&lt;User&gt;)doFindObjects();</div><div
-                                                            class="line">    &#125;</div><div class="line"></div><div
-                                                            class="line">&#125;</div></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                </p>
-                                <h3 id="Run"><a href="#Run" class="headerlink" title="Run"></a>Run</h3>
-                                <p>需要在 Tomcat 容器上运行，点击 Run，服务器就会启动在 <a href="http://localhost:8080" target="_blank"
-                                                                       rel="external">http://localhost:8080</a> 端口上。<br><img
-                                        src="/images/2017/spring-mvc-mysql-hibernate-run.png" style="margin:0;border:0">
-                                </p>
-                                <p>本次项目 spring-mvc-mysql 的项目代码已经放在 github 上，有需要的同学可以下载查看。地址： <a
-                                        href="https://github.com/aidansu/spring-mvc-mysql/tree/Hibernate"
-                                        target="_blank" rel="external">https://github.com/aidansu/spring-mvc-mysql/tree/Hibernate</a>
-                                    分支 Hiberante</p>
-                                <p>完！</p>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/Spring/" rel="tag"># Spring</a>
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+            <a href="/tags/Hibernate/" rel="tag"># Hibernate</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/spring-mvc-mysql-jdbc/" rel="next" title="Spring MVC 连接 MySQL 数据库 JDBC">
+                <i class="fa fa-chevron-left"></i> Spring MVC 连接 MySQL 数据库 JDBC
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/spring-mvc-mysql-jpa/" rel="prev" title="Spring MVC 连接 MySQL 数据库 JPA">
+                Spring MVC 连接 MySQL 数据库 JPA <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
 
 
-                            </div>
 
-                            <div>
-
-
-                            </div>
-
-                            <div>
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
-                                <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-                                    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
-                                    <button id="rewardButton" disable="enable"
-                                            onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-                                        <span>赏</span>
-                                    </button>
-                                    <div id="QR" style="display: none;">
-
-                                        <div id="wechat" style="display: inline-block">
-                                            <img id="wechat_qr" src="/images/pay/tenpay.png" alt="aidan WeChat Pay"/>
-                                            <p>微信打赏</p>
-                                        </div>
+          </div>
+          
 
 
-                                        <div id="alipay" style="display: inline-block">
-                                            <img id="alipay_qr" src="/images/pay/alipay.png" alt="aidan Alipay"/>
-                                            <p>支付宝打赏</p>
-                                        </div>
-
-                                    </div>
-                                </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
 
 
-                            </div>
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
 
-                            <div>
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
 
+      
 
-                                <ul class="post-copyright">
-                                    <li class="post-copyright-author">
-                                        <strong>本文作者：</strong>
-                                        aidan
-                                    </li>
-                                    <li class="post-copyright-link">
-                                        <strong>本文链接：</strong>
-                                        <a href="http://www.aidansu.com/2017/spring-mvc-mysql-hibernate/"
-                                           title="Spring MVC 连接 MySQL 数据库 Hibernate">http://www.aidansu.com/2017/spring-mvc-mysql-hibernate/</a>
-                                    </li>
-                                    <li class="post-copyright-license">
-                                        <strong>版权声明： </strong>
-                                        本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/"
-                                                             rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a>
-                                        许可协议。转载请注明出处！
-                                    </li>
-                                </ul>
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="aidan" />
+          <p class="site-author-name" itemprop="name">aidan</p>
+           
+              <p class="site-description motion-element" itemprop="description">沉迷学习无法自拔</p>
+          
+        </div>
+        <nav class="site-state motion-element">
 
-                            </div>
-
-                            <footer class="post-footer">
-
-                                <div class="post-tags">
-
-                                    <a href="/tags/Java/" rel="tag"># Java</a>
-
-                                    <a href="/tags/Spring/" rel="tag"># Spring</a>
-
-                                    <a href="/tags/MySQL/" rel="tag"># MySQL</a>
-
-                                    <a href="/tags/Hibernate/" rel="tag"># Hibernate</a>
-
-                                </div>
-
-
-                                <div class="post-nav">
-                                    <div class="post-nav-next post-nav-item">
-
-                                        <a href="/2017/spring-mvc-mysql-jdbc/" rel="next"
-                                           title="Spring MVC 连接 MySQL 数据库 JDBC">
-                                            <i class="fa fa-chevron-left"></i> Spring MVC 连接 MySQL 数据库 JDBC
-                                        </a>
-
-                                    </div>
-
-                                    <span class="post-nav-divider"></span>
-
-                                    <div class="post-nav-prev post-nav-item">
-
-                                        <a href="/2017/spring-mvc-mysql-jpa/" rel="prev"
-                                           title="Spring MVC 连接 MySQL 数据库 JPA">
-                                            Spring MVC 连接 MySQL 数据库 JPA <i class="fa fa-chevron-right"></i>
-                                        </a>
-
-                                    </div>
-                                </div>
-
-
-                            </footer>
-                        </article>
-
-
-                        <div class="post-spread">
-
-                        </div>
-                    </div>
-
-
-                </div>
-
-
-                <div class="comments" id="comments">
-
-                </div>
-
-
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
             </div>
+          
 
-
-            <div class="sidebar-toggle">
-                <div class="sidebar-toggle-line-wrap">
-                    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-                    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-                    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-                </div>
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
             </div>
+          
 
-            <aside id="sidebar" class="sidebar">
-                <div class="sidebar-inner">
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
 
+        </nav>
 
-                    <ul class="sidebar-nav motion-element">
-                        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-                            文章目录
-                        </li>
-                        <li class="sidebar-nav-overview" data-target="site-overview">
-                            站点概览
-                        </li>
-                    </ul>
+        
 
-
-                    <section class="site-overview sidebar-panel">
-                        <div class="site-author motion-element" itemprop="author" itemscope
-                             itemtype="http://schema.org/Person">
-                            <img class="site-author-image" itemprop="image"
-                                 src="/images/avatar.png"
-                                 alt="aidan"/>
-                            <p class="site-author-name" itemprop="name">aidan</p>
-
-                            <p class="site-description motion-element" itemprop="description">沉迷学习无法自拔</p>
-
-                        </div>
-                        <nav class="site-state motion-element">
-
-
-                            <div class="site-state-item site-state-posts">
-                                <a href="/archives">
-                                    <span class="site-state-item-count">21</span>
-                                    <span class="site-state-item-name">日志</span>
-                                </a>
-                            </div>
-
-
-                            <div class="site-state-item site-state-categories">
-                                <a href="/categories/index.html">
-                                    <span class="site-state-item-count">2</span>
-                                    <span class="site-state-item-name">分类</span>
-                                </a>
-                            </div>
-
-
-                            <div class="site-state-item site-state-tags">
-                                <a href="/tags/index.html">
-                                    <span class="site-state-item-count">36</span>
-                                    <span class="site-state-item-name">标签</span>
-                                </a>
-                            </div>
-
-
-                        </nav>
-
-
-                        <div class="links-of-author motion-element">
+        <div class="links-of-author motion-element">
           
             
               <span class="links-of-author-item">
@@ -1363,8 +596,8 @@
                   GitHub
                 </a>
               </span>
-
-                            <span class="links-of-author-item">
+            
+              <span class="links-of-author-item">
                 <a href="http://weibo.com/shx0999" target="_blank" title="微博">
                   
                     <i class="fa fa-fw fa-weibo"></i>
@@ -1372,8 +605,8 @@
                   微博
                 </a>
               </span>
-
-                            <span class="links-of-author-item">
+            
+              <span class="links-of-author-item">
                 <a href="https://www.douban.com/people/77881755/" target="_blank" title="豆瓣">
                   
                     <i class="fa fa-fw fa-globe"></i>
@@ -1381,8 +614,8 @@
                   豆瓣
                 </a>
               </span>
-
-                            <span class="links-of-author-item">
+            
+              <span class="links-of-author-item">
                 <a href="https://www.zhihu.com/people/aidansu" target="_blank" title="知乎">
                   
                     <i class="fa fa-fw fa-globe"></i>
@@ -1390,248 +623,330 @@
                   知乎
                 </a>
               </span>
-
-
-                        </div>
-
-
-                    </section>
-
-
-                    <!--noindex-->
-                    <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-                        <div class="post-toc">
-
-
-                            <div class="post-toc-content">
-                                <ol class="nav">
-                                    <li class="nav-item nav-level-3"><a class="nav-link" href="#pom-xml"><span
-                                            class="nav-number">1.</span> <span class="nav-text">pom.xml</span></a></li>
-                                    <li class="nav-item nav-level-3"><a class="nav-link" href="#DataBaseConfig"><span
-                                            class="nav-number">2.</span> <span
-                                            class="nav-text">DataBaseConfig</span></a></li>
-                                    <li class="nav-item nav-level-3"><a class="nav-link" href="#application-properties"><span
-                                            class="nav-number">3.</span> <span
-                                            class="nav-text">application.properties</span></a></li>
-                                    <li class="nav-item nav-level-3"><a class="nav-link" href="#Model"><span
-                                            class="nav-number">4.</span> <span class="nav-text">Model</span></a></li>
-                                    <li class="nav-item nav-level-3"><a class="nav-link" href="#Dao"><span
-                                            class="nav-number">5.</span> <span class="nav-text">Dao</span></a></li>
-                                    <li class="nav-item nav-level-3"><a class="nav-link" href="#Run"><span
-                                            class="nav-number">6.</span> <span class="nav-text">Run</span></a></li>
-                                </ol>
-                            </div>
-
-
-                        </div>
-                    </section>
-                    <!--/noindex-->
-
-
-                </div>
-            </aside>
-
-
+            
+          
         </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#pom-xml"><span class="nav-number">1.</span> <span class="nav-text">pom.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DataBaseConfig"><span class="nav-number">2.</span> <span class="nav-text">DataBaseConfig</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#application-properties"><span class="nav-number">3.</span> <span class="nav-text">application.properties</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model"><span class="nav-number">4.</span> <span class="nav-text">Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dao"><span class="nav-number">5.</span> <span class="nav-text">Dao</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run"><span class="nav-number">6.</span> <span class="nav-text">Run</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
-        <div class="footer-inner">
-            <div class="copyright">
-
-                &copy;
-                <span itemprop="copyrightYear">2017</span>
-                <span class="with-love">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-                <span class="author" itemprop="copyrightHolder">aidan</span>
-            </div>
+  <span class="author" itemprop="copyrightHolder">aidan</span>
+</div>
 
-            <div>由<a class="theme-link" target="view_window" href="https://hexo.io">Hexo</a>强力驱动 | <a class="theme-link"
-                                                                                                      target="view_window"
-                                                                                                      href="http://www.miitbeian.gov.cn">粤ICP备12003586号</a>
-            </div>
+<div>由<a class="theme-link" target="view_window" href="https://hexo.io">Hexo</a>强力驱动  |  <a class="theme-link" target="view_window" href="https://beian.miit.gov.cn">粤ICP备12003586号</a></div>
 
 
-            <div class="busuanzi-count">
-                <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-
-                <span class="site-uv">
+  
+    <span class="site-uv">
       <i class="fa fa-user"></i>
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
       
     </span>
+  
 
-
-                <span class="site-pv">
+  
+    <span class="site-pv">
       <i class="fa fa-eye"></i>
       <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
       
     </span>
-
-            </div>
-
-
-        </div>
-    </footer>
-
-
-    <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-
-    </div>
-
-
+  
 </div>
 
 
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
 <script type="text/javascript">
-    if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-        window.Promise = null;
-    }
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
 
-<script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
 
-<script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
-<script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
 
-<script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
 
 
-<script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
-<script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-<script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-<script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
-<script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
-<script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-<script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
-<script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+  
 
 
-<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-<script>AV.initialize("0ogotNGayeLET66f2g9FHgTF-gzGzoHsz", "KKqUX6o78nUnwRCvsXCaNlns");</script>
-<script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("0ogotNGayeLET66f2g9FHgTF-gzGzoHsz", "KKqUX6o78nUnwRCvsXCaNlns");</script>
+  <script>
     function showTime(Counter) {
-        var query = new AV.Query(Counter);
-        var entries = [];
-        var $visitors = $(".leancloud_visitors");
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
 
-        $visitors.each(function () {
-            entries.push($(this).attr("id").trim());
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
         });
-
-        query.containedIn('url', entries);
-        query.find()
-            .done(function (results) {
-                var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-                if (results.length === 0) {
-                    $visitors.find(COUNT_CONTAINER_REF).text(0);
-                    return;
-                }
-
-                for (var i = 0; i < results.length; i++) {
-                    var item = results[i];
-                    var url = item.get('url');
-                    var time = item.get('time');
-                    var element = document.getElementById(url);
-
-                    $(element).find(COUNT_CONTAINER_REF).text(time);
-                }
-                for (var i = 0; i < entries.length; i++) {
-                    var url = entries[i];
-                    var element = document.getElementById(url);
-                    var countSpan = $(element).find(COUNT_CONTAINER_REF);
-                    if (countSpan.text() == '') {
-                        countSpan.text(0);
-                    }
-                }
-            })
-            .fail(function (object, error) {
-                console.log("Error: " + error.code + " " + error.message);
-            });
     }
 
     function addCount(Counter) {
-        var $visitors = $(".leancloud_visitors");
-        var url = $visitors.attr('id').trim();
-        var title = $visitors.attr('data-flag-title').trim();
-        var query = new AV.Query(Counter);
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
 
-        query.equalTo("url", url);
-        query.find({
-            success: function (results) {
-                if (results.length > 0) {
-                    var counter = results[0];
-                    counter.fetchWhenSave(true);
-                    counter.increment("time");
-                    counter.save(null, {
-                        success: function (counter) {
-                            var $element = $(document.getElementById(url));
-                            $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                        },
-                        error: function (counter, error) {
-                            console.log('Failed to save Visitor num, with error message: ' + error.message);
-                        }
-                    });
-                } else {
-                    var newcounter = new Counter();
-                    /* Set ACL */
-                    var acl = new AV.ACL();
-                    acl.setPublicReadAccess(true);
-                    acl.setPublicWriteAccess(true);
-                    newcounter.setACL(acl);
-                    /* End Set ACL */
-                    newcounter.set("title", title);
-                    newcounter.set("url", url);
-                    newcounter.set("time", 1);
-                    newcounter.save(null, {
-                        success: function (newcounter) {
-                            var $element = $(document.getElementById(url));
-                            $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                        },
-                        error: function (newcounter, error) {
-                            console.log('Failed to create');
-                        }
-                    });
-                }
-            },
-            error: function (error) {
-                console.log('Error:' + error.code + " " + error.message);
-            }
-        });
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
     }
 
-    $(function () {
-        var Counter = AV.Object.extend("Counter");
-        if ($('.leancloud_visitors').length == 1) {
-            addCount(Counter);
-        } else if ($('.post-title-link').length > 1) {
-            showTime(Counter);
-        }
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
     });
-</script>
+  </script>
 
+
+
+  
+
+  
+
+  
+
+  
 
 </body>
 </html>

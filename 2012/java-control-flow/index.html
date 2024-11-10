@@ -1,0 +1,965 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="苏宏雄，博客，AidanSu" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="与任何程序设计语言一样，Java 使用条件语句和循环结构确定控制流程。 块的作用域块（复合语句）是指由一对花括号括起来的若干条简单的 Java 语句，块确定了变量的作用域。一个块可以嵌套在另一个块中。但是，不能在嵌套的两个块中声明同名的变量。 条件语句在 Java 中，if 语句是一个判断结构，它会准确地检测判断条件成立与否，决定是否要执行后面的语句。条件语句的格式为：12345if ( cond">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3.6 Java 控制流程">
+<meta property="og:url" content="http://www.aidansu.com/2012/java-control-flow/index.html">
+<meta property="og:site_name" content="AidanSu">
+<meta property="og:description" content="与任何程序设计语言一样，Java 使用条件语句和循环结构确定控制流程。 块的作用域块（复合语句）是指由一对花括号括起来的若干条简单的 Java 语句，块确定了变量的作用域。一个块可以嵌套在另一个块中。但是，不能在嵌套的两个块中声明同名的变量。 条件语句在 Java 中，if 语句是一个判断结构，它会准确地检测判断条件成立与否，决定是否要执行后面的语句。条件语句的格式为：12345if ( cond">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-12-20T15:46:00.747Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3.6 Java 控制流程">
+<meta name="twitter:description" content="与任何程序设计语言一样，Java 使用条件语句和循环结构确定控制流程。 块的作用域块（复合语句）是指由一对花括号括起来的若干条简单的 Java 语句，块确定了变量的作用域。一个块可以嵌套在另一个块中。但是，不能在嵌套的两个块中声明同名的变量。 条件语句在 Java 中，if 语句是一个判断结构，它会准确地检测判断条件成立与否，决定是否要执行后面的语句。条件语句的格式为：12345if ( cond">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.aidansu.com/2012/java-control-flow/"/>
+
+
+
+
+
+  <title> 3.6 Java 控制流程 | AidanSu </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AidanSu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.aidansu.com/2012/java-control-flow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="aidan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AidanSu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                3.6 Java 控制流程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-09-14T00:00:00+08:00">
+                2012-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Java笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/java-control-flow/" class="leancloud_visitors" data-flag-title="3.6 Java 控制流程">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>与任何程序设计语言一样，Java 使用条件语句和循环结构确定控制流程。</p>
+<h3 id="块的作用域"><a href="#块的作用域" class="headerlink" title="块的作用域"></a>块的作用域</h3><p>块（复合语句）是指由一对花括号括起来的若干条简单的 Java 语句，块确定了变量的作用域。一个块可以嵌套在另一个块中。但是，不能在嵌套的两个块中声明同名的变量。</p>
+<h3 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h3><p>在 Java 中，if 语句是一个判断结构，它会准确地检测判断条件成立与否，决定是否要执行后面的语句。条件语句的格式为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ( condition )&#123;</div><div class="line">  <span class="comment">// statement1</span></div><div class="line">  <span class="comment">// statement2</span></div><div class="line">  <span class="comment">// ……..</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当程序中存在含有分支的判断语句时，就可以用 if…else 语句处理。当判断条件成立，即执行 if 语句主体；判断条件不成立时，则会执行 else 后面的语句主体。else 子句与最邻近的 if 构成一组。if….else 语句格式如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (condition )&#123;</div><div class="line">  <span class="comment">// statement1</span></div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">  <span class="comment">// Statement2</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果需要在 if….else 里判断多个条件时，就需要 if….else if….else 语句了，格式如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (condition1 )&#123;</div><div class="line">  <span class="comment">// statement1</span></div><div class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(condition2) &#123;</div><div class="line">  <span class="comment">// Statement2</span></div><div class="line">&#125;</div><div class="line">….        <span class="comment">// 多个else if( )语句</span></div><div class="line"><span class="keyword">else</span> &#123;</div><div class="line">  <span class="comment">// Statement3</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h3 id="switch-语句"><a href="#switch-语句" class="headerlink" title="switch 语句"></a>switch 语句</h3><p>要在许多的选择条件中找到并执行其中一个符合判断条件的语句时，除了可以使用 if…else 不断地判断之外，也可以使用另一种更方便的方式即多重选择—— switch 语句。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span> ( 表达式 ) &#123;</div><div class="line">        <span class="keyword">case</span> 选择值<span class="number">1</span>：        语句主体<span class="number">1</span> ;           <span class="keyword">break</span> ;</div><div class="line">        <span class="keyword">case</span> 选择值<span class="number">2</span>：        语句主体<span class="number">2</span> ;           <span class="keyword">break</span> ;</div><div class="line">        ………….</div><div class="line">        <span class="keyword">case</span> 选择值n：        语句主体n ;           <span class="keyword">break</span> ;</div><div class="line">        <span class="keyword">default</span> :               语句主体;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>switch 语句执行的流程如下：</p>
+<ol>
+<li>switch 语句计算括号中表达式的结果是数字，字符或是枚举。</li>
+<li>根据表达式的值检测是否符合 case 后面的选择值，若是所有 case 的选择不符合，则执行 default 所包含的语句，执行完毕即离开 switch 语句。</li>
+<li>如果某个 case 的选择值符合表达式的结果，就会执行该 case 所包含的语句，一直遇到 break 语句后才离开switch语句。</li>
+<li>若是没有在 case 语句结尾处加上 break 语句，则会一直执行到 switch 语句的尾端才离开 switch 语句。break 语句是跳出语句。</li>
+<li>若是没有定义 default 该执行的语句，则什么也不会执行，直接离开 switch 语句。</li>
+</ol>
+<h3 id="while-循环语句"><a href="#while-循环语句" class="headerlink" title="while 循环语句"></a>while 循环语句</h3><p>while 是循环语句，也是条件判断语句。当事先不知道循环该执行行多少次的时候，就要用到 while 循环。while 循环的格式如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> ( 循环条件判断) &#123;</div><div class="line">        语句<span class="number">1</span> ;</div><div class="line">        语句<span class="number">2</span> ;</div><div class="line">        ……..</div><div class="line">        语句n ;</div><div class="line">        循环条件更改 ;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>while 循环执行的流程：</p>
+<ol>
+<li>第一次进入while循环前，必须先为循环控制变量（或表达式）赋起始值。</li>
+<li>根据判断条件的内容决定是否要继续执行循环，如果条件判断是真（true），继续执行循环主体；若条件判断值为假（false），则跳出循环执行其他语句。</li>
+<li>执行完循环主体内的语句后，重新为循环控制变量（或表达式）赋值（增加或减少），由于while循环不会自动更改循环控制变量（或表达式）的内容，所以在 while 循环中为循环控制变量赋值的工作要由设计者自己来做，完成后再回到步骤 2 重新判断是否继续执行循环。</li>
+</ol>
+<h3 id="do…while-循环"><a href="#do…while-循环" class="headerlink" title="do…while 循环"></a>do…while 循环</h3><p>do…while 循环也是用于未知循环执行次数的时候，而 while 循环与 do … while 循环最大的不同是：while 语句会先测试判断条件的真假，再判断是否执行循环主体，而 do …while 循环则是“先做再说”，每次都是先执行一次循环主体，然后再测试判断条件的真假，所以无论循环成立的条件是什么，使用 do … while 循环时，至少都会执行一次循环主体，语句格式：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">do</span>&#123;</div><div class="line">   语句<span class="number">1</span> ;</div><div class="line">   语句<span class="number">2</span> ;</div><div class="line">   …….</div><div class="line">   语句 n ;</div><div class="line">   循环条件改变 ;</div><div class="line">&#125;<span class="keyword">while</span>( 循环条件判断 ) ;</div></pre></td></tr></table></figure></p>
+<p>do …. While循环执行的流程：</p>
+<ol>
+<li>进入 do … while 循环前，要先为循环控制变量（或表达式）赋期起始值。</li>
+<li>直接执行循环主体，循环主体执行完毕，才开始根据判断条件的内容决定是否继续执行循环，条件判断值为真（true）时，继续执行循环主体；条件判断值为假（false）时，则跳出循环，执行其他语句。</li>
+<li>执行完循环主体内的语句后，重新为循环控制变量（或表达式）赋值（增加或减少），由于 do … while 循环和 while 循环一样，不会自动更改循环控制变量（或表达式）的内容，所以在 do …. While 循环中赋值循环控制变量的工作要由自己来做，然后再回到步骤 2 重新判断是否继续执行循环。</li>
+</ol>
+<h3 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h3><p>对于 while 和 do…while 两种循环来讲，操作时并不一定要明确的知道循环的次数，而如果开发者已经明确知道了循环的次数的话，那么可以使用另外一种循环语句—— for 循环。格式如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> ( 赋值初值; 判断条件; 赋值增减量 ) &#123;</div><div class="line">    语句<span class="number">1</span> ;</div><div class="line">    ……</div><div class="line"> 语句n ;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>for 循环执行的流程：</p>
+<ol>
+<li>第一次进行 for 循环时，要为循环控制变量赋起始值。</li>
+<li>根据判断条件的内容检查是否要继续执行循环，当判断条件值为真（true）时，继续执行循环主体内的语句；判断条件值为（false）时，则会跳出循环，执行其他语句。</li>
+<li>执行完循环主体内的语句后，循环控制变量会根据增减量的要求更改循环控制变量的值，然后再回到步骤（2）重新判断是否继续执行循环。</li>
+</ol>
+<h3 id="中断控制流程语句"><a href="#中断控制流程语句" class="headerlink" title="中断控制流程语句"></a>中断控制流程语句</h3><ol>
+<li>break 语句：<br>break 语句可以强迫程序中断循环，当程序执行到 break 语句时，即会离开循环，继续执行循环外的下一个语句，如果 break 语句出现在嵌套循环中的内循环，则 break 语句只会跳出当前层的循环。带标签的 break 语句会跳转到标签的语句块末，标签必须放在希望跳出的最外层循环之前，并且必须紧跟一个冒号。</li>
+<li>continue 语句：<br>continue 语句可以强迫程序跳到循环的起初处，当程序运行到 continue 语句时，会停止运行剩余的循环主体，而是回到循环的开始处继续运行。如果将 continue 语句用于 for 循环中，就可以跳到 for 循环的“更新”部分。还有一种带标签的 continue 语句，将跳到与标签匹配的循环首部。</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/pay/tenpay.png" alt="aidan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/pay/alipay.png" alt="aidan Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      aidan
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.aidansu.com/2012/java-control-flow/" title="3.6 Java 控制流程">http://www.aidansu.com/2012/java-control-flow/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2012/java-string/" rel="next" title="3.5 Java 字符串">
+                <i class="fa fa-chevron-left"></i> 3.5 Java 字符串
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2012/java-array/" rel="prev" title="3.7 Java 数组">
+                3.7 Java 数组 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="aidan" />
+          <p class="site-author-name" itemprop="name">aidan</p>
+           
+              <p class="site-description motion-element" itemprop="description">沉迷学习无法自拔</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/aidansu" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/shx0999" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/77881755/" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/aidansu" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#块的作用域"><span class="nav-number">1.</span> <span class="nav-text">块的作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件语句"><span class="nav-number">2.</span> <span class="nav-text">条件语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#switch-语句"><span class="nav-number">3.</span> <span class="nav-text">switch 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while-循环语句"><span class="nav-number">4.</span> <span class="nav-text">while 循环语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#do…while-循环"><span class="nav-number">5.</span> <span class="nav-text">do…while 循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-循环"><span class="nav-number">6.</span> <span class="nav-text">for 循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断控制流程语句"><span class="nav-number">7.</span> <span class="nav-text">中断控制流程语句</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">aidan</span>
+</div>
+
+<div>由<a class="theme-link" target="view_window" href="https://hexo.io">Hexo</a>强力驱动  |  <a class="theme-link" target="view_window" href="https://beian.miit.gov.cn">粤ICP备12003586号</a></div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("0ogotNGayeLET66f2g9FHgTF-gzGzoHsz", "KKqUX6o78nUnwRCvsXCaNlns");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
