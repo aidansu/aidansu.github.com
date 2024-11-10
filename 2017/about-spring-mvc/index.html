@@ -1,297 +1,219 @@
 <!doctype html>
 
 
-
-  
-
-
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
 
 
+    <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
 
 
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+          rel="stylesheet" type="text/css">
 
 
+    <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"/>
+
+    <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css"/>
 
 
+    <meta name="keywords" content="Java,Spring,"/>
 
 
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0"/>
 
 
+    <meta name="description"
+          content="Spring MVC 是一种基于 Java 实现了 Web MVC 设计模式的轻量级 Web 框架，其他语言也有 MVC 框架，如：基于 python 实现的 Django，基于 go 实现的 beego。MVC 是一种应用表示层设计的分层架构风格，将程序的输入、处理、输出这个顺序过程抽象为模型、视图、控制三个模块，程序员仅需关注业务的数据、展现、控制流程三个元素，将 Context，通讯协议、进">
+    <meta name="keywords" content="Java,Spring">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="了解 Spring MVC 框架">
+    <meta property="og:url" content="http://www.aidansu.com/2017/about-spring-mvc/index.html">
+    <meta property="og:site_name" content="AidanSu">
+    <meta property="og:description"
+          content="Spring MVC 是一种基于 Java 实现了 Web MVC 设计模式的轻量级 Web 框架，其他语言也有 MVC 框架，如：基于 python 实现的 Django，基于 go 实现的 beego。MVC 是一种应用表示层设计的分层架构风格，将程序的输入、处理、输出这个顺序过程抽象为模型、视图、控制三个模块，程序员仅需关注业务的数据、展现、控制流程三个元素，将 Context，通讯协议、进">
+    <meta property="og:locale" content="zh-Hans">
+    <meta property="og:image" content="http://www.aidansu.com/images/2017/spring-mvc-processing.png">
+    <meta property="og:image" content="http://www.aidansu.com/images/2017/spring-mvc-j2ee.png">
+    <meta property="og:updated_time" content="2017-09-13T11:21:12.000Z">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="了解 Spring MVC 框架">
+    <meta name="twitter:description"
+          content="Spring MVC 是一种基于 Java 实现了 Web MVC 设计模式的轻量级 Web 框架，其他语言也有 MVC 框架，如：基于 python 实现的 Django，基于 go 实现的 beego。MVC 是一种应用表示层设计的分层架构风格，将程序的输入、处理、输出这个顺序过程抽象为模型、视图、控制三个模块，程序员仅需关注业务的数据、展现、控制流程三个元素，将 Context，通讯协议、进">
+    <meta name="twitter:image" content="http://www.aidansu.com/images/2017/spring-mvc-processing.png">
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configurations">
+        var NexT = window.NexT || {};
+        var CONFIG = {
+            root: '/',
+            scheme: 'Pisces',
+            sidebar: {
+                "position": "left",
+                "display": "post",
+                "offset": 12,
+                "offset_float": 0,
+                "b2t": false,
+                "scrollpercent": false
+            },
+            fancybox: true,
+            motion: true,
+            duoshuo: {
+                userId: '0',
+                author: '博主'
+            },
+            algolia: {
+                applicationID: '',
+                apiKey: '',
+                indexName: '',
+                hits: {"per_page": 10},
+                labels: {
+                    "input_placeholder": "Search for Posts",
+                    "hits_empty": "We didn't find any results for the search: ${query}",
+                    "hits_stats": "${hits} results found in ${time} ms"
+                }
+            }
+        };
+    </script>
 
 
+    <link rel="canonical" href="http://www.aidansu.com/2017/about-spring-mvc/"/>
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Java,Spring," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
-
-
-
-
-
-
-<meta name="description" content="Spring MVC 是一种基于 Java 实现了 Web MVC 设计模式的轻量级 Web 框架，其他语言也有 MVC 框架，如：基于 python 实现的 Django，基于 go 实现的 beego。MVC 是一种应用表示层设计的分层架构风格，将程序的输入、处理、输出这个顺序过程抽象为模型、视图、控制三个模块，程序员仅需关注业务的数据、展现、控制流程三个元素，将 Context，通讯协议、进">
-<meta name="keywords" content="Java,Spring">
-<meta property="og:type" content="article">
-<meta property="og:title" content="了解 Spring MVC 框架">
-<meta property="og:url" content="http://www.aidansu.com/2017/about-spring-mvc/index.html">
-<meta property="og:site_name" content="AidanSu">
-<meta property="og:description" content="Spring MVC 是一种基于 Java 实现了 Web MVC 设计模式的轻量级 Web 框架，其他语言也有 MVC 框架，如：基于 python 实现的 Django，基于 go 实现的 beego。MVC 是一种应用表示层设计的分层架构风格，将程序的输入、处理、输出这个顺序过程抽象为模型、视图、控制三个模块，程序员仅需关注业务的数据、展现、控制流程三个元素，将 Context，通讯协议、进">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.aidansu.com/images/2017/spring-mvc-processing.png">
-<meta property="og:image" content="http://www.aidansu.com/images/2017/spring-mvc-j2ee.png">
-<meta property="og:updated_time" content="2017-09-13T11:21:12.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="了解 Spring MVC 框架">
-<meta name="twitter:description" content="Spring MVC 是一种基于 Java 实现了 Web MVC 设计模式的轻量级 Web 框架，其他语言也有 MVC 框架，如：基于 python 实现的 Django，基于 go 实现的 beego。MVC 是一种应用表示层设计的分层架构风格，将程序的输入、处理、输出这个顺序过程抽象为模型、视图、控制三个模块，程序员仅需关注业务的数据、展现、控制流程三个元素，将 Context，通讯协议、进">
-<meta name="twitter:image" content="http://www.aidansu.com/images/2017/spring-mvc-processing.png">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://www.aidansu.com/2017/about-spring-mvc/"/>
-
-
-
-
-
-  <title> 了解 Spring MVC 框架 | AidanSu </title>
+    <title> 了解 Spring MVC 框架 | AidanSu </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail ">
+<div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">AidanSu</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle">Quick notes</p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
+        <div class="header-inner">
+            <div class="site-brand-wrapper">
+                <div class="site-meta ">
 
 
+                    <div class="custom-logo-site-title">
+                        <a href="/" class="brand" rel="start">
+                            <span class="logo-line-before"><i></i></span>
+                            <span class="site-title">AidanSu</span>
+                            <span class="logo-line-after"><i></i></span>
+                        </a>
+                    </div>
 
- </div>
+                    <p class="site-subtitle">Quick notes</p>
+
+                </div>
+
+                <div class="site-nav-toggle">
+                    <button>
+                        <span class="btn-bar"></span>
+                        <span class="btn-bar"></span>
+                        <span class="btn-bar"></span>
+                    </button>
+                </div>
+            </div>
+
+            <nav class="site-nav">
+
+
+                <ul id="menu" class="menu">
+
+
+                    <li class="menu-item menu-item-home">
+                        <a href="/" rel="section">
+
+                            <i class="menu-item-icon fa fa-fw fa-home"></i> <br/>
+
+                            首页
+                        </a>
+                    </li>
+
+
+                    <li class="menu-item menu-item-archives">
+                        <a href="/archives" rel="section">
+
+                            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>
+
+                            归档
+                        </a>
+                    </li>
+
+
+                    <li class="menu-item menu-item-tags">
+                        <a href="/tags" rel="section">
+
+                            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>
+
+                            标签
+                        </a>
+                    </li>
+
+
+                    <li class="menu-item menu-item-about">
+                        <a href="/about" rel="section">
+
+                            <i class="menu-item-icon fa fa-fw fa-user"></i> <br/>
+
+                            关于
+                        </a>
+                    </li>
+
+
+                </ul>
+
+
+            </nav>
+
+
+        </div>
     </header>
 
     <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
+        <div class="main-inner">
+            <div class="content-wrap">
+                <div id="content" class="content">
 
-  <div id="posts" class="posts-expand">
-    
 
-  
+                    <div id="posts" class="posts-expand">
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.aidansu.com/2017/about-spring-mvc/">
+                        <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                            <link itemprop="mainEntityOfPage" href="http://www.aidansu.com/2017/about-spring-mvc/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                            <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="aidan">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                            <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="AidanSu">
     </span>
 
-    
-      <header class="post-header">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                了解 Spring MVC 框架
-              
-            
-          </h1>
-        
+                            <header class="post-header">
 
-        <div class="post-meta">
+
+                                <h1 class="post-title" itemprop="name headline">
+
+
+                                    了解 Spring MVC 框架
+
+
+                                </h1>
+
+
+                                <div class="post-meta">
           <span class="post-time">
             
               <span class="post-meta-item-icon">
@@ -310,8 +232,8 @@
             
           </span>
 
-          
-            <span class="post-category" >
+
+                                    <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -332,15 +254,10 @@
                 
               
             </span>
-          
 
-          
-            
-          
 
-          
-          
-             <span id="/2017/about-spring-mvc/" class="leancloud_visitors" data-flag-title="了解 Spring MVC 框架">
+                                    <span id="/2017/about-spring-mvc/" class="leancloud_visitors"
+                                          data-flag-title="了解 Spring MVC 框架">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -350,284 +267,505 @@
                
                  <span class="leancloud-visitors-count"></span>
              </span>
-          
 
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+
+                                    <span class="post-meta-divider">|</span>
+                                    <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
             </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
 
 
-    <div class="post-body" itemprop="articleBody">
+                                </div>
+                            </header>
 
-      
-      
 
-      
-        <p>Spring MVC 是一种基于 Java 实现了 Web MVC 设计模式的轻量级 Web 框架，其他语言也有 MVC 框架，如：基于 python 实现的 Django，基于 go 实现的 beego。MVC 是一种应用表示层设计的分层架构风格，将程序的输入、处理、输出这个顺序过程抽象为模型、视图、控制三个模块，程序员仅需关注业务的数据、展现、控制流程三个元素，将 Context，通讯协议、进程与线程、会话等复杂的要素交给框架处理，实现 Java 应用以业务为中心的编程理念，使得程序业务逻辑清晰，模块结构好。对提升开发效率，增强可维护性，促进团队内部按技能分工，起到关键作用。</p>
-<h3 id="MVC-的概念"><a href="#MVC-的概念" class="headerlink" title="MVC 的概念"></a>MVC 的概念</h3><ul>
-<li>M (模型/Model)：业务涉及的数据对象实体。例如,你下订单购物,它包含用户、订单、订单项、支付等业务对象数据;</li>
-<li>V (视图/View)：展示业务人机交互界面的显示模板。例如,jsp 文件等,它能将模型中的数据填入显示模板,用户可看到界面元素丰富的界面;</li>
-<li>C (控制器/Controller)：用户输入处理单元。它检查输入的合法性,处理输入表单,按流程调用业务函数,生成输出需要的数据模型,选择视图模板,输出</li>
-</ul>
-<a id="more"></a>
-<h3 id="MVC-处理请求的流程"><a href="#MVC-处理请求的流程" class="headerlink" title="MVC 处理请求的流程"></a>MVC 处理请求的流程</h3><p>Spring Web MVC 框架也是一个基于请求驱动的 Web 框架，框架是围绕 DispatcherServlet把请求转发给处理器，可配置的处理器映射，视图解析，本地语言，时区和主题解析以及对上传文件的支持。默认的处理程序是基于 @Controller 与 @RequestMapping 注释，提供多种灵活的处理方法。它和 Spring 的 IoC 容器完全集成在一起，从而允许你使用 Spring 的其它功能。下图展示了 Spring Web MVC DispatcherServlet 处理请求的流程。熟悉设计模式的读者可能会发现 DispatcherServlet 应用了“ Front Controller”模式（很多其他的主流web框架也都用到了该模式）。</p>
-<p><img src="/images/2017/spring-mvc-processing.png" style="margin:0;border:0"></p>
-<h3 id="MVC-各部件协同过程"><a href="#MVC-各部件协同过程" class="headerlink" title="MVC 各部件协同过程"></a>MVC 各部件协同过程</h3><p>各种语言 web MVC 框架不可胜数，但执行过程都是一致的。<br><em>分配/映射</em>：这时框架完成的，它根据客户端 URL 映射到你定义的控制器类（使用 @注释 或 外部 xml），做部分 Valid 检查<br><em>控制器</em>：执行业务流程，一般步骤是:</p>
-<ul>
-<li>参数检查</li>
-<li>业务服务访问</li>
-<li>装配数据模型</li>
-<li>选择输出模板</li>
-<li>模板渲染：按数据模型提供的数据渲染，生成网页或特定数据格式</li>
-</ul>
-<h3 id="MVC-与-J2EE-的关系"><a href="#MVC-与-J2EE-的关系" class="headerlink" title="MVC 与 J2EE 的关系"></a>MVC 与 J2EE 的关系</h3><p>正如老师所说：“对于新手，常会对某种语言或 MVC 框架产生崇拜，例如学了 MVC 就掌握了 web 编程，喜欢对比 struts 和 spring mvc 的效率”。说明新手的知识面不够广，再不学习又被取笑了，哈哈。 MVC 结构在 web 开发中的位置如下图：</p>
-<p><img src="/images/2017/spring-mvc-j2ee.png" style="margin:0;border:0"></p>
-<p>无论是 J2EE 或 轻量级 web 应用，大概分为三个层次：</p>
-<ul>
-<li>表示层（present layer）: 处理 HTTP 输入（Request），然后调用业务服务，产生输出（Response）。这里，应用开发人员只需要考虑 MVC 三个编程元素。</li>
-<li>业务层（business layer）: 提供满足 ACID 要求的业务服务。这里，开发人员只需声明对外的业务服务函数，Spring 等提供事务（Transaction）支持。</li>
-<li>持久化层（persistence layer）：提供数据表存取机制，主要是 ORM 框架实现以对象-关系数据库的映射。这里，开发人员只需声明表和对象的映射，特殊的 SQL。</li>
-</ul>
-<p>因此，MVC 结构仅是 web 开发中的表示层技术。</p>
-<h3 id="MVC-简单实现"><a href="#MVC-简单实现" class="headerlink" title="MVC 简单实现"></a>MVC 简单实现</h3><p>参考 Spring 官方案例，地址：<a href="https://spring.io/guides/gs/serving-web-content/" target="_blank" rel="external">https://spring.io/guides/gs/serving-web-content/</a> ，项目 github 地址：<a href="https://github.com/spring-guides/gs-serving-web-content.git" target="_blank" rel="external">https://github.com/spring-guides/gs-serving-web-content.git</a><br>使用 maven 创建 Java 应用 hello-spring-mvc</p>
-<h4 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h4><p>在 pom.xml 文件中添加 Spring Boot 依赖，几乎 Spring 所有模块都下载了<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></div><div class="line"><span class="tag">  <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.aidansu.com<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hello-spring-mvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>war<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>hello-spring-mvc Maven Webapp<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.apache.org<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">properties</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">parent</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5.3.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">build</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">finalName</span>&gt;</span>hello-spring-mvc<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">build</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<h4 id="控制器与模型"><a href="#控制器与模型" class="headerlink" title="控制器与模型"></a>控制器与模型</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Controller</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GreetingController</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/greeting"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">greeting</span><span class="params">(@RequestParam(value=<span class="string">"name"</span>, required=<span class="keyword">false</span>, defaultValue=<span class="string">"World"</span>)</span> String name, Model model) </span>&#123;</div><div class="line">        model.addAttribute(<span class="string">"name"</span>, name);</div><div class="line">        <span class="keyword">return</span> <span class="string">"greeting"</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>要点：</p>
-<ul>
-<li>@Controller 注释申明这个类是控制器</li>
-<li>@RequestMapping(“/greeting”) 注释申明 URL 匹配 “/greeting” 给这个函数处理。</li>
-<li>@RequestParam(value=”name”, required=false, defaultValue=”World”) 注释申明如果查询字符串中有 name=value 则 value 转为 String 给 name 这个参数。例如：URL 是  /greeting?name=User 则变量 name = “User” 。</li>
-<li>model 是一个容器，存放变量供视图模板使用</li>
-<li>返回 “greeting” 是模板名称。</li>
-</ul>
-<h4 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h4><p>greeting.html 在 /resources/templates 目录下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE HTML&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span> </div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Getting Started: Serving Web Content<span class="tag">&lt;/<span class="name">title</span>&gt;</span> </div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">"'Hello, ' + $&#123;name&#125; + '!'"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>这是 thymeleaf 风格的模板。其中 th:text=“表达式” 表示修改 p 元素的 text 属性。 ${name} 从模型中获取对象 name。</p>
-<h4 id="程序启动代码"><a href="#程序启动代码" class="headerlink" title="程序启动代码"></a>程序启动代码</h4><pre><code class="java"><span class="meta">@SpringBootApplication</span>  
+                            <div class="post-body" itemprop="articleBody">
+
+
+                                <p>Spring MVC 是一种基于 Java 实现了 Web MVC 设计模式的轻量级 Web 框架，其他语言也有 MVC 框架，如：基于 python 实现的
+                                    Django，基于 go 实现的 beego。MVC
+                                    是一种应用表示层设计的分层架构风格，将程序的输入、处理、输出这个顺序过程抽象为模型、视图、控制三个模块，程序员仅需关注业务的数据、展现、控制流程三个元素，将
+                                    Context，通讯协议、进程与线程、会话等复杂的要素交给框架处理，实现 Java
+                                    应用以业务为中心的编程理念，使得程序业务逻辑清晰，模块结构好。对提升开发效率，增强可维护性，促进团队内部按技能分工，起到关键作用。</p>
+                                <h3 id="MVC-的概念"><a href="#MVC-的概念" class="headerlink" title="MVC 的概念"></a>MVC 的概念</h3>
+                                <ul>
+                                    <li>M (模型/Model)：业务涉及的数据对象实体。例如,你下订单购物,它包含用户、订单、订单项、支付等业务对象数据;</li>
+                                    <li>V (视图/View)：展示业务人机交互界面的显示模板。例如,jsp 文件等,它能将模型中的数据填入显示模板,用户可看到界面元素丰富的界面;</li>
+                                    <li>C (控制器/Controller)：用户输入处理单元。它检查输入的合法性,处理输入表单,按流程调用业务函数,生成输出需要的数据模型,选择视图模板,输出
+                                    </li>
+                                </ul>
+                                <a id="more"></a>
+                                <h3 id="MVC-处理请求的流程"><a href="#MVC-处理请求的流程" class="headerlink" title="MVC 处理请求的流程"></a>MVC
+                                    处理请求的流程</h3>
+                                <p>Spring Web MVC 框架也是一个基于请求驱动的 Web 框架，框架是围绕
+                                    DispatcherServlet把请求转发给处理器，可配置的处理器映射，视图解析，本地语言，时区和主题解析以及对上传文件的支持。默认的处理程序是基于
+                                    @Controller 与 @RequestMapping 注释，提供多种灵活的处理方法。它和 Spring 的 IoC 容器完全集成在一起，从而允许你使用
+                                    Spring 的其它功能。下图展示了 Spring Web MVC DispatcherServlet 处理请求的流程。熟悉设计模式的读者可能会发现
+                                    DispatcherServlet 应用了“ Front Controller”模式（很多其他的主流web框架也都用到了该模式）。</p>
+                                <p><img src="/images/2017/spring-mvc-processing.png" style="margin:0;border:0"></p>
+                                <h3 id="MVC-各部件协同过程"><a href="#MVC-各部件协同过程" class="headerlink" title="MVC 各部件协同过程"></a>MVC
+                                    各部件协同过程</h3>
+                                <p>各种语言 web MVC 框架不可胜数，但执行过程都是一致的。<br><em>分配/映射</em>：这时框架完成的，它根据客户端 URL 映射到你定义的控制器类（使用
+                                    @注释 或 外部 xml），做部分 Valid 检查<br><em>控制器</em>：执行业务流程，一般步骤是:</p>
+                                <ul>
+                                    <li>参数检查</li>
+                                    <li>业务服务访问</li>
+                                    <li>装配数据模型</li>
+                                    <li>选择输出模板</li>
+                                    <li>模板渲染：按数据模型提供的数据渲染，生成网页或特定数据格式</li>
+                                </ul>
+                                <h3 id="MVC-与-J2EE-的关系"><a href="#MVC-与-J2EE-的关系" class="headerlink"
+                                                           title="MVC 与 J2EE 的关系"></a>MVC 与 J2EE 的关系</h3>
+                                <p>正如老师所说：“对于新手，常会对某种语言或 MVC 框架产生崇拜，例如学了 MVC 就掌握了 web 编程，喜欢对比 struts 和 spring mvc
+                                    的效率”。说明新手的知识面不够广，再不学习又被取笑了，哈哈。 MVC 结构在 web 开发中的位置如下图：</p>
+                                <p><img src="/images/2017/spring-mvc-j2ee.png" style="margin:0;border:0"></p>
+                                <p>无论是 J2EE 或 轻量级 web 应用，大概分为三个层次：</p>
+                                <ul>
+                                    <li>表示层（present layer）: 处理 HTTP 输入（Request），然后调用业务服务，产生输出（Response）。这里，应用开发人员只需要考虑
+                                        MVC 三个编程元素。
+                                    </li>
+                                    <li>业务层（business layer）: 提供满足 ACID 要求的业务服务。这里，开发人员只需声明对外的业务服务函数，Spring
+                                        等提供事务（Transaction）支持。
+                                    </li>
+                                    <li>持久化层（persistence layer）：提供数据表存取机制，主要是 ORM
+                                        框架实现以对象-关系数据库的映射。这里，开发人员只需声明表和对象的映射，特殊的 SQL。
+                                    </li>
+                                </ul>
+                                <p>因此，MVC 结构仅是 web 开发中的表示层技术。</p>
+                                <h3 id="MVC-简单实现"><a href="#MVC-简单实现" class="headerlink" title="MVC 简单实现"></a>MVC 简单实现
+                                </h3>
+                                <p>参考 Spring 官方案例，地址：<a href="https://spring.io/guides/gs/serving-web-content/"
+                                                        target="_blank" rel="external">https://spring.io/guides/gs/serving-web-content/</a>
+                                    ，项目 github 地址：<a href="https://github.com/spring-guides/gs-serving-web-content.git"
+                                                     target="_blank" rel="external">https://github.com/spring-guides/gs-serving-web-content.git</a><br>使用
+                                    maven 创建 Java 应用 hello-spring-mvc</p>
+                                <h4 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h4>
+                                <p>在 pom.xml 文件中添加 Spring Boot 依赖，几乎 Spring 所有模块都下载了<br>
+                                    <figure class="highlight xml">
+                                        <table>
+                                            <tr>
+                                                <td class="gutter">
+                                                    <pre><div class="line">1</div><div class="line">2</div><div
+                                                            class="line">3</div><div class="line">4</div><div
+                                                            class="line">5</div><div class="line">6</div><div
+                                                            class="line">7</div><div class="line">8</div><div
+                                                            class="line">9</div><div class="line">10</div><div
+                                                            class="line">11</div><div class="line">12</div><div
+                                                            class="line">13</div><div class="line">14</div><div
+                                                            class="line">15</div><div class="line">16</div><div
+                                                            class="line">17</div><div class="line">18</div><div
+                                                            class="line">19</div><div class="line">20</div><div
+                                                            class="line">21</div><div class="line">22</div><div
+                                                            class="line">23</div><div class="line">24</div><div
+                                                            class="line">25</div><div class="line">26</div><div
+                                                            class="line">27</div><div class="line">28</div><div
+                                                            class="line">29</div><div class="line">30</div><div
+                                                            class="line">31</div><div class="line">32</div><div
+                                                            class="line">33</div><div class="line">34</div><div
+                                                            class="line">35</div><div class="line">36</div><div
+                                                            class="line">37</div><div class="line">38</div><div
+                                                            class="line">39</div><div class="line">40</div><div
+                                                            class="line">41</div><div class="line">42</div><div
+                                                            class="line">43</div><div class="line">44</div><div
+                                                            class="line">45</div><div class="line">46</div><div
+                                                            class="line">47</div><div class="line">48</div></pre>
+                                                </td>
+                                                <td class="code">
+                                                    <pre><div class="line"><span class="tag">&lt;<span class="name">project</span> <span
+                                                            class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> <span
+                                                            class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></div><div
+                                                            class="line"><span class="tag">  <span class="attr">xsi:schemaLocation</span>=<span
+                                                            class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"</span>&gt;</span></div><div
+                                                            class="line">  <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span
+                                                            class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></div><div
+                                                            class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.aidansu.com<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">groupId</span>&gt;</span></div><div
+                                                            class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hello-spring-mvc<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">artifactId</span>&gt;</span></div><div
+                                                            class="line">  <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>war<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">packaging</span>&gt;</span></div><div
+                                                            class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">version</span>&gt;</span></div><div
+                                                            class="line">  <span class="tag">&lt;<span
+                                                            class="name">name</span>&gt;</span>hello-spring-mvc Maven Webapp<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">name</span>&gt;</span></div><div class="line">  <span
+                                                            class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.apache.org<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">url</span>&gt;</span></div><div
+                                                            class="line"></div><div class="line">  <span class="tag">&lt;<span
+                                                            class="name">properties</span>&gt;</span></div><div
+                                                            class="line">    <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span
+                                                            class="tag">&lt;/<span class="name">java.version</span>&gt;</span></div><div
+                                                            class="line">  <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></div><div
+                                                            class="line"></div><div class="line">  <span class="tag">&lt;<span
+                                                            class="name">parent</span>&gt;</span></div><div
+                                                            class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">groupId</span>&gt;</span></div><div
+                                                            class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">artifactId</span>&gt;</span></div><div
+                                                            class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5.3.RELEASE<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">version</span>&gt;</span></div><div
+                                                            class="line">  <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></div><div
+                                                            class="line"></div><div class="line">  <span class="tag">&lt;<span
+                                                            class="name">dependencies</span>&gt;</span></div><div
+                                                            class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div
+                                                            class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">groupId</span>&gt;</span></div><div
+                                                            class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">artifactId</span>&gt;</span></div><div
+                                                            class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div
+                                                            class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div
+                                                            class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">groupId</span>&gt;</span></div><div
+                                                            class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">artifactId</span>&gt;</span></div><div
+                                                            class="line">      <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">optional</span>&gt;</span></div><div
+                                                            class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div
+                                                            class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div
+                                                            class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">groupId</span>&gt;</span></div><div
+                                                            class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">artifactId</span>&gt;</span></div><div
+                                                            class="line">      <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span
+                                                            class="tag">&lt;/<span class="name">scope</span>&gt;</span></div><div
+                                                            class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div
+                                                            class="line">  <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div><div
+                                                            class="line"></div><div class="line">  <span class="tag">&lt;<span
+                                                            class="name">build</span>&gt;</span></div><div class="line">    <span
+                                                            class="tag">&lt;<span
+                                                            class="name">finalName</span>&gt;</span>hello-spring-mvc<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">finalName</span>&gt;</span></div><div
+                                                            class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></div><div
+                                                            class="line">      <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div
+                                                            class="line">        <span class="tag">&lt;<span
+                                                            class="name">groupId</span>&gt;</span>org.springframework.boot<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">groupId</span>&gt;</span></div><div
+                                                            class="line">        <span class="tag">&lt;<span
+                                                            class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">artifactId</span>&gt;</span></div><div
+                                                            class="line">      <span class="tag">&lt;/<span
+                                                            class="name">plugin</span>&gt;</span></div><div
+                                                            class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></div><div
+                                                            class="line">  <span class="tag">&lt;/<span class="name">build</span>&gt;</span></div><div
+                                                            class="line"></div><div class="line"><span class="tag">&lt;/<span
+                                                            class="name">project</span>&gt;</span></div></pre>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </figure>
+                                </p>
+                                <h4 id="控制器与模型"><a href="#控制器与模型" class="headerlink" title="控制器与模型"></a>控制器与模型</h4>
+                                <figure class="highlight java">
+                                    <table>
+                                        <tr>
+                                            <td class="gutter">
+                                                <pre><div class="line">1</div><div class="line">2</div><div
+                                                        class="line">3</div><div class="line">4</div><div
+                                                        class="line">5</div><div class="line">6</div><div
+                                                        class="line">7</div><div class="line">8</div><div
+                                                        class="line">9</div><div class="line">10</div></pre>
+                                            </td>
+                                            <td class="code">
+                                                <pre><div class="line"><span class="meta">@Controller</span></div><div
+                                                        class="line"><span class="keyword">public</span> <span
+                                                        class="class"><span class="keyword">class</span> <span
+                                                        class="title">GreetingController</span> </span>&#123;</div><div
+                                                        class="line"></div><div class="line">    <span class="meta">@RequestMapping</span>(<span
+                                                        class="string">"/greeting"</span>)</div><div
+                                                        class="line">    <span class="function"><span class="keyword">public</span> String <span
+                                                        class="title">greeting</span><span class="params">(@RequestParam(value=<span
+                                                        class="string">"name"</span>, required=<span class="keyword">false</span>, defaultValue=<span
+                                                        class="string">"World"</span>)</span> String name, Model model) </span>&#123;</div><div
+                                                        class="line">        model.addAttribute(<span class="string">"name"</span>, name);</div><div
+                                                        class="line">        <span class="keyword">return</span> <span
+                                                        class="string">"greeting"</span>;</div><div class="line">    &#125;</div><div
+                                                        class="line"></div><div class="line">&#125;</div></pre>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </figure>
+                                <p>要点：</p>
+                                <ul>
+                                    <li>@Controller 注释申明这个类是控制器</li>
+                                    <li>@RequestMapping(“/greeting”) 注释申明 URL 匹配 “/greeting” 给这个函数处理。</li>
+                                    <li>@RequestParam(value=”name”, required=false, defaultValue=”World”) 注释申明如果查询字符串中有
+                                        name=value 则 value 转为 String 给 name 这个参数。例如：URL 是 /greeting?name=User 则变量 name =
+                                        “User” 。
+                                    </li>
+                                    <li>model 是一个容器，存放变量供视图模板使用</li>
+                                    <li>返回 “greeting” 是模板名称。</li>
+                                </ul>
+                                <h4 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h4>
+                                <p>greeting.html 在 /resources/templates 目录下：<br>
+                                    <figure class="highlight html">
+                                        <table>
+                                            <tr>
+                                                <td class="gutter">
+                                                    <pre><div class="line">1</div><div class="line">2</div><div
+                                                            class="line">3</div><div class="line">4</div><div
+                                                            class="line">5</div><div class="line">6</div><div
+                                                            class="line">7</div><div class="line">8</div><div
+                                                            class="line">9</div><div class="line">10</div></pre>
+                                                </td>
+                                                <td class="code">
+                                                    <pre><div class="line"><span
+                                                            class="meta">&lt;!DOCTYPE HTML&gt;</span></div><div
+                                                            class="line"><span class="tag">&lt;<span
+                                                            class="name">html</span> <span class="attr">xmlns:th</span>=<span
+                                                            class="string">"http://www.thymeleaf.org"</span>&gt;</span></div><div
+                                                            class="line"><span class="tag">&lt;<span
+                                                            class="name">head</span>&gt;</span> </div><div class="line">    <span
+                                                            class="tag">&lt;<span class="name">title</span>&gt;</span>Getting Started: Serving Web Content<span
+                                                            class="tag">&lt;/<span class="name">title</span>&gt;</span> </div><div
+                                                            class="line">    <span class="tag">&lt;<span class="name">meta</span> <span
+                                                            class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span
+                                                            class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span> /&gt;</span></div><div
+                                                            class="line"><span class="tag">&lt;/<span
+                                                            class="name">head</span>&gt;</span></div><div
+                                                            class="line"><span class="tag">&lt;<span
+                                                            class="name">body</span>&gt;</span></div><div class="line">    <span
+                                                            class="tag">&lt;<span class="name">p</span> <span
+                                                            class="attr">th:text</span>=<span class="string">"'Hello, ' + $&#123;name&#125; + '!'"</span> /&gt;</span></div><div
+                                                            class="line"><span class="tag">&lt;/<span
+                                                            class="name">body</span>&gt;</span></div><div
+                                                            class="line"><span class="tag">&lt;/<span
+                                                            class="name">html</span>&gt;</span></div></pre>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </figure>
+                                </p>
+                                <p>这是 thymeleaf 风格的模板。其中 th:text=“表达式” 表示修改 p 元素的 text 属性。 ${name} 从模型中获取对象 name。</p>
+                                <h4 id="程序启动代码"><a href="#程序启动代码" class="headerlink" title="程序启动代码"></a>程序启动代码</h4>
+                                <pre><code class="java"><span class="meta">@SpringBootApplication</span>
 <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>{  
 
-    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{  
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span
+            class="keyword">void</span> <span class="title">main</span><span
+            class="params">(String[] args)</span> </span>{
         SpringApplication.run(Application.class, args);  
     }  
 
 }
 </code></pre>
-<p>要点：</p>
-<ul>
-<li>@SpringBootApplication 注释申明了这个类，等价于三个注释 @Configuration @EnableAutoConfiguration @ComponentScan 。</li>
-<li>main()方法中，SpringApplication.run() 这个配置的程</li>
-</ul>
-<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><p>执行 main 方法，服务器启动在 <a href="http://localhost:8080" target="_blank" rel="external">http://localhost:8080</a> 端口，打开浏览器，输入一下地址：　<a href="http://localhost:8080/greeting?name=aidan" target="_blank" rel="external">http://localhost:8080/greeting?name=aidan</a> ，就可以看到一下信息：<br>Hello, aidan!</p>
-<p>本次项目 hello-spring-mvc 的项目代码已经放在 github 上，有需要的同学可以下载查看。地址： <a href="https://github.com/aidansu/hello-spring-mvc" target="_blank" rel="external">https://github.com/aidansu/hello-spring-mvc</a></p>
-<p>想了解更多关于 Spring MVC 框架信息的可以查看最新的官方文档：　<a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html#mvc-introduction" target="_blank" rel="external">http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html#mvc-introduction</a></p>
-<p>完！</p>
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
-    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-      <span>赏</span>
-    </button>
-    <div id="QR" style="display: none;">
-      
-        <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/images/pay/tenpay.png" alt="aidan WeChat Pay"/>
-          <p>微信打赏</p>
-        </div>
-      
-      
-        <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/images/pay/alipay.png" alt="aidan Alipay"/>
-          <p>支付宝打赏</p>
-        </div>
-      
-    </div>
-  </div>
+                                <p>要点：</p>
+                                <ul>
+                                    <li>@SpringBootApplication 注释申明了这个类，等价于三个注释 @Configuration @EnableAutoConfiguration
+                                        @ComponentScan 。
+                                    </li>
+                                    <li>main()方法中，SpringApplication.run() 这个配置的程</li>
+                                </ul>
+                                <h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4>
+                                <p>执行 main 方法，服务器启动在 <a href="http://localhost:8080" target="_blank" rel="external">http://localhost:8080</a>
+                                    端口，打开浏览器，输入一下地址：　<a href="http://localhost:8080/greeting?name=aidan" target="_blank"
+                                                        rel="external">http://localhost:8080/greeting?name=aidan</a>
+                                    ，就可以看到一下信息：<br>Hello, aidan!</p>
+                                <p>本次项目 hello-spring-mvc 的项目代码已经放在 github 上，有需要的同学可以下载查看。地址： <a
+                                        href="https://github.com/aidansu/hello-spring-mvc" target="_blank"
+                                        rel="external">https://github.com/aidansu/hello-spring-mvc</a></p>
+                                <p>想了解更多关于 Spring MVC 框架信息的可以查看最新的官方文档：　<a
+                                        href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html#mvc-introduction"
+                                        target="_blank" rel="external">http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html#mvc-introduction</a>
+                                </p>
+                                <p>完！</p>
 
 
-      
-    </div>
+                            </div>
 
-    <div>
-      
-        
-  <ul class="post-copyright">
-    <li class="post-copyright-author">
-      <strong>本文作者：</strong>
-      aidan
-    </li>
-    <li class="post-copyright-link">
-      <strong>本文链接：</strong>
-      <a href="http://www.aidansu.com/2017/about-spring-mvc/" title="了解 Spring MVC 框架">http://www.aidansu.com/2017/about-spring-mvc/</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong>
-      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
+                            <div>
 
 
-      
-    </div>
+                            </div>
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Java/" rel="tag"># Java</a>
-          
-            <a href="/tags/Spring/" rel="tag"># Spring</a>
-          
-        </div>
-      
-
-      
-        
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/about-spring/" rel="next" title="了解 Spring 框架">
-                <i class="fa fa-chevron-left"></i> 了解 Spring 框架
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/spring-mvc-mysql-jdbc/" rel="prev" title="Spring MVC 连接 MySQL 数据库 JDBC">
-                Spring MVC 连接 MySQL 数据库 JDBC <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
+                            <div>
 
 
+                                <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+                                    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+                                    <button id="rewardButton" disable="enable"
+                                            onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+                                        <span>赏</span>
+                                    </button>
+                                    <div id="QR" style="display: none;">
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-  </div>
+                                        <div id="wechat" style="display: inline-block">
+                                            <img id="wechat_qr" src="/images/pay/tenpay.png" alt="aidan WeChat Pay"/>
+                                            <p>微信打赏</p>
+                                        </div>
 
 
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
+                                        <div id="alipay" style="display: inline-block">
+                                            <img id="alipay_qr" src="/images/pay/alipay.png" alt="aidan Alipay"/>
+                                            <p>支付宝打赏</p>
+                                        </div>
 
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
+                                    </div>
+                                </div>
 
-      
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
+                            </div>
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="aidan" />
-          <p class="site-author-name" itemprop="name">aidan</p>
-           
-              <p class="site-description motion-element" itemprop="description">沉迷学习无法自拔</p>
-          
-        </div>
-        <nav class="site-state motion-element">
+                            <div>
 
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">21</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
+
+                                <ul class="post-copyright">
+                                    <li class="post-copyright-author">
+                                        <strong>本文作者：</strong>
+                                        aidan
+                                    </li>
+                                    <li class="post-copyright-link">
+                                        <strong>本文链接：</strong>
+                                        <a href="http://www.aidansu.com/2017/about-spring-mvc/"
+                                           title="了解 Spring MVC 框架">http://www.aidansu.com/2017/about-spring-mvc/</a>
+                                    </li>
+                                    <li class="post-copyright-license">
+                                        <strong>版权声明： </strong>
+                                        本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/"
+                                                             rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a>
+                                        许可协议。转载请注明出处！
+                                    </li>
+                                </ul>
+
+
+                            </div>
+
+                            <footer class="post-footer">
+
+                                <div class="post-tags">
+
+                                    <a href="/tags/Java/" rel="tag"># Java</a>
+
+                                    <a href="/tags/Spring/" rel="tag"># Spring</a>
+
+                                </div>
+
+
+                                <div class="post-nav">
+                                    <div class="post-nav-next post-nav-item">
+
+                                        <a href="/2017/about-spring/" rel="next" title="了解 Spring 框架">
+                                            <i class="fa fa-chevron-left"></i> 了解 Spring 框架
+                                        </a>
+
+                                    </div>
+
+                                    <span class="post-nav-divider"></span>
+
+                                    <div class="post-nav-prev post-nav-item">
+
+                                        <a href="/2017/spring-mvc-mysql-jdbc/" rel="prev"
+                                           title="Spring MVC 连接 MySQL 数据库 JDBC">
+                                            Spring MVC 连接 MySQL 数据库 JDBC <i class="fa fa-chevron-right"></i>
+                                        </a>
+
+                                    </div>
+                                </div>
+
+
+                            </footer>
+                        </article>
+
+
+                        <div class="post-spread">
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="comments" id="comments">
+
+                </div>
+
+
             </div>
-          
 
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
+
+            <div class="sidebar-toggle">
+                <div class="sidebar-toggle-line-wrap">
+                    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+                    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+                    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+                </div>
             </div>
-          
 
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">36</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
+            <aside id="sidebar" class="sidebar">
+                <div class="sidebar-inner">
 
-        </nav>
 
-        
+                    <ul class="sidebar-nav motion-element">
+                        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+                            文章目录
+                        </li>
+                        <li class="sidebar-nav-overview" data-target="site-overview">
+                            站点概览
+                        </li>
+                    </ul>
 
-        <div class="links-of-author motion-element">
+
+                    <section class="site-overview sidebar-panel">
+                        <div class="site-author motion-element" itemprop="author" itemscope
+                             itemtype="http://schema.org/Person">
+                            <img class="site-author-image" itemprop="image"
+                                 src="/images/avatar.png"
+                                 alt="aidan"/>
+                            <p class="site-author-name" itemprop="name">aidan</p>
+
+                            <p class="site-description motion-element" itemprop="description">沉迷学习无法自拔</p>
+
+                        </div>
+                        <nav class="site-state motion-element">
+
+
+                            <div class="site-state-item site-state-posts">
+                                <a href="/archives">
+                                    <span class="site-state-item-count">21</span>
+                                    <span class="site-state-item-name">日志</span>
+                                </a>
+                            </div>
+
+
+                            <div class="site-state-item site-state-categories">
+                                <a href="/categories/index.html">
+                                    <span class="site-state-item-count">2</span>
+                                    <span class="site-state-item-name">分类</span>
+                                </a>
+                            </div>
+
+
+                            <div class="site-state-item site-state-tags">
+                                <a href="/tags/index.html">
+                                    <span class="site-state-item-count">36</span>
+                                    <span class="site-state-item-name">标签</span>
+                                </a>
+                            </div>
+
+
+                        </nav>
+
+
+                        <div class="links-of-author motion-element">
           
             
               <span class="links-of-author-item">
@@ -638,8 +776,8 @@
                   GitHub
                 </a>
               </span>
-            
-              <span class="links-of-author-item">
+
+                            <span class="links-of-author-item">
                 <a href="http://weibo.com/shx0999" target="_blank" title="微博">
                   
                     <i class="fa fa-fw fa-weibo"></i>
@@ -647,8 +785,8 @@
                   微博
                 </a>
               </span>
-            
-              <span class="links-of-author-item">
+
+                            <span class="links-of-author-item">
                 <a href="https://www.douban.com/people/77881755/" target="_blank" title="豆瓣">
                   
                     <i class="fa fa-fw fa-globe"></i>
@@ -656,8 +794,8 @@
                   豆瓣
                 </a>
               </span>
-            
-              <span class="links-of-author-item">
+
+                            <span class="links-of-author-item">
                 <a href="https://www.zhihu.com/people/aidansu" target="_blank" title="知乎">
                   
                     <i class="fa fa-fw fa-globe"></i>
@@ -665,330 +803,265 @@
                   知乎
                 </a>
               </span>
-            
-          
+
+
+                        </div>
+
+
+                    </section>
+
+
+                    <!--noindex-->
+                    <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+                        <div class="post-toc">
+
+
+                            <div class="post-toc-content">
+                                <ol class="nav">
+                                    <li class="nav-item nav-level-3"><a class="nav-link" href="#MVC-的概念"><span
+                                            class="nav-number">1.</span> <span class="nav-text">MVC 的概念</span></a></li>
+                                    <li class="nav-item nav-level-3"><a class="nav-link" href="#MVC-处理请求的流程"><span
+                                            class="nav-number">2.</span> <span class="nav-text">MVC 处理请求的流程</span></a>
+                                    </li>
+                                    <li class="nav-item nav-level-3"><a class="nav-link" href="#MVC-各部件协同过程"><span
+                                            class="nav-number">3.</span> <span class="nav-text">MVC 各部件协同过程</span></a>
+                                    </li>
+                                    <li class="nav-item nav-level-3"><a class="nav-link" href="#MVC-与-J2EE-的关系"><span
+                                            class="nav-number">4.</span> <span
+                                            class="nav-text">MVC 与 J2EE 的关系</span></a></li>
+                                    <li class="nav-item nav-level-3"><a class="nav-link" href="#MVC-简单实现"><span
+                                            class="nav-number">5.</span> <span class="nav-text">MVC 简单实现</span></a>
+                                        <ol class="nav-child">
+                                            <li class="nav-item nav-level-4"><a class="nav-link" href="#pom-xml"><span
+                                                    class="nav-number">5.1.</span> <span class="nav-text">pom.xml</span></a>
+                                            </li>
+                                            <li class="nav-item nav-level-4"><a class="nav-link" href="#控制器与模型"><span
+                                                    class="nav-number">5.2.</span> <span class="nav-text">控制器与模型</span></a>
+                                            </li>
+                                            <li class="nav-item nav-level-4"><a class="nav-link" href="#视图"><span
+                                                    class="nav-number">5.3.</span> <span class="nav-text">视图</span></a>
+                                            </li>
+                                            <li class="nav-item nav-level-4"><a class="nav-link" href="#程序启动代码"><span
+                                                    class="nav-number">5.4.</span> <span class="nav-text">程序启动代码</span></a>
+                                            </li>
+                                            <li class="nav-item nav-level-4"><a class="nav-link" href="#运行"><span
+                                                    class="nav-number">5.5.</span> <span class="nav-text">运行</span></a>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </div>
+
+
+                        </div>
+                    </section>
+                    <!--/noindex-->
+
+
+                </div>
+            </aside>
+
+
         </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC-的概念"><span class="nav-number">1.</span> <span class="nav-text">MVC 的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC-处理请求的流程"><span class="nav-number">2.</span> <span class="nav-text">MVC 处理请求的流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC-各部件协同过程"><span class="nav-number">3.</span> <span class="nav-text">MVC 各部件协同过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC-与-J2EE-的关系"><span class="nav-number">4.</span> <span class="nav-text">MVC 与 J2EE 的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC-简单实现"><span class="nav-number">5.</span> <span class="nav-text">MVC 简单实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pom-xml"><span class="nav-number">5.1.</span> <span class="nav-text">pom.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#控制器与模型"><span class="nav-number">5.2.</span> <span class="nav-text">控制器与模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#视图"><span class="nav-number">5.3.</span> <span class="nav-text">视图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#程序启动代码"><span class="nav-number">5.4.</span> <span class="nav-text">程序启动代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行"><span class="nav-number">5.5.</span> <span class="nav-text">运行</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
     </main>
 
     <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
+        <div class="footer-inner">
+            <div class="copyright">
+
+                &copy;
+                <span itemprop="copyrightYear">2017</span>
+                <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">aidan</span>
-</div>
+                <span class="author" itemprop="copyrightHolder">aidan</span>
+            </div>
 
-<div>由<a class="theme-link" target="view_window" href="https://hexo.io">Hexo</a>强力驱动  |  <a class="theme-link" target="view_window" href="http://www.miitbeian.gov.cn">粤ICP备12003586号</a></div>
+            <div>由<a class="theme-link" target="view_window" href="https://hexo.io">Hexo</a>强力驱动 | <a class="theme-link"
+                                                                                                      target="view_window"
+                                                                                                      href="http://www.miitbeian.gov.cn">粤ICP备12003586号</a>
+            </div>
 
 
-        
-<div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="busuanzi-count">
+                <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-  
-    <span class="site-uv">
+
+                <span class="site-uv">
       <i class="fa fa-user"></i>
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
       
     </span>
-  
 
-  
-    <span class="site-pv">
+
+                <span class="site-pv">
       <i class="fa fa-eye"></i>
       <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
       
     </span>
-  
+
+            </div>
+
+
+        </div>
+    </footer>
+
+
+    <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+
+    </div>
+
+
 </div>
 
 
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-  </div>
-
-  
-
 <script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+    if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+        window.Promise = null;
+    }
 </script>
 
 
+<script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
 
+<script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
+<script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
 
-
-  
-
+<script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
 
+<script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
+<script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
+<script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+<script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
-  
+<script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+<script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("0ogotNGayeLET66f2g9FHgTF-gzGzoHsz", "KKqUX6o78nUnwRCvsXCaNlns");</script>
-  <script>
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("0ogotNGayeLET66f2g9FHgTF-gzGzoHsz", "KKqUX6o78nUnwRCvsXCaNlns");</script>
+<script>
     function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
+        var query = new AV.Query(Counter);
+        var entries = [];
+        var $visitors = $(".leancloud_visitors");
 
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
+        $visitors.each(function () {
+            entries.push($(this).attr("id").trim());
         });
+
+        query.containedIn('url', entries);
+        query.find()
+            .done(function (results) {
+                var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+                if (results.length === 0) {
+                    $visitors.find(COUNT_CONTAINER_REF).text(0);
+                    return;
+                }
+
+                for (var i = 0; i < results.length; i++) {
+                    var item = results[i];
+                    var url = item.get('url');
+                    var time = item.get('time');
+                    var element = document.getElementById(url);
+
+                    $(element).find(COUNT_CONTAINER_REF).text(time);
+                }
+                for (var i = 0; i < entries.length; i++) {
+                    var url = entries[i];
+                    var element = document.getElementById(url);
+                    var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                    if (countSpan.text() == '') {
+                        countSpan.text(0);
+                    }
+                }
+            })
+            .fail(function (object, error) {
+                console.log("Error: " + error.code + " " + error.message);
+            });
     }
 
     function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
+        var $visitors = $(".leancloud_visitors");
+        var url = $visitors.attr('id').trim();
+        var title = $visitors.attr('data-flag-title').trim();
+        var query = new AV.Query(Counter);
 
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
+        query.equalTo("url", url);
+        query.find({
+            success: function (results) {
+                if (results.length > 0) {
+                    var counter = results[0];
+                    counter.fetchWhenSave(true);
+                    counter.increment("time");
+                    counter.save(null, {
+                        success: function (counter) {
+                            var $element = $(document.getElementById(url));
+                            $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                        },
+                        error: function (counter, error) {
+                            console.log('Failed to save Visitor num, with error message: ' + error.message);
+                        }
+                    });
+                } else {
+                    var newcounter = new Counter();
+                    /* Set ACL */
+                    var acl = new AV.ACL();
+                    acl.setPublicReadAccess(true);
+                    acl.setPublicWriteAccess(true);
+                    newcounter.setACL(acl);
+                    /* End Set ACL */
+                    newcounter.set("title", title);
+                    newcounter.set("url", url);
+                    newcounter.set("time", 1);
+                    newcounter.save(null, {
+                        success: function (newcounter) {
+                            var $element = $(document.getElementById(url));
+                            $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                        },
+                        error: function (newcounter, error) {
+                            console.log('Failed to create');
+                        }
+                    });
+                }
+            },
+            error: function (error) {
+                console.log('Error:' + error.code + " " + error.message);
+            }
+        });
     }
 
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
+    $(function () {
+        var Counter = AV.Object.extend("Counter");
+        if ($('.leancloud_visitors').length == 1) {
+            addCount(Counter);
+        } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+        }
     });
-  </script>
+</script>
 
-
-
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>
